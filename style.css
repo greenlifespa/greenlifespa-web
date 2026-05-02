@@ -1056,3 +1056,152 @@ h1, h2, h3, h4, h5 {
   border: 4px solid #fdf8f2;
   display: block;
 }
+
+/* ════════════════════════════════════
+   HERO v3 – ảnh nền toàn màn hình
+   Phong cách mẫu: chữ đè lên ảnh mờ
+   ════════════════════════════════════ */
+.hero3 {
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+}
+
+/* Ảnh nền + overlay mờ nhẹ */
+.hero3-bg {
+  position: absolute;
+  inset: 0;
+}
+.hero3-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+/* Overlay gradient: trái đậm hơn để đọc chữ, phải mờ để thấy ảnh */
+.hero3-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(253,248,242,.92) 0%,
+    rgba(248,238,225,.82) 32%,
+    rgba(240,228,210,.55) 52%,
+    rgba(220,210,195,.25) 70%,
+    transparent 100%
+  );
+}
+
+/* Nội dung chữ */
+.hero3-content {
+  position: relative; z-index: 2;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+}
+.hero3-inner {
+  max-width: 560px;
+  padding: 48px 48px 56px;
+}
+.hero3-logo-row { margin-bottom: 14px; }
+.hero3-logo {
+  height: 70px; width: auto;
+  object-fit: contain;
+}
+
+.hero3-title {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+.h3t-green {
+  display: block;
+  font-size: clamp(42px, 6.5vw, 76px);
+  font-weight: 700;
+  color: #2d5a3d;
+  letter-spacing: .04em;
+}
+.h3t-dark {
+  display: block;
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 700;
+  color: #1a2e1e;
+  letter-spacing: .07em;
+}
+
+.hero3-slogan {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: clamp(16px, 2.2vw, 22px);
+  color: #3a2a10;
+  font-style: italic;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* 3 feature badges ngang hàng */
+.hero3-feats {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 28px;
+  background: rgba(255,255,255,.55);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 14px 18px;
+  border: .5px solid rgba(45,90,61,.12);
+}
+.h3f {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 7px;
+}
+.h3f-icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(45,90,61,.08);
+  display: flex; align-items: center; justify-content: center;
+}
+.h3f span {
+  font-size: 12px;
+  color: #2a1a08;
+  line-height: 1.45;
+  font-weight: 500;
+}
+.h3f-divider {
+  width: .5px;
+  align-self: stretch;
+  background: rgba(45,90,61,.18);
+  margin: 4px 12px;
+}
+
+.hero3-actions {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+
+/* Infobar */
+.hero3-infobar {
+  position: relative; z-index: 2;
+  background: rgba(30,69,50,.85);
+  backdrop-filter: blur(8px);
+  display: flex; flex-wrap: wrap;
+}
+.h3ib {
+  flex: 1; min-width: 200px;
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 28px;
+  font-size: 13px;
+  color: rgba(255,255,255,.9);
+  border-right: .5px solid rgba(255,255,255,.12);
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+.h3ib:last-child { border-right: none; }
+.h3ib svg { flex-shrink: 0; stroke: rgba(255,255,255,.7); }
+
+@media(max-width:600px) {
+  .hero3-inner { padding: 28px 20px 36px; }
+  .hero3-feats { flex-direction: column; gap: 10px; }
+  .h3f { flex-direction: row; text-align: left; }
+  .h3f-divider { display: none; }
+}
