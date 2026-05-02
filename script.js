@@ -167,16 +167,20 @@ function toggleMobileMenu() {
 function renderFeatured() {
   const grid = document.getElementById('featuredGrid');
   if (!grid) return;
-  const featured = SERVICES.slice(0, 8);
-  grid.innerHTML = featured.map(s => `
-    <div class="fc2" onclick="openServiceModal('${s.id}')">
-      <div class="fc2-thumb">
-        ${s.img ? `<img src="${s.img}" alt="${s.name}" loading="lazy">` : `<div class="${s.thumb}" style="width:100%;height:100%"></div>`}
-        <div class="fc2-price">${s.price}</div>
+  grid.innerHTML = SERVICES.slice(0, 8).map(s => `
+    <div class="feat-card" onclick="openServiceModal('${s.id}')">
+      <div class="feat-img">
+        ${s.img
+          ? `<img src="${s.img}" alt="${s.name}" loading="lazy">`
+          : `<div class="${s.thumb}" style="width:100%;height:100%"></div>`}
       </div>
-      <div class="fc2-body">
-        <div class="fc2-name">${s.name}</div>
-        <div class="fc2-time">⏱ ${s.time}</div>
+      <div class="feat-body">
+        <div class="feat-name">${s.full}</div>
+        <div class="feat-sub">${s.sub}</div>
+        <div class="feat-meta">
+          <span class="feat-price">${s.price}</span>
+          <span class="feat-time">⏱ ${s.time}</span>
+        </div>
       </div>
     </div>`).join('');
 }
@@ -313,6 +317,13 @@ function slidePrev() {}
 function slideNext() {}
 
 /* ── AI CHAT ── */
+/*
+ * ⚠️  QUAN TRỌNG: Thay URL bên dưới bằng URL của Cloudflare Worker của bạn.
+ * Xem file worker.js để biết cách tạo worker và lấy URL.
+ * Ví dụ: 'https://greenlife-ai.ten-tai-khoan.workers.dev'
+ */
+const AI_PROXY_URL = 'https://greenlife-ai.greenlifespa.workers.dev';
+
 let chatOpen = false;
 let chatHistory = [];
 
@@ -384,7 +395,7 @@ async function sendChat() {
 
   showTyping();
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch(AI_PROXY_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

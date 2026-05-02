@@ -619,3 +619,84 @@ body{font-family:'Segoe UI','Helvetica Neue',sans-serif;color:var(--txt);backgro
 .fc2-body{padding:8px 9px 10px}
 .fc2-name{font-size:12px;font-weight:700;color:#2a1a0a;margin-bottom:2px;line-height:1.3}
 .fc2-time{font-size:11px;color:var(--g-mid);font-weight:600}
+
+/* ════════════════════════════════════
+   HOME v3 – Clean layout, ảnh minh họa
+   ════════════════════════════════════ */
+.sec-home{padding:48px 0;background:#fff}
+.sec-about-bg{background:#faf7f2}
+.home-heading{
+  font-size:clamp(16px,2.2vw,20px);font-weight:700;color:#1e4532;
+  margin-bottom:22px;display:flex;align-items:center;gap:8px;
+  text-transform:uppercase;letter-spacing:.06em;
+  font-family:Georgia,serif;
+  border-left:4px solid #4a8c5c;padding-left:12px;
+}
+
+/* NEWS ROW */
+.news-row{display:grid;grid-template-columns:repeat(3,1fr) 1.1fr;gap:18px;align-items:start}
+@media(max-width:900px){.news-row{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.news-row{grid-template-columns:1fr}}
+
+.news-item{
+  background:#fff;border:.5px solid #e0d8cc;border-radius:10px;
+  overflow:hidden;cursor:pointer;
+  transition:box-shadow .2s,transform .18s;
+}
+.news-item:hover{box-shadow:0 6px 22px rgba(30,69,50,.1);transform:translateY(-3px)}
+.ni-img{height:130px;overflow:hidden;background:#e8ddd0}
+.ni-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.news-item:hover .ni-img img{transform:scale(1.05)}
+.ni-body{padding:13px 14px}
+.ni-body h4{font-size:13px;font-weight:700;color:#1a1008;margin-bottom:8px;line-height:1.35}
+.ni-body ul{padding-left:14px;font-size:12px;color:#5a4030;margin-bottom:8px;line-height:1.6}
+.ni-body p{font-size:12.5px;color:#5a4030;margin-bottom:8px;line-height:1.55}
+.ni-more{font-size:11.5px;color:#2d5a3d;font-weight:700;letter-spacing:.03em}
+.ni-more:hover{text-decoration:underline}
+
+/* GALLERY 3 ảnh riêng biệt */
+.news-gallery3{display:flex;flex-direction:column;gap:8px}
+.ng3-big{border-radius:10px;overflow:hidden;height:178px}
+.ng3-big img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.ng3-big:hover img{transform:scale(1.04)}
+.ng3-sm{border-radius:8px;overflow:hidden;height:80px}
+.ng3-sm img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.ng3-sm:hover img{transform:scale(1.05)}
+
+/* ABOUT ROW */
+.about-row{max-width:700px}
+.about-row p{font-size:14.5px;color:#4a3020;margin-bottom:18px;line-height:1.75}
+.about-icons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+@media(max-width:500px){.about-icons{grid-template-columns:1fr}}
+.ai-item{display:flex;align-items:flex-start;gap:10px;background:#fff;border:.5px solid #e0d8cc;border-radius:8px;padding:10px 12px}
+.ai-icon{font-size:22px;flex-shrink:0}
+.ai-item b{display:block;font-size:13px;font-weight:700;color:#1a1008;margin-bottom:2px}
+.ai-item small{font-size:11.5px;color:#7a6050;line-height:1.4}
+
+/* FEATURED GRID – ảnh minh họa + text tách biệt */
+.feat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+@media(max-width:860px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+
+.feat-card{
+  background:#fff;border:.5px solid #e0d8cc;border-radius:10px;
+  overflow:hidden;cursor:pointer;
+  transition:box-shadow .2s,transform .18s;
+}
+.feat-card:hover{box-shadow:0 6px 20px rgba(30,69,50,.12);transform:translateY(-3px)}
+.feat-img{
+  height:150px;overflow:hidden;background:#e8ddd0;
+  position:relative;
+}
+.feat-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.feat-card:hover .feat-img img{transform:scale(1.05)}
+.feat-body{padding:10px 12px 12px}
+.feat-name{font-size:12.5px;font-weight:700;color:#1a1008;margin-bottom:4px;line-height:1.35}
+.feat-sub{font-size:11px;color:#7a6050;margin-bottom:6px;line-height:1.3}
+.feat-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
+.feat-price{font-size:13px;font-weight:700;color:#2d5a3d}
+.feat-time{font-size:11px;color:#9a8070}
+.home-cta{text-align:center;margin-top:28px}
