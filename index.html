@@ -26,7 +26,6 @@
       <a class="nav-link"       data-page="about"    href="#" onclick="navigate('about');return false;">Giới thiệu</a>
       <a class="nav-link"       data-page="services" href="#" onclick="navigate('services');return false;">Liệu trình</a>
       <a class="nav-link"       data-page="pricing"  href="#" onclick="navigate('pricing');return false;">Bảng giá</a>
-      <a class="nav-link"       data-page="menu"     href="#" onclick="navigate('menu');return false;">Menu</a>
       <a class="nav-link"       data-page="contact"  href="#" onclick="navigate('contact');return false;">Liên hệ</a>
       <a class="btn-book" href="#" onclick="navigate('contact');return false;">Đặt lịch</a>
     </nav>
@@ -57,9 +56,9 @@
           <button class="btn-outline-hero" onclick="navigate('services')">Xem liệu trình</button>
         </div>
       </div>
-      <!-- CỘT PHẢI: ảnh spa thật -->
+      <!-- CỘT PHẢI: ảnh spa thật từ Unsplash -->
       <div class="hero2-right">
-        <img src="assets/relax.jpg" alt="Green Life Spa – Thư giãn" class="hero2-photo">
+        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=900&q=85" alt="Green Life Spa – Thư giãn" class="hero2-photo">
       </div>
     </div>
     <div class="hero2-infobar">
@@ -259,7 +258,7 @@
 </div>
 
 
-<!-- ══ PAGE: LIỆU TRÌNH ══ -->
+<!-- ══ PAGE: LIỆU TRÌNH (gộp cả Menu) ══ -->
 <div class="page" id="page-services">
   <div class="page-banner">
     <div class="container">
@@ -270,6 +269,38 @@
   </div>
   <div class="container page-body">
     <div class="services-full" id="servicesFull"></div>
+
+    <!-- Thông tin bổ sung (trước là Menu) -->
+    <div class="menu-info-row" style="margin-top:40px">
+      <div class="mi-card">
+        <h4>🎁 Gói tín dụng ưu đãi</h4>
+        <ul>
+          <li>Nạp từ 2.000.000đ → <b>ưu đãi 5%</b></li>
+          <li>Nạp từ 3.000.000đ → <b>ưu đãi 8%</b></li>
+          <li>Nạp từ 5.000.000đ → <b>ưu đãi 10%</b></li>
+        </ul>
+      </div>
+      <div class="mi-card">
+        <h4>💳 Thanh toán</h4>
+        <ul>
+          <li>Tiền mặt</li>
+          <li>Chuyển khoản ngân hàng</li>
+          <li>Momo</li>
+        </ul>
+      </div>
+      <div class="mi-card">
+        <h4>🕗 Giờ hoạt động</h4>
+        <ul>
+          <li>Mở cửa: <b>8:30</b> hằng ngày</li>
+          <li>Nhận khách cuối: <b>19:30</b></li>
+          <li>Nên đặt lịch trước</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sec-cta">
+      <button class="btn-green" onclick="navigate('contact')">Đặt lịch ngay →</button>
+    </div>
   </div>
 </div>
 
@@ -302,24 +333,6 @@
 </div>
 
 
-<!-- ══ PAGE: MENU ══ -->
-<div class="page" id="page-menu">
-  <div class="page-banner">
-    <div class="container">
-      <div class="breadcrumb"><a href="#" onclick="navigate('home');return false;">Trang chủ</a> / Menu</div>
-      <h1>Menu dịch vụ</h1>
-      <p>Tất cả những gì Green Life Spa cung cấp cho bạn</p>
-    </div>
-  </div>
-  <div class="container page-body">
-    <div class="menu-sections" id="menuSections"></div>
-    <div class="menu-info-row">
-      <div class="mi-card"><h4>🎁 Gói tín dụng</h4><ul><li>Nạp từ 2.000.000đ → <b>ưu đãi 5%</b></li><li>Nạp từ 3.000.000đ → <b>ưu đãi 8%</b></li><li>Nạp từ 5.000.000đ → <b>ưu đãi 10%</b></li></ul></div>
-      <div class="mi-card"><h4>💳 Thanh toán</h4><ul><li>Tiền mặt</li><li>Chuyển khoản ngân hàng</li><li>Momo</li></ul></div>
-      <div class="mi-card"><h4>🕗 Giờ hoạt động</h4><ul><li>Mở cửa: <b>8:30</b> hằng ngày</li><li>Nhận khách cuối: <b>19:30</b></li><li>Nên đặt lịch trước</li></ul></div>
-    </div>
-  </div>
-</div>
 
 
 <!-- ══ PAGE: LIÊN HỆ ══ -->

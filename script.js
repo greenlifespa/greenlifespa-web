@@ -156,7 +156,6 @@ function navigate(page) {
   if (page === 'home' && !document.getElementById('featuredGrid').hasChildNodes()) renderFeatured();
   if (page === 'services' && !document.getElementById('servicesFull').hasChildNodes()) renderServicesFull();
   if (page === 'pricing'  && !document.getElementById('priceWrap').hasChildNodes()) renderPriceTable();
-  if (page === 'menu'     && !document.getElementById('menuSections').hasChildNodes()) renderMenu();
 }
 
 function toggleMobileMenu() {
@@ -322,7 +321,7 @@ function slideNext() {}
  * Xem file worker.js để biết cách tạo worker và lấy URL.
  * Ví dụ: 'https://greenlife-ai.ten-tai-khoan.workers.dev'
  */
-const AI_PROXY_URL = 'https://greenlifespa-web-ai.vinhluong0501.workers.dev';
+const AI_PROXY_URL = 'https://greenlife-ai.greenlifespa.workers.dev';
 
 let chatOpen = false;
 let chatHistory = [];
