@@ -8,7 +8,7 @@ const SERVICES = [
   {
     id:'green-touch', name:'Green Touch', full:'Green Touch – Gội đầu thảo dược bản địa',
     time:'40 phút', price:'79.000 VNĐ', priceNum:79000,
-    thumb:'t-green-touch', tag:'Phổ biến',
+    img:'assets/green-touch.jpg', thumb:'t-green-touch', tag:'Phổ biến',
     sub:'Gội đầu thảo dược bản địa',
     group:'goi-dau',
     desc:'Liệu trình gội đầu nhẹ nhàng với thảo dược thiên nhiên, phù hợp cho khách mới, khách muốn thư giãn nhanh hoặc chăm sóc da đầu tóc nhẹ nhàng.',
@@ -18,7 +18,7 @@ const SERVICES = [
   {
     id:'fast', name:'FAST', full:'FAST – Chăm sóc nhanh theo nhu cầu',
     time:'30 phút', price:'150.000 VNĐ', priceNum:150000,
-    thumb:'t-fast', tag:null,
+    img:'assets/fast.jpg', thumb:'t-fast', tag:null,
     sub:'Chăm sóc nhanh theo nhu cầu',
     group:'chuyen-sau',
     desc:'Liệu trình linh hoạt 30 phút, phù hợp cho khách bận rộn hoặc muốn thư giãn nhanh theo vùng cơ thể đang cần chăm sóc.',
@@ -28,7 +28,7 @@ const SERVICES = [
   {
     id:'relax', name:'Relax', full:'Relax – Gội đầu thảo dược chuyên sâu',
     time:'60 phút', price:'180.000 VNĐ', priceNum:180000,
-    thumb:'t-relax', tag:null,
+    img:'assets/relax.jpg', thumb:'t-relax', tag:null,
     sub:'Gội đầu thảo dược chuyên sâu',
     group:'goi-dau',
     desc:'Gội đầu thảo dược chuyên sâu kết hợp chăm sóc vùng mặt, gáy và cổ. Phù hợp cho khách cần thư giãn sâu sau ngày làm việc mệt mỏi.',
@@ -38,7 +38,7 @@ const SERVICES = [
   {
     id:'beauty', name:'Beauty', full:'Beauty – Tái tạo và phục hồi',
     time:'60 phút', price:'240.000 VNĐ', priceNum:240000,
-    thumb:'t-beauty', tag:null,
+    img:'assets/beauty.jpg', thumb:'t-beauty', tag:null,
     sub:'Tái tạo và phục hồi da mặt',
     group:'chuyen-sau',
     desc:'Liệu trình chăm sóc da mặt kết hợp thư giãn, sử dụng thành phần thiên nhiên giúp da có cảm giác tươi tắn và dễ chịu hơn.',
@@ -48,7 +48,7 @@ const SERVICES = [
   {
     id:'zen-detox', name:'Zen Detox', full:'Zen Detox – Thải độc và thư giãn cơ thể',
     time:'60 phút', price:'240.000 VNĐ', priceNum:240000,
-    thumb:'t-zendetox', tag:null,
+    img:'assets/zen-detox.jpg', thumb:'t-zendetox', tag:null,
     sub:'Thư giãn cơ thể chuyên biệt',
     group:'chuyen-sau',
     desc:'Liệu trình chuyên biệt cho vùng bụng, eo và chân, giúp cơ thể có cảm giác nhẹ nhàng và thư giãn hơn, kết hợp chườm nóng và thảo dược.',
@@ -58,7 +58,7 @@ const SERVICES = [
   {
     id:'royal', name:'Royal', full:'Royal – Liệu trình chăm sóc hoàng gia',
     time:'90 phút', price:'300.000 VNĐ', priceNum:300000,
-    thumb:'t-royal', tag:null,
+    img:'assets/royal.jpg', thumb:'t-royal', tag:null,
     sub:'Liệu trình cao cấp toàn diện',
     group:'cao-cap',
     desc:'Trải nghiệm cao cấp kết hợp gội đầu ngọc thạch, chăm sóc da, thư giãn đầu mặt và cổ vai gáy, tay chân trong 90 phút.',
@@ -68,7 +68,7 @@ const SERVICES = [
   {
     id:'galaxy-neck', name:'Galaxy – Vai Cổ Gáy', full:'Galaxy – Vai Cổ Gáy',
     time:'60 phút', price:'300.000 VNĐ', priceNum:300000,
-    thumb:'t-galaxy-neck', tag:null,
+    img:'assets/galaxy-neck.jpg', thumb:'t-galaxy-neck', tag:null,
     sub:'Chăm sóc chuyên sâu vùng cổ vai gáy',
     group:'chuyen-sau',
     desc:'Chuyên sâu cho vùng đầu, cổ, gáy, vai và bả vai. Phù hợp nhất cho khách ngồi máy tính nhiều, cúi điện thoại lâu hoặc thường xuyên căng mỏi vùng cổ vai.',
@@ -78,7 +78,7 @@ const SERVICES = [
   {
     id:'galaxy-back', name:'Galaxy – Lưng, Eo, Thận', full:'Galaxy – Lưng, Eo, Thận',
     time:'60 phút', price:'300.000 VNĐ', priceNum:300000,
-    thumb:'t-galaxy-back', tag:null,
+    img:'assets/galaxy-back.jpg', thumb:'t-galaxy-back', tag:null,
     sub:'Thư giãn vùng lưng và thắt eo',
     group:'chuyen-sau',
     desc:'Chuyên sâu cho vùng lưng, eo và chân. Phù hợp cho khách ngồi nhiều, ít vận động, làm văn phòng hoặc lái xe lâu.',
@@ -88,7 +88,7 @@ const SERVICES = [
   {
     id:'galaxy-legs', name:'Galaxy – Thông Kinh Lạc', full:'Galaxy – Thông Kinh Lạc Chân và Tay',
     time:'60 phút', price:'300.000 VNĐ', priceNum:300000,
-    thumb:'t-galaxy-legs', tag:null,
+    img:'assets/galaxy-legs.jpg', thumb:'t-galaxy-legs', tag:null,
     sub:'Chăm sóc chân và tay chuyên sâu',
     group:'chuyen-sau',
     desc:'Chuyên sâu cho chân, tay và các khớp. Phù hợp cho khách đứng nhiều, đi lại nhiều hoặc làm máy tính nhiều gây mỏi cổ tay, bàn tay.',
@@ -98,7 +98,7 @@ const SERVICES = [
   {
     id:'vip', name:'VIP', full:'VIP – Chăm sóc toàn thân chuyên sâu',
     time:'120 phút', price:'600.000 VNĐ', priceNum:600000,
-    thumb:'t-vip', tag:'Cao cấp',
+    img:'assets/vip.jpg', thumb:'t-vip', tag:'Cao cấp',
     sub:'Chăm sóc toàn thân chuyên sâu',
     group:'cao-cap',
     desc:'Liệu trình cao cấp nhất – chăm sóc toàn thân trong 120 phút, dành cho khách cần phục hồi năng lượng toàn diện hoặc thường xuyên đau mỏi nhiều vùng.',
@@ -169,7 +169,8 @@ function renderFeatured() {
   const featured = SERVICES.slice(0, 8);
   grid.innerHTML = featured.map(s => `
     <div class="svc-card" onclick="openServiceModal('${s.id}')">
-      <div class="svc-thumb ${s.thumb}">
+      <div class="svc-thumb ${s.img ? '' : s.thumb}" style="${s.img ? '' : ''}">
+        ${s.img ? `<img src="${s.img}" alt="${s.name}" loading="lazy">` : ''}
         <div class="svc-price-badge">${s.price}</div>
       </div>
       <div class="svc-body">
@@ -185,7 +186,8 @@ function renderServicesFull() {
   const el = document.getElementById('servicesFull');
   el.innerHTML = SERVICES.map(s => `
     <div class="sf-card" onclick="openServiceModal('${s.id}')">
-      <div class="sf-thumb ${s.thumb}">
+      <div class="sf-thumb ${s.img ? 'sf-thumb-photo' : s.thumb}">
+        ${s.img ? `<img src="${s.img}" alt="${s.name}" loading="lazy">` : ''}
         <div class="sf-thumb-overlay"></div>
         <div class="sf-price-tag">${s.price}</div>
       </div>
@@ -243,7 +245,10 @@ function openServiceModal(id) {
   const s = SERVICES.find(x => x.id === id);
   if (!s) return;
   const html = `
-    <div class="modal-thumb"><div class="${s.thumb}" style="width:100%;height:100%"></div></div>
+    <div class="modal-thumb">${s.img 
+      ? `<img src="${s.img}" alt="${s.full}" style="width:100%;height:100%;object-fit:cover;display:block">`
+      : `<div class="${s.thumb}" style="width:100%;height:100%"></div>`
+    }</div>
     <div class="modal-body">
       <h2>${s.full}</h2>
       <div class="modal-meta">
