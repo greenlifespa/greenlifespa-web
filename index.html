@@ -36,16 +36,10 @@
 <!-- ══ PAGE: TRANG CHỦ ══ -->
 <div class="page active" id="page-home">
 
-  <!-- ── HERO: dùng ảnh mẫu gốc, chữ đè nhẹ bên trái ── -->
+  <!-- ── HERO: layout 2 cột – trái nền sạch, phải ảnh spa ── -->
   <section class="hero2">
-    <div class="hero2-img-wrap">
-      <picture>
-        <source srcset="assets/greenlife-homepage-design.webp" type="image/webp">
-        <img src="assets/greenlife-homepage-design.png" alt="Green Life Spa" class="hero2-img">
-      </picture>
-    </div>
-    <div class="hero2-overlay"></div>
-    <div class="hero2-content">
+    <div class="hero2-inner">
+      <!-- CỘT TRÁI: nền kem sạch, không ảnh nền -->
       <div class="hero2-left">
         <img src="assets/greenlife-logo.jpg" alt="Green Life Spa" class="hero2-logo">
         <h1 class="hero2-title">
@@ -62,6 +56,10 @@
           <button class="btn-gold" onclick="navigate('contact')">Đặt lịch ngay</button>
           <button class="btn-outline-hero" onclick="navigate('services')">Xem liệu trình</button>
         </div>
+      </div>
+      <!-- CỘT PHẢI: ảnh spa thật -->
+      <div class="hero2-right">
+        <img src="assets/relax.jpg" alt="Green Life Spa – Thư giãn" class="hero2-photo">
       </div>
     </div>
     <div class="hero2-infobar">
@@ -182,40 +180,81 @@
     </div>
   </div>
   <div class="container page-body">
-    <div class="about-intro-text">
-      <h2>Chúng tôi là ai?</h2>
-      <p>Green Life Spa là spa dưỡng sinh tại 246 Độc Lập, Phường Phú Thọ Hòa, TP.HCM – chuyên về gội đầu thảo dược, xoa bóp, ấn huyệt và chăm sóc các vùng cơ thể thường bị căng mỏi như cổ vai gáy, lưng, eo, tay chân.</p>
-      <p>Phong cách thương hiệu: nhẹ nhàng, thư giãn, sạch sẽ, gần gũi thiên nhiên và chuyên nghiệp. Chúng tôi tạo cảm giác chăm sóc sức khỏe an toàn, dễ chịu, không phô trương.</p>
+
+    <!-- Intro 2 cột: chữ + ảnh không gian -->
+    <div class="about-hero-row">
+      <div class="about-hero-text">
+        <h2>Chúng tôi là ai?</h2>
+        <p>Green Life Spa là spa dưỡng sinh tại <strong>246 Độc Lập, Phường Phú Thọ Hòa, TP.HCM</strong> – chuyên về gội đầu thảo dược, xoa bóp, ấn huyệt và chăm sóc các vùng cơ thể thường bị căng mỏi như cổ vai gáy, lưng, eo, tay chân.</p>
+        <p>Phong cách thương hiệu: nhẹ nhàng, thư giãn, sạch sẽ, gần gũi thiên nhiên và chuyên nghiệp. Chúng tôi tạo cảm giác chăm sóc sức khỏe an toàn, dễ chịu – không phô trương.</p>
+        <p>Mỗi liệu trình đều được thực hiện bằng tay, kết hợp thảo dược thiên nhiên và kỹ thuật ấn huyệt truyền thống, giúp cơ thể thư giãn sâu và phục hồi năng lượng sau một ngày dài.</p>
+      </div>
+      <div class="about-hero-imgs">
+        <img class="ahi-main" 
+          src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&q=80" 
+          alt="Không gian thư giãn Green Life Spa">
+        <img class="ahi-sub"
+          src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=300&q=80"
+          alt="Liệu trình thảo dược">
+      </div>
     </div>
+
+    <!-- 4 giá trị cốt lõi – ảnh spa thật, không poster -->
+    <div class="about-section-title">Điểm nổi bật của chúng tôi</div>
     <div class="value-grid">
       <div class="value-card">
-        <div class="vc-img"><img src="assets/green-touch.jpg" alt="Thảo dược thiên nhiên"></div>
-        <h4>Thiên nhiên &amp; an toàn</h4>
-        <p>Sử dụng nguyên liệu thảo dược thiên nhiên, an toàn cho sức khỏe.</p>
+        <div class="vc-img">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80" 
+               alt="Thảo dược thiên nhiên">
+        </div>
+        <div class="vc-body">
+          <h4>Thiên nhiên &amp; an toàn</h4>
+          <p>Sử dụng nguyên liệu thảo dược thiên nhiên, không hóa chất, an toàn cho mọi loại da và sức khỏe.</p>
+        </div>
       </div>
       <div class="value-card">
-        <div class="vc-img"><img src="assets/galaxy-neck.jpg" alt="Tay nghề chuyên nghiệp"></div>
-        <h4>Tay nghề chuyên nghiệp</h4>
-        <p>Kỹ thuật viên được đào tạo về huyệt đạo và các vùng cơ thể căng mỏi.</p>
+        <div class="vc-img">
+          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80" 
+               alt="Kỹ thuật viên chuyên nghiệp">
+        </div>
+        <div class="vc-body">
+          <h4>Tay nghề chuyên nghiệp</h4>
+          <p>Kỹ thuật viên được đào tạo bài bản về huyệt đạo và các vùng cơ thể thường bị căng mỏi.</p>
+        </div>
       </div>
       <div class="value-card">
-        <div class="vc-img"><img src="assets/relax.jpg" alt="Không gian thư thái"></div>
-        <h4>Không gian thư thái</h4>
-        <p>Không gian yên tĩnh, hài hòa, sang trọng và thân thiện.</p>
+        <div class="vc-img">
+          <img src="https://images.unsplash.com/photo-1470259078422-826894b933aa?w=400&q=80" 
+               alt="Không gian thư thái">
+        </div>
+        <div class="vc-body">
+          <h4>Không gian thư thái</h4>
+          <p>Không gian yên tĩnh, hài hòa, sạch sẽ – phù hợp để nghỉ ngơi và phục hồi năng lượng.</p>
+        </div>
       </div>
       <div class="value-card">
-        <div class="vc-img"><img src="assets/royal.jpg" alt="Tận tâm phục vụ"></div>
-        <h4>Tận tâm phục vụ</h4>
-        <p>Luôn lắng nghe và tư vấn phù hợp với tình trạng sức khỏe từng khách.</p>
+        <div class="vc-img">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80" 
+               alt="Tận tâm phục vụ">
+        </div>
+        <div class="vc-body">
+          <h4>Tận tâm phục vụ</h4>
+          <p>Luôn lắng nghe và tư vấn phù hợp với tình trạng sức khỏe của từng khách hàng.</p>
+        </div>
       </div>
     </div>
+
+    <!-- Thông tin liên hệ -->
     <div class="contact-bar-full">
       <div>📍 246 Độc Lập, Phường Phú Thọ Hòa, TP.HCM</div>
       <div>📞 <a href="tel:0985009674">0985.009.674</a></div>
       <div>💬 Zalo: <a href="https://zalo.me/0917948706">0917.948.706</a></div>
       <div>🕗 8:30 – 19:30 hằng ngày</div>
     </div>
-    <div class="sec-cta"><button class="btn-green" onclick="navigate('contact')">Đặt lịch ngay →</button></div>
+    <div class="sec-cta">
+      <button class="btn-green" onclick="navigate('contact')">Đặt lịch ngay →</button>
+    </div>
+
   </div>
 </div>
 

@@ -777,3 +777,214 @@ h1, h2, h3, h4, h5 {
 .ai-item small {
   font-size: 11.5px; color: var(--txt-muted); line-height: 1.4;
 }
+
+/* ════════════════════════════════
+   HERO v3 – 2 cột, nền trái sạch
+   ════════════════════════════════ */
+.hero2 {
+  position: relative;
+  background: #fdf8f2;
+  overflow: hidden;
+}
+.hero2-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 460px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* CỘT TRÁI – nền kem sạch tuyệt đối */
+.hero2-left {
+  background: #fdf8f2;
+  padding: 44px 40px 60px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  z-index: 2;
+}
+.hero2-logo {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+.hero2-title {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.h2t-green {
+  display: block;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  color: #2d5a3d;
+  letter-spacing: .03em;
+}
+.h2t-dark {
+  display: block;
+  font-size: clamp(30px, 4.5vw, 56px);
+  font-weight: 700;
+  color: #1a2e1e;
+  letter-spacing: .06em;
+}
+.hero2-slogan {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: clamp(16px, 2vw, 21px);
+  color: #5a3e28;
+  font-style: italic;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+.hero2-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 26px;
+}
+.h2b {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(45,90,61,.07);
+  border-left: 3px solid #4a8c5c;
+  padding: 8px 14px;
+  border-radius: 0 7px 7px 0;
+  font-size: 13.5px;
+  color: #2a1a0a;
+  font-weight: 500;
+}
+.hero2-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* CỘT PHẢI – ảnh spa chiếm toàn bộ */
+.hero2-right {
+  overflow: hidden;
+  position: relative;
+}
+.hero2-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* INFOBAR */
+.hero2-infobar {
+  background: #1e4532;
+  display: flex;
+  flex-wrap: wrap;
+}
+.hib2 {
+  flex: 1;
+  min-width: 160px;
+  padding: 10px 24px;
+  font-size: 13px;
+  color: rgba(255,255,255,.88);
+  border-right: .5px solid rgba(255,255,255,.12);
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+.hib2:last-child { border-right: none; }
+.hib2 a { color: rgba(255,255,255,.9); text-decoration: none; font-weight: 600; }
+
+@media (max-width: 760px) {
+  .hero2-inner { grid-template-columns: 1fr; }
+  .hero2-right { height: 220px; }
+  .hero2-left { padding: 28px 20px 32px; }
+}
+
+/* ════════════════════════════════
+   ABOUT PAGE v2 – ảnh Unsplash
+   ════════════════════════════════ */
+
+/* Intro 2 cột */
+.about-hero-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+  margin-bottom: 48px;
+}
+@media(max-width:700px){.about-hero-row{grid-template-columns:1fr}}
+
+.about-hero-text h2 {
+  font-size: 22px; font-weight: 700;
+  color: var(--g-deep); margin-bottom: 14px;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+.about-hero-text p {
+  font-size: 14.5px; color: #4a3020;
+  line-height: 1.75; margin-bottom: 12px;
+}
+
+.about-hero-imgs {
+  position: relative;
+  height: 340px;
+}
+.ahi-main {
+  position: absolute;
+  top: 0; left: 0;
+  width: 85%; height: 85%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.12);
+  display: block;
+}
+.ahi-sub {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 48%; height: 48%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+  border: 3px solid #fff;
+  display: block;
+}
+
+/* Section title */
+.about-section-title {
+  font-size: 14px; font-weight: 700;
+  color: var(--g-mid); text-transform: uppercase;
+  letter-spacing: .1em; margin-bottom: 20px;
+  padding-left: 12px;
+  border-left: 3px solid var(--g-mid);
+}
+
+/* Value cards v2 */
+.value-card {
+  border: .5px solid #e0d4c8 !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  background: #fff !important;
+  box-shadow: 0 2px 10px rgba(90,62,40,.06);
+  transition: box-shadow .2s, transform .2s;
+}
+.value-card:hover {
+  box-shadow: 0 6px 22px rgba(90,62,40,.12);
+  transform: translateY(-3px);
+}
+.vc-img {
+  width: 100%; height: 160px !important;
+  overflow: hidden; background: #e8ddd0;
+}
+.vc-img img {
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+  transition: transform .4s;
+}
+.value-card:hover .vc-img img { transform: scale(1.05); }
+.vc-body { padding: 14px 16px 16px; }
+.vc-body h4 {
+  font-size: 14px; font-weight: 700;
+  color: #1a1008; margin-bottom: 6px;
+}
+.vc-body p {
+  font-size: 13px; color: #6b5040;
+  line-height: 1.6; margin: 0;
+}
