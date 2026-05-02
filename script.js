@@ -166,17 +166,17 @@ function toggleMobileMenu() {
 /* ── RENDER: Featured grid (home) ── */
 function renderFeatured() {
   const grid = document.getElementById('featuredGrid');
+  if (!grid) return;
   const featured = SERVICES.slice(0, 8);
   grid.innerHTML = featured.map(s => `
-    <div class="svc-card" onclick="openServiceModal('${s.id}')">
-      <div class="svc-thumb ${s.img ? '' : s.thumb}" style="${s.img ? '' : ''}">
-        ${s.img ? `<img src="${s.img}" alt="${s.name}" loading="lazy">` : ''}
-        <div class="svc-price-badge">${s.price}</div>
+    <div class="fc2" onclick="openServiceModal('${s.id}')">
+      <div class="fc2-thumb">
+        ${s.img ? `<img src="${s.img}" alt="${s.name}" loading="lazy">` : `<div class="${s.thumb}" style="width:100%;height:100%"></div>`}
+        <div class="fc2-price">${s.price}</div>
       </div>
-      <div class="svc-body">
-        <h4>${s.name}</h4>
-        <div class="svc-sub">${s.sub}</div>
-        <div class="svc-time">⏱ ${s.time}</div>
+      <div class="fc2-body">
+        <div class="fc2-name">${s.name}</div>
+        <div class="fc2-time">⏱ ${s.time}</div>
       </div>
     </div>`).join('');
 }

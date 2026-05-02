@@ -452,3 +452,170 @@ body{font-family:'Segoe UI','Helvetica Neue',sans-serif;color:var(--txt);backgro
 .cw-input-row textarea:focus{border-color:var(--g-mid)}
 .cw-send{width:32px;height:32px;border-radius:50%;background:var(--g-deep);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
 .cw-send:hover{background:var(--g-mid)}
+
+/* ════════════════════════════════════
+   HOMEPAGE REDESIGN – Sang trọng
+   ════════════════════════════════════ */
+
+/* ─── HERO 2 ─── */
+.hero2{position:relative;min-height:480px;overflow:hidden;background:#f5ebe0}
+.hero2-img-wrap{position:absolute;inset:0}
+.hero2-img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hero2-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(105deg,rgba(253,249,244,.96) 0%,rgba(248,238,225,.88) 38%,rgba(200,220,210,.25) 68%,transparent 100%);
+  z-index:1;
+}
+.hero2-content{
+  position:relative;z-index:2;
+  max-width:1200px;margin:0 auto;padding:40px 32px 80px;
+  display:flex;align-items:center;min-height:420px;
+}
+.hero2-left{max-width:560px}
+.hero2-logo-wrap{margin-bottom:16px}
+.hero2-logo{height:72px;width:auto;object-fit:contain}
+
+.hero2-title{
+  font-family:Georgia,'Times New Roman',serif;
+  line-height:1.1;margin-bottom:10px;
+}
+.h2t-green{
+  display:block;font-size:clamp(44px,7vw,80px);font-weight:700;
+  color:var(--g-mid);letter-spacing:.04em;
+}
+.h2t-dark{
+  display:block;font-size:clamp(32px,5.5vw,64px);font-weight:700;
+  color:var(--g-deep);letter-spacing:.08em;
+}
+.hero2-slogan{
+  font-family:Georgia,serif;font-size:clamp(17px,2.5vw,24px);
+  color:#5a3e28;font-style:italic;margin-bottom:24px;line-height:1.45;
+}
+.hero2-badges{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.h2b{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.72);border-left:3px solid var(--g-mid);
+  padding:8px 14px;border-radius:0 8px 8px 0;
+  backdrop-filter:blur(4px);
+}
+.h2b b{display:block;font-size:13.5px;font-weight:700;color:var(--g-deep)}
+.h2b small{font-size:12px;color:var(--txt-muted)}
+.hero2-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* Gold CTA buttons */
+.btn-gold{
+  background:linear-gradient(135deg,#c8960c,#e8b420);
+  color:#fff;border:none;border-radius:8px;padding:12px 28px;
+  font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.04em;
+  box-shadow:0 3px 12px rgba(184,134,11,.35);transition:all .2s;
+  font-family:inherit;
+}
+.btn-gold:hover{background:linear-gradient(135deg,#a87a08,#c8960c);transform:translateY(-1px)}
+.btn-gold-sm{
+  background:linear-gradient(135deg,#c8960c,#e8b420);
+  color:#fff;border:none;border-radius:7px;padding:9px 22px;
+  font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;
+  box-shadow:0 2px 8px rgba(184,134,11,.3);
+}
+.btn-outline-hero{
+  background:rgba(255,255,255,.8);color:var(--g-deep);
+  border:1.5px solid var(--g-mid);border-radius:8px;padding:11px 24px;
+  font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;
+  backdrop-filter:blur(4px);transition:all .15s;
+}
+.btn-outline-hero:hover{background:#fff}
+
+/* Hero infobar */
+.hero2-infobar{
+  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  background:rgba(30,69,50,.82);backdrop-filter:blur(8px);
+  display:flex;flex-wrap:wrap;
+}
+.hib2{
+  flex:1;min-width:180px;display:flex;align-items:center;gap:8px;
+  padding:10px 28px;font-size:13px;color:rgba(255,255,255,.92);
+  border-right:.5px solid rgba(255,255,255,.15);
+}
+.hib2:last-child{border-right:none}
+.hib2 svg{flex-shrink:0;stroke:rgba(255,255,255,.7)}
+
+/* ─── SEC HEADINGS warm ─── */
+.sec-heading-warm{
+  font-size:clamp(18px,2.5vw,22px);font-weight:700;color:#3a2a1a;
+  margin-bottom:24px;display:flex;align-items:center;gap:8px;
+  font-family:Georgia,serif;letter-spacing:.02em;
+}
+
+/* ─── NEWS 2 ─── */
+.sec-news{background:#fff;padding:52px 0}
+.news-layout2{display:grid;grid-template-columns:1fr 1.15fr;gap:28px;align-items:start}
+@media(max-width:780px){.news-layout2{grid-template-columns:1fr}}
+
+.news-cards2{display:flex;flex-direction:column;gap:14px}
+.news-card2{
+  display:flex;gap:0;border-radius:10px;overflow:hidden;cursor:pointer;
+  background:#fff;border:.5px solid #e8ddd0;
+  box-shadow:0 2px 8px rgba(90,62,40,.06);
+  transition:box-shadow .2s,transform .2s;
+}
+.news-card2:hover{box-shadow:0 6px 20px rgba(90,62,40,.12);transform:translateY(-2px)}
+.news-img2{width:100px;flex-shrink:0;overflow:hidden}
+.news-img2 img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.news-card2:hover .news-img2 img{transform:scale(1.06)}
+.news-body2{padding:13px 15px;flex:1}
+.news-body2 h4{font-size:13.5px;font-weight:700;color:#2a1a0a;margin-bottom:7px;line-height:1.3}
+.news-body2 ul{padding-left:14px;font-size:12.5px;color:#6b5040;margin-bottom:7px}
+.news-body2 ul li{margin-bottom:2px}
+.news-body2 p{font-size:12.5px;color:#6b5040;margin-bottom:7px;line-height:1.5}
+.readmore2{font-size:12px;color:var(--g-mid);font-weight:700;letter-spacing:.02em}
+
+.news-gallery2{display:flex;flex-direction:column;gap:8px}
+.gal2-big{position:relative;border-radius:10px;overflow:hidden;height:260px}
+.gal2-big img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.gal2-big:hover img{transform:scale(1.04)}
+.gal2-smalls{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gal2-sm{position:relative;border-radius:10px;overflow:hidden;height:120px;cursor:pointer}
+.gal2-sm img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.gal2-sm:hover img{transform:scale(1.06)}
+.gal2-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(30,20,10,.55));
+  color:#fff;font-size:12px;font-weight:600;
+  padding:20px 10px 8px;
+}
+
+/* ─── ABOUT + FEATURED (side by side) ─── */
+.sec-about-featured{background:#fdf7f0;padding:52px 0}
+.af-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:36px;align-items:start}
+@media(max-width:900px){.af-grid{grid-template-columns:1fr}}
+
+.af-desc{font-size:14px;color:#5a3e28;margin-bottom:18px;line-height:1.7}
+.af-feats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+@media(max-width:480px){.af-feats{grid-template-columns:1fr}}
+.aff{display:flex;align-items:flex-start;gap:9px;background:#fff;border:.5px solid #e8ddd0;border-radius:8px;padding:10px 12px}
+.aff-icon{font-size:20px;flex-shrink:0}
+.aff b{display:block;font-size:12.5px;font-weight:700;color:#2a1a0a;margin-bottom:1px}
+.aff small{font-size:11.5px;color:#8a6a50;line-height:1.4}
+
+/* ─── FEATURED GRID 2 (4 col with real images) ─── */
+.featured-grid2{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:700px){.featured-grid2{grid-template-columns:repeat(2,1fr)}}
+
+.fc2{
+  border-radius:9px;overflow:hidden;cursor:pointer;background:#fff;
+  border:.5px solid #e8ddd0;
+  box-shadow:0 2px 8px rgba(90,62,40,.07);
+  transition:box-shadow .2s,transform .2s;
+}
+.fc2:hover{box-shadow:0 6px 18px rgba(90,62,40,.14);transform:translateY(-3px)}
+.fc2-thumb{height:100px;position:relative;overflow:hidden;background:#d4c4b0}
+.fc2-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.fc2:hover .fc2-thumb img{transform:scale(1.07)}
+.fc2-price{
+  position:absolute;bottom:6px;right:6px;
+  background:rgba(30,69,50,.85);color:#fff;
+  font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:10px;
+}
+.fc2-body{padding:8px 9px 10px}
+.fc2-name{font-size:12px;font-weight:700;color:#2a1a0a;margin-bottom:2px;line-height:1.3}
+.fc2-time{font-size:11px;color:var(--g-mid);font-weight:600}
