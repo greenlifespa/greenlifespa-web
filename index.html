@@ -35,10 +35,9 @@
 <!-- ══ PAGE: TRANG CHỦ ══ -->
 <div class="page active" id="page-home">
 
-  <!-- ── HERO: layout 2 cột – trái nền sạch, phải ảnh spa ── -->
+  <!-- ── HERO: 2 cột sạch – trái nền kem, phải ảnh spa ── -->
   <section class="hero2">
     <div class="hero2-inner">
-      <!-- CỘT TRÁI: nền kem sạch, không ảnh nền -->
       <div class="hero2-left">
         <img src="assets/greenlife-logo.jpg" alt="Green Life Spa" class="hero2-logo">
         <h1 class="hero2-title">
@@ -56,9 +55,8 @@
           <button class="btn-outline-hero" onclick="navigate('services')">Xem liệu trình</button>
         </div>
       </div>
-      <!-- CỘT PHẢI: ảnh spa thật từ Unsplash -->
       <div class="hero2-right">
-        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=900&q=85" alt="Green Life Spa – Thư giãn" class="hero2-photo">
+        <img src="assets/spa-hero.png" alt="Green Life Spa – Thư giãn đầu" class="hero2-photo">
       </div>
     </div>
     <div class="hero2-infobar">
@@ -67,8 +65,6 @@
       <div class="hib2">🕗 Mở cửa 8:30 – nhận khách cuối 19:30</div>
       <div class="hib2">📅 Đặt lịch trước để được phục vụ chu đáo hơn</div>
     </div>
-    <button class="hero-arr prev" onclick="slidePrev()">&#10094;</button>
-    <button class="hero-arr next" onclick="slideNext()">&#10095;</button>
   </section>
 
   <!-- ── TIN TỨC ── -->
@@ -78,7 +74,7 @@
       <div class="news-row">
 
         <article class="news-item" onclick="openModal('uu-dai')">
-          <div class="ni-img"><img src="assets/royal.jpg" alt="Ưu đãi thẻ nạp" loading="lazy"></div>
+          <div class="ni-img"><img src="assets/spa-herbal-setup.png" alt="Ưu đãi thẻ nạp" loading="lazy"></div>
           <div class="ni-body">
             <h4>Ưu đãi thẻ nạp Green Life Spa</h4>
             <ul>
@@ -91,7 +87,7 @@
         </article>
 
         <article class="news-item" onclick="openModal('gio-mo-cua')">
-          <div class="ni-img"><img src="assets/relax.jpg" alt="Giờ hoạt động" loading="lazy"></div>
+          <div class="ni-img"><img src="assets/spa-relaxing.png" alt="Giờ hoạt động" loading="lazy"></div>
           <div class="ni-body">
             <h4>Giờ hoạt động mỗi ngày</h4>
             <ul>
@@ -104,7 +100,7 @@
         </article>
 
         <article class="news-item" onclick="openModal('thanh-toan')">
-          <div class="ni-img"><img src="assets/green-touch.jpg" alt="Thanh toán" loading="lazy"></div>
+          <div class="ni-img"><img src="assets/spa-products.png" alt="Thanh toán" loading="lazy"></div>
           <div class="ni-body">
             <h4>Thanh toán tiện lợi</h4>
             <p>Nhận tiền mặt, chuyển khoản ngân hàng và quét mã Momo.</p>
@@ -112,11 +108,10 @@
           </div>
         </article>
 
-        <!-- Gallery 3 ảnh -->
         <div class="news-gallery3">
-          <div class="ng3-big"><img src="assets/galaxy-neck.jpg" alt="Liệu trình" loading="lazy"></div>
-          <div class="ng3-sm"><img src="assets/beauty.jpg" alt="Beauty" loading="lazy"></div>
-          <div class="ng3-sm"><img src="assets/vip.jpg" alt="VIP" loading="lazy"></div>
+          <div class="ng3-big"><img src="assets/spa-massage.png" alt="Liệu trình massage" loading="lazy"></div>
+          <div class="ng3-sm"><img src="assets/spa-facial.png" alt="Chăm sóc da mặt" loading="lazy"></div>
+          <div class="ng3-sm"><img src="assets/spa-setup.png" alt="Không gian spa" loading="lazy"></div>
         </div>
 
       </div>
@@ -126,29 +121,35 @@
   <!-- ── VỀ GREEN LIFE SPA ── -->
   <section class="sec-home sec-about-bg">
     <div class="container">
-      <div class="about-row">
-        <div class="about-text-col">
+      <div class="about-2col">
+        <!-- Trái: chữ + features -->
+        <div class="ab2-text">
           <h2 class="home-heading">VỀ GREEN LIFE SPA <span>🌿</span></h2>
-          <p>Green Life Spa là spa dưỡng sinh chuyên về gội đầu thảo dược, xoa bóp – ấn huyệt, chăm sóc cổ vai gáy và các liệu trình thư giãn nhẹ nhàng. Chúng tôi mang đến trải nghiệm an toàn, hiệu quả với thảo dược thiên nhiên, không gian sạch sẽ, phong cách chuyên nghiệp và thư thái.</p>
-          <div class="about-icons">
-            <div class="ai-item">
-              <div class="ai-img"><img src="assets/green-touch.jpg" alt="Gội đầu thảo dược"></div>
-              <div><b>Gội đầu thảo dược</b><small>Làm sạch sâu, nuôi dưỡng tóc và da đầu khỏe mạnh</small></div>
+          <p class="ab2-desc">Green Life Spa là spa dưỡng sinh chuyên về gội đầu thảo dược, xoa bóp – ấn huyệt, chăm sóc cổ vai gáy và các liệu trình thư giãn nhẹ nhàng. Chúng tôi mang đến trải nghiệm an toàn, hiệu quả với thảo dược thiên nhiên, không gian sạch sẽ và phong cách chuyên nghiệp.</p>
+          <div class="ab2-feats">
+            <div class="ab2f">
+              <div class="ab2f-img"><img src="assets/spa-herbs.png" alt="Thảo dược" loading="lazy"></div>
+              <div class="ab2f-txt"><b>Gội đầu thảo dược</b><small>Làm sạch sâu, nuôi dưỡng tóc và da đầu khỏe mạnh</small></div>
             </div>
-            <div class="ai-item">
-              <div class="ai-img"><img src="assets/galaxy-neck.jpg" alt="Xoa bóp – ấn huyệt"></div>
-              <div><b>Xoa bóp – ấn huyệt</b><small>Giảm căng mỏi, lưu thông khí huyết, thư giãn toàn thân</small></div>
+            <div class="ab2f">
+              <div class="ab2f-img"><img src="assets/spa-back-massage.png" alt="Xoa bóp" loading="lazy"></div>
+              <div class="ab2f-txt"><b>Xoa bóp – ấn huyệt</b><small>Giảm căng mỏi, lưu thông khí huyết, thư giãn toàn thân</small></div>
             </div>
-            <div class="ai-item">
-              <div class="ai-img"><img src="assets/galaxy-back.jpg" alt="Cổ vai gáy thư giãn"></div>
-              <div><b>Cổ vai gáy thư giãn</b><small>Giảm căng mỏi, giải tỏa áp lực, phục hồi năng lượng</small></div>
+            <div class="ab2f">
+              <div class="ab2f-img"><img src="assets/spa-hero.png" alt="Cổ vai gáy" loading="lazy"></div>
+              <div class="ab2f-txt"><b>Cổ vai gáy thư giãn</b><small>Giảm căng mỏi, giải tỏa áp lực, phục hồi năng lượng</small></div>
             </div>
-            <div class="ai-item">
-              <div class="ai-img"><img src="assets/fast.jpg" alt="Thanh toán tiện lợi"></div>
-              <div><b>Thanh toán tiện lợi</b><small>Tiền mặt, chuyển khoản, Momo – linh hoạt, nhanh chóng</small></div>
+            <div class="ab2f">
+              <div class="ab2f-img"><img src="assets/spa-energy.png" alt="Phục hồi năng lượng" loading="lazy"></div>
+              <div class="ab2f-txt"><b>Phục hồi năng lượng</b><small>Thư giãn sâu, lấy lại sức sống sau ngày dài mệt mỏi</small></div>
             </div>
           </div>
           <button class="btn-outline" onclick="navigate('about')">Tìm hiểu thêm →</button>
+        </div>
+        <!-- Phải: ảnh chồng nhau -->
+        <div class="ab2-imgs">
+          <img class="ab2-main" src="assets/spa-massage.png" alt="Liệu trình massage">
+          <img class="ab2-accent" src="assets/spa-products.png" alt="Sản phẩm thảo dược">
         </div>
       </div>
     </div>
@@ -158,7 +159,6 @@
   <section class="sec-home">
     <div class="container">
       <h2 class="home-heading">LIỆU TRÌNH NỔI BẬT <span>🌿</span></h2>
-      <!-- 4 cột × 2 hàng = 8 dịch vụ, ảnh minh hoạ + tên + giá riêng biệt -->
       <div class="feat-grid" id="featuredGrid"></div>
       <div class="home-cta">
         <button class="btn-gold" onclick="navigate('services')">Xem tất cả liệu trình →</button>
@@ -189,12 +189,8 @@
         <p>Mỗi liệu trình đều được thực hiện bằng tay, kết hợp thảo dược thiên nhiên và kỹ thuật ấn huyệt truyền thống, giúp cơ thể thư giãn sâu và phục hồi năng lượng sau một ngày dài.</p>
       </div>
       <div class="about-hero-imgs">
-        <img class="ahi-main" 
-          src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&q=80" 
-          alt="Không gian thư giãn Green Life Spa">
-        <img class="ahi-sub"
-          src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=300&q=80"
-          alt="Liệu trình thảo dược">
+        <img class="ahi-main" src="assets/spa-massage.png" alt="Không gian thư giãn Green Life Spa">
+        <img class="ahi-sub"  src="assets/spa-herbal-setup.png" alt="Liệu trình thảo dược">
       </div>
     </div>
 
@@ -202,44 +198,20 @@
     <div class="about-section-title">Điểm nổi bật của chúng tôi</div>
     <div class="value-grid">
       <div class="value-card">
-        <div class="vc-img">
-          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80" 
-               alt="Thảo dược thiên nhiên">
-        </div>
-        <div class="vc-body">
-          <h4>Thiên nhiên &amp; an toàn</h4>
-          <p>Sử dụng nguyên liệu thảo dược thiên nhiên, không hóa chất, an toàn cho mọi loại da và sức khỏe.</p>
-        </div>
+        <div class="vc-img"><img src="assets/spa-herbs.png" alt="Thảo dược thiên nhiên"></div>
+        <div class="vc-body"><h4>Thiên nhiên &amp; an toàn</h4><p>Sử dụng nguyên liệu thảo dược thiên nhiên, không hóa chất, an toàn cho mọi loại da và sức khỏe.</p></div>
       </div>
       <div class="value-card">
-        <div class="vc-img">
-          <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80" 
-               alt="Kỹ thuật viên chuyên nghiệp">
-        </div>
-        <div class="vc-body">
-          <h4>Tay nghề chuyên nghiệp</h4>
-          <p>Kỹ thuật viên được đào tạo bài bản về huyệt đạo và các vùng cơ thể thường bị căng mỏi.</p>
-        </div>
+        <div class="vc-img"><img src="assets/spa-back-massage.png" alt="Tay nghề chuyên nghiệp"></div>
+        <div class="vc-body"><h4>Tay nghề chuyên nghiệp</h4><p>Kỹ thuật viên được đào tạo bài bản về huyệt đạo và các vùng cơ thể thường bị căng mỏi.</p></div>
       </div>
       <div class="value-card">
-        <div class="vc-img">
-          <img src="https://images.unsplash.com/photo-1470259078422-826894b933aa?w=400&q=80" 
-               alt="Không gian thư thái">
-        </div>
-        <div class="vc-body">
-          <h4>Không gian thư thái</h4>
-          <p>Không gian yên tĩnh, hài hòa, sạch sẽ – phù hợp để nghỉ ngơi và phục hồi năng lượng.</p>
-        </div>
+        <div class="vc-img"><img src="assets/spa-setup.png" alt="Không gian thư thái"></div>
+        <div class="vc-body"><h4>Không gian thư thái</h4><p>Không gian yên tĩnh, hài hòa, sạch sẽ – phù hợp để nghỉ ngơi và phục hồi năng lượng.</p></div>
       </div>
       <div class="value-card">
-        <div class="vc-img">
-          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80" 
-               alt="Tận tâm phục vụ">
-        </div>
-        <div class="vc-body">
-          <h4>Tận tâm phục vụ</h4>
-          <p>Luôn lắng nghe và tư vấn phù hợp với tình trạng sức khỏe của từng khách hàng.</p>
-        </div>
+        <div class="vc-img"><img src="assets/spa-relaxing.png" alt="Tận tâm phục vụ"></div>
+        <div class="vc-body"><h4>Tận tâm phục vụ</h4><p>Luôn lắng nghe và tư vấn phù hợp với tình trạng sức khỏe của từng khách hàng.</p></div>
       </div>
     </div>
 
