@@ -322,7 +322,7 @@ function slideNext() {}
  * Xem file worker.js để biết cách tạo worker và lấy URL.
  * Ví dụ: 'https://greenlife-ai.ten-tai-khoan.workers.dev'
  */
-const AI_PROXY_URL = 'https://greenlife-ai.greenlifespa.workers.dev';
+const AI_PROXY_URL = 'https://greenlifespa-web-ai.vinhluong0501.workers.dev';
 
 let chatOpen = false;
 let chatHistory = [];
