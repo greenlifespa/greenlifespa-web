@@ -1780,3 +1780,58 @@ section.hero3 {
     0 0 12px rgba(255,245,225,.9),
     0 1px 4px rgba(255,245,225,.8) !important;
 }
+
+/* ════════════════════════════════════
+   HERO FINAL – dùng ảnh composite
+   Logo nằm trong ảnh nền, không overlay
+   ════════════════════════════════════ */
+
+/* Ảnh nền: canh trái để logo hiện đúng vị trí */
+.hero3 .hero3-img {
+  object-position: left center !important;
+}
+
+/* Overlay: chỉ phủ nhẹ vùng dưới cho slogan & badges */
+.hero3 .hero3-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent           0%,
+    transparent           55%,
+    rgba(240,225,195,.45) 72%,
+    rgba(236,218,185,.65) 88%,
+    rgba(230,210,175,.78) 100%
+  ) !important;
+}
+
+/* Nội dung: đẩy xuống dưới logo */
+.hero3 .hero3-content {
+  min-height: 480px !important;
+  align-items: flex-end !important;
+}
+.hero3 .hero3-inner {
+  padding: 0 48px 44px 56px !important;
+  max-width: 48% !important;
+  width: 48% !important;
+}
+
+/* Slogan: đọc được trên ảnh */
+.hero3 .hero3-cursive {
+  font-size: clamp(17px,2.2vw,22px) !important;
+  color: #2a1a08 !important;
+  text-shadow: 0 1px 6px rgba(255,245,220,.85) !important;
+  margin-bottom: 16px !important;
+}
+
+/* Badges nhỏ hơn, gọn hơn */
+.hero3 .hero3-feats {
+  padding: 9px 12px !important;
+  margin-bottom: 16px !important;
+  background: rgba(255,250,235,.62) !important;
+  backdrop-filter: blur(8px) !important;
+}
+.hero3 .h3f span { font-size: 11px !important; }
+.hero3 .h3f-icon { width:34px !important; height:34px !important; }
+
+@media(max-width:700px){
+  .hero3 .hero3-inner { max-width:90% !important; width:90% !important; padding:0 24px 36px 28px !important; }
+}
