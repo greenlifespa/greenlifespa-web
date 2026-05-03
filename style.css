@@ -730,3 +730,36 @@ section.hero3{position:relative;overflow:hidden;background:#f0e8d5;min-height:50
     font-size: 11.5px;
   }
 }
+
+/* ══ HERO OVERRIDE FINAL – ưu tiên cao nhất ══ */
+@media(min-width:769px){
+  body section.hero3 { min-height:560px !important; display:block !important; flex-direction:unset !important; }
+  body .hero3 .hero3-bg { position:absolute !important; height:100% !important; }
+  body .hero3 .hero3-img { object-position:left top !important; }
+  body .hero3 .hero3-content { min-height:560px !important; align-items:flex-start !important; background:transparent !important; padding:0 !important; }
+  body .hero3 .hero3-inner { padding:0 52px 48px 64px !important; max-width:48% !important; width:48% !important; }
+  body .hero3-logo-spacer { display:block !important; height:330px !important; }
+}
+@media(max-width:768px){
+  body section.hero3 { min-height:auto !important; display:flex !important; flex-direction:column !important; background:#faf6ee !important; }
+  body .hero3 .hero3-bg { position:relative !important; height:260px !important; flex-shrink:0 !important; }
+  body .hero3 .hero3-img { position:absolute !important; inset:0 !important; object-position:center 15% !important; }
+  body .hero3 .hero3-overlay { display:none !important; }
+  body .hero3 .hero3-content { min-height:auto !important; align-items:flex-start !important; background:#faf6ee !important; padding:0 !important; }
+  body .hero3 .hero3-inner { width:100% !important; max-width:100% !important; padding:20px 18px 24px !important; }
+  body .hero3-logo-spacer { display:none !important; height:0 !important; }
+  body .hero3 .hero3-cursive { font-size:22px !important; text-shadow:none !important; color:#1e1208 !important; margin:0 0 14px !important; }
+}
+
+/* ── Content: thêm padding trái/phải, tránh sát viền ── */
+@media(max-width:768px){
+  body .hero3 .hero3-inner { padding:20px 24px 28px 24px !important; }
+  body .hero3 .hero3-cursive { font-size:21px !important; }
+  body .hero3 .hero3-feats { border-radius:10px !important; }
+  body .hero3 .hero3-actions { gap:10px !important; }
+  body .hero3 .hero3-actions .btn-gold,
+  body .hero3 .hero3-actions .btn-outline-hero { flex:1 !important; text-align:center !important; }
+}
+@media(min-width:769px){
+  body .hero3 .hero3-inner { padding:0 56px 52px 72px !important; }
+}
