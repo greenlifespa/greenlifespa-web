@@ -7,7 +7,7 @@
 <meta name="description" content="Green Life Spa – spa dưỡng sinh chuyên gội đầu thảo dược, xoa bóp, ấn huyệt, chăm sóc cổ vai gáy. 246 Độc Lập, Phú Thọ Hòa, TP.HCM.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -35,7 +35,7 @@
 <!-- ══ PAGE: TRANG CHỦ ══ -->
 <div class="page active" id="page-home">
 
-  <!-- ── HERO: ảnh nền toàn chiều rộng, chữ đè lên, phong cách mẫu ── -->
+  <!-- ── HERO ── -->
   <section class="hero3">
     <div class="hero3-bg">
       <img src="assets/spa-hero.png" alt="Green Life Spa" class="hero3-img">
@@ -43,40 +43,48 @@
     </div>
     <div class="hero3-content">
       <div class="hero3-inner">
-        <div class="hero3-logo-row">
-          <img src="assets/greenlife-logo.jpg" alt="Logo" class="hero3-logo">
+
+        <!-- Logo + Tên thương hiệu kiểu chữ như logo -->
+        <div class="hero3-brand">
+          <img src="assets/greenlife-logo.jpg" alt="Green Life Spa" class="hero3-logo-blend">
+          <div class="hero3-wordmark">
+            <span class="hwm-green">GREEN</span>
+            <span class="hwm-dark"><span class="hwm-leaf">L</span>IFE SPA</span>
+          </div>
         </div>
-        <h1 class="hero3-title">
-          <span class="h3t-green">GREEN</span>
-          <span class="h3t-dark">LIFE SPA</span>
-        </h1>
-        <p class="hero3-slogan"><em>Năng lượng xanh<br>cho cơ thể khỏe mạnh</em></p>
+
+        <!-- Slogan chữ thảo -->
+        <p class="hero3-cursive">Năng lượng xanh<br>cho cơ thể khỏe mạnh</p>
+
+        <!-- 3 đặc điểm -->
         <div class="hero3-feats">
           <div class="h3f">
             <div class="h3f-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2d5a3d" stroke-width="1.5"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M7 10.5c0-2.5 2-4.5 5-4.5s5 2 5 4.5-2 4.5-5 4.5"/><path d="M12 15v3"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d5a3d" stroke-width="1.5"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M8 11c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/><path d="M12 15v3"/></svg>
             </div>
             <span>Thảo dược thiên nhiên<br>an toàn &amp; lành tính</span>
           </div>
           <div class="h3f-divider"></div>
           <div class="h3f">
             <div class="h3f-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2d5a3d" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d5a3d" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
             </div>
             <span>Liệu trình chuyên sâu<br>chuẩn chuyên gia</span>
           </div>
           <div class="h3f-divider"></div>
           <div class="h3f">
             <div class="h3f-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2d5a3d" stroke-width="1.5"><path d="M12 3c-1.2 5.4-5 7-5 11a5 5 0 0010 0c0-4-3.8-5.6-5-11z"/><path d="M9.5 14.5c.5 1 1.5 2 2.5 2s2-1 2.5-2"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2d5a3d" stroke-width="1.5"><path d="M12 3c-1.2 5.4-5 7-5 11a5 5 0 0010 0c0-4-3.8-5.6-5-11z"/><path d="M9.5 14.5c.5 1 1.5 2 2.5 2s2-1 2.5-2"/></svg>
             </div>
             <span>Thư giãn toàn diện<br>cho thân – tâm – trí</span>
           </div>
         </div>
+
         <div class="hero3-actions">
           <button class="btn-gold" onclick="navigate('contact')">Đặt lịch ngay</button>
           <button class="btn-outline-hero" onclick="navigate('services')">Xem liệu trình</button>
         </div>
+
       </div>
     </div>
     <div class="hero3-infobar">

@@ -1307,3 +1307,94 @@ h1, h2, h3, h4, h5 {
   margin-top: 4px !important;
   font-size: clamp(16px, 2vw, 21px) !important;
 }
+
+/* ════════════════════════════════════
+   HERO v4 – Typography chuẩn logo
+   ════════════════════════════════════ */
+
+/* Nội dung căn giữa dọc, padding hợp lý */
+.hero3-content { min-height: 480px; display:flex; align-items:center; }
+.hero3-inner {
+  padding: 52px 60px 60px !important;
+  max-width: 540px !important;
+}
+
+/* Brand: logo nhỏ + wordmark cạnh nhau */
+.hero3-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+/* Logo: chỉ lấy hình tròn icon, xóa nền trắng */
+.hero3-logo-blend {
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  mix-blend-mode: multiply;
+  flex-shrink: 0;
+}
+
+/* Wordmark: GREEN / LIFE SPA kiểu serif đậm */
+.hero3-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+.hwm-green {
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 800;
+  color: #2d5a3d;
+  letter-spacing: .05em;
+  display: block;
+}
+.hwm-dark {
+  font-size: clamp(26px, 4vw, 46px);
+  font-weight: 700;
+  color: #1a2e1e;
+  letter-spacing: .08em;
+  display: block;
+}
+/* Chữ L đặc biệt màu xanh lá */
+.hwm-leaf {
+  color: #4a8c5c;
+  font-style: italic;
+}
+
+/* Slogan chữ thảo Dancing Script */
+.hero3-cursive {
+  font-family: 'Dancing Script', cursive !important;
+  font-size: clamp(20px, 2.8vw, 30px) !important;
+  font-weight: 600 !important;
+  color: #3a2a10 !important;
+  line-height: 1.5 !important;
+  margin-bottom: 22px !important;
+  font-style: normal !important;
+}
+
+/* Badges gọn hơn */
+.hero3-feats {
+  display: inline-flex !important;
+  max-width: 420px !important;
+  padding: 11px 15px !important;
+  margin-bottom: 22px !important;
+  gap: 0 !important;
+  background: rgba(255,255,255,.58) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 10px !important;
+  border: .5px solid rgba(45,90,61,.1) !important;
+}
+.h3f { flex:1; flex-direction:column; align-items:center; text-align:center; gap:6px; }
+.h3f span { font-size: 11px !important; font-weight:500; color:#2a1a08; }
+.h3f-icon { width:36px !important; height:36px !important; }
+
+/* Responsive */
+@media(max-width:640px){
+  .hero3-inner { padding: 36px 24px 44px !important; }
+  .hwm-green { font-size: 36px !important; }
+  .hwm-dark  { font-size: 28px !important; }
+  .hero3-cursive { font-size: 20px !important; }
+}
