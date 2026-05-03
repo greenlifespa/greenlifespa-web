@@ -46,7 +46,7 @@ section.hero3{background:#faf6ee;overflow:hidden}
 .hero3-content{position:relative;z-index:2;background:#faf6ee}
 .hero3-inner{padding:20px 24px 28px}
 .hero3-logo-spacer{display:none}
-.hero3-cursive{font-family:'Dancing Script',cursive;font-size:22px;font-weight:700;color:#2d5a3d;line-height:1.45;margin:0 0 14px}
+.hero3-cursive{font-family:'Dancing Script',cursive;font-size:22px;font-weight:700;color:#2d5a3d;line-height:1.45;margin:0 0 14px;white-space:nowrap}
 .hero3-feats{display:flex;gap:0;background:rgba(255,252,238,.95);border:.5px solid rgba(45,90,61,.15);border-radius:10px;padding:10px 8px;margin-bottom:14px}
 .h3f{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:5px;padding:0 2px}
 .h3f-icon{width:30px;height:30px;border-radius:50%;border:1.5px solid rgba(45,90,61,.2);background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center}
@@ -70,7 +70,7 @@ section.hero3{background:#faf6ee;overflow:hidden}
   .hero3-content{background:transparent;min-height:560px;display:flex;align-items:flex-start}
   .hero3-inner{padding:0 56px 52px 72px;max-width:48%;width:48%}
   .hero3-logo-spacer{display:block;height:330px}
-  .hero3-cursive{font-size:clamp(24px,3vw,32px);text-shadow:0 0 18px rgba(255,248,225,.98),0 1px 8px rgba(255,244,212,.9)}
+  .hero3-cursive{font-size:clamp(24px,3vw,32px);text-shadow:0 0 18px rgba(255,248,225,.98),0 1px 8px rgba(255,244,212,.9);white-space:nowrap}
   .hero3-feats{background:rgba(255,252,238,.65);backdrop-filter:blur(8px);padding:10px 14px;margin-bottom:16px}
   .h3f{min-width:88px;padding:0 4px}
   .h3f-icon{width:36px;height:36px}
