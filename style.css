@@ -157,14 +157,27 @@ section.hero3{background:#faf6ee;overflow:hidden}
 .feat-time{font-size:10.5px;color:#9a8070}
 .home-cta{text-align:center;margin-top:24px}
 
-/* ── PAGE BANNER ── */
-.page-banner{background:linear-gradient(135deg,#e8f5ee,#d4ead9);padding:32px 24px;border-bottom:.5px solid var(--bd)}
+/* ── PAGE BANNER – nền gradient đẹp ── */
+.page-banner{
+  background:linear-gradient(135deg,#d4ead9 0%,#e8f5ee 50%,#f0f9f2 100%);
+  padding:32px 24px;
+  border-bottom:none;
+  box-shadow:0 2px 12px rgba(45,90,61,.08)
+}
 .page-banner .container{max-width:1080px;margin:0 auto}
 .page-banner h1{font-size:clamp(22px,4vw,34px);font-weight:700;color:var(--g);margin:8px 0 6px}
 .page-banner p{font-size:14px;color:var(--mu)}
 .breadcrumb{font-size:13px;color:var(--mu);margin-bottom:6px}
 .breadcrumb a{color:var(--gm);text-decoration:none}
-.page-body{padding:32px 24px}
+
+/* PAGE BODY – nền chung có đốm mờ */
+.page-body{
+  padding:32px 24px;
+  background:
+    radial-gradient(ellipse at 10% 20%,rgba(45,90,61,.04) 0%,transparent 50%),
+    radial-gradient(ellipse at 90% 80%,rgba(45,90,61,.03) 0%,transparent 50%),
+    #fff
+}
 
 /* ── GIỚI THIỆU ── */
 .about-hero-row{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:36px}
@@ -335,7 +348,7 @@ section.hero3{background:#faf6ee;overflow:hidden}
 .cw-input-row textarea:focus{border-color:var(--gm)}
 .cw-send{width:31px;height:31px;border-radius:50%;background:var(--g);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
 
-/* Thumbnail fallback */
+/* ── Thumbnail fallback ── */
 .t-green-touch{background:linear-gradient(135deg,#b0d8be,#6db88a)}
 .t-fast{background:linear-gradient(135deg,#fce9a0,#f5cc50)}
 .t-relax{background:linear-gradient(135deg,#c5d8fc,#8ab0f0)}
@@ -349,9 +362,13 @@ section.hero3{background:#faf6ee;overflow:hidden}
 
 /* ── Slogan: căn giữa theo logo ── */
 @media(min-width:755px){
-  .hero3-cursive { 
-    margin-left: 180px;
-  }
+  .hero3-cursive { margin-left: 180px; }
   .hero3-feats { margin-left: 20px; }
   .hero3-actions { margin-left: 20px; }
 }
+
+/* ── Nền riêng từng trang ── */
+#page-services .page-body{background:radial-gradient(ellipse at 80% 10%,rgba(72,140,92,.05) 0%,transparent 40%),#f8fcf9}
+#page-pricing .page-body{background:linear-gradient(180deg,#f4faf6 0%,#fff 200px)}
+#page-contact .page-body{background:radial-gradient(ellipse at 20% 50%,rgba(45,90,61,.04) 0%,transparent 45%),linear-gradient(180deg,#f4faf6 0%,#fff 150px)}
+#page-about .about-hero-row{background:#fff;border-radius:14px;padding:28px;box-shadow:0 2px 14px rgba(30,69,50,.06);border:.5px solid #e8f2ea}
