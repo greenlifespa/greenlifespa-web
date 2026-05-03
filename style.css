@@ -1677,3 +1677,26 @@ section.hero3 {
 @media(max-width:600px){
   .hero3 .hero3-inner { max-width:100% !important; width:100% !important; padding:36px 24px 40px 28px !important; }
 }
+
+/* ════════════════════════════════════
+   WORDMARK PNG – Fix kích thước & nền
+   ════════════════════════════════════ */
+.hero3-wordmark-img {
+  display: block !important;
+  width: 260px !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin-bottom: 8px !important;
+  /* Xóa bất kỳ nền nào */
+  background: transparent !important;
+  background-color: transparent !important;
+  mix-blend-mode: normal !important;
+  /* Không có border hay shadow */
+  border: none !important;
+  box-shadow: none !important;
+}
+/* Đảm bảo brand container không có nền */
+.hero3 .hero3-brand {
+  background: transparent !important;
+  background-color: transparent !important;
+}
