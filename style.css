@@ -595,3 +595,10 @@ section.hero3{position:relative;overflow:hidden;background:#f0e8d5;min-height:50
   .hero3 .hero3-content { min-height: 560px !important; }
   .hero3 .hero3-inner { padding: 0 56px 52px 68px !important; max-width: 50% !important; width: 50% !important; }
 }
+
+/* ── DESKTOP: Tăng spacer cao hơn để không cắt logo ── */
+@media(min-width:769px){
+  .hero3-logo-spacer { height: clamp(340px, 52vh, 420px) !important; }
+  section.hero3 { min-height: 600px !important; }
+  .hero3 .hero3-content { min-height: 600px !important; }
+}
