@@ -405,14 +405,22 @@ async function sendChat() {
       })
     });
     const data = await res.json();
+    // Kiểm tra lỗi từ Anthropic API
+    if (data.error) {
+      console.error('Anthropic API error:', data.error);
+      hideTyping();
+      appendMsg('bot', `Lỗi API: ${data.error.type} – ${data.error.message}`);
+      return;
+    }
     const reply = data.content?.[0]?.text || 'Dạ em chưa hiểu, mình nhắn lại giúp em nhé ạ.';
     hideTyping();
     appendMsg('bot', reply);
     chatHistory.push({ role: 'assistant', content: reply });
     if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
-  } catch {
+  } catch(err) {
+    console.error('Fetch error:', err);
     hideTyping();
-    appendMsg('bot', 'Dạ em đang gặp sự cố, mình thử lại sau nhé ạ.');
+    appendMsg('bot', 'Dạ em đang gặp sự cố kết nối. Lỗi: ' + err.message);
   }
 }
 
