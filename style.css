@@ -612,3 +612,27 @@ section.hero3{position:relative;overflow:hidden;background:#f0e8d5;min-height:50
   section.hero3 { min-height: 580px !important; }
   .hero3 .hero3-content { min-height: 580px !important; }
 }
+
+/* ══ HERO DESKTOP – FIX FINAL ══
+   align-items: flex-start + spacer đúng vị trí logo */
+@media(min-width:769px){
+  section.hero3 { min-height: 560px !important; }
+  .hero3 .hero3-content {
+    min-height: 560px !important;
+    align-items: flex-start !important;  /* content từ trên xuống */
+  }
+  .hero3 .hero3-inner {
+    padding: 0 52px 0 60px !important;
+    max-width: 50% !important;
+    width: 50% !important;
+  }
+  /* Spacer = chiều cao vùng logo trong ảnh */
+  .hero3-logo-spacer {
+    display: block !important;
+    height: clamp(280px, 44vh, 340px) !important;
+  }
+  /* Padding dưới cho inner để không sát đáy */
+  .hero3 .hero3-actions {
+    padding-bottom: 44px !important;
+  }
+}
