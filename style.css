@@ -533,3 +533,65 @@ section.hero3{position:relative;overflow:hidden;background:#f0e8d5;min-height:50
   .value-grid { grid-template-columns:repeat(2,1fr); }
   .credit-cards { grid-template-columns:repeat(2,1fr); }
 }
+
+/* ══════════════════════════════════════════════
+   MOBILE FIX – Override tất cả rule cũ xung đột
+   ══════════════════════════════════════════════ */
+@media(max-width:768px){
+
+  /* Bỏ hoàn toàn spacer – không cần trên mobile */
+  .hero3-logo-spacer { display:none !important; height:0 !important; }
+
+  /* Hero section: auto height, flex column */
+  section.hero3 { min-height:auto !important; display:flex !important; flex-direction:column !important; background:#faf6ee !important; }
+
+  /* Ảnh hero: relative, chiều cao cố định */
+  .hero3 .hero3-bg { position:relative !important; height:260px !important; flex-shrink:0 !important; }
+  .hero3 .hero3-img { position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; object-fit:cover !important; object-position:center 15% !important; }
+  .hero3 .hero3-overlay { display:none !important; }
+
+  /* Content: nằm dưới ảnh, nền kem */
+  .hero3 .hero3-content { position:relative !important; min-height:auto !important; align-items:flex-start !important; background:#faf6ee !important; padding:0 !important; }
+  .hero3 .hero3-inner { width:100% !important; max-width:100% !important; padding:20px 18px 24px !important; }
+
+  /* Slogan: rõ ràng trên nền kem */
+  .hero3 .hero3-cursive {
+    font-size:22px !important;
+    color:#1e1208 !important;
+    text-shadow:none !important;
+    margin-bottom:14px !important;
+  }
+
+  /* Badges: 3 cột đều nhau */
+  .hero3 .hero3-feats {
+    display:flex !important;
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+    padding:10px 8px !important;
+    margin-bottom:14px !important;
+    background:rgba(255,252,238,.95) !important;
+    border:.5px solid rgba(45,90,61,.15) !important;
+  }
+  .hero3 .h3f { min-width:0 !important; flex:1 !important; gap:5px !important; padding:0 2px !important; }
+  .hero3 .h3f-icon { width:30px !important; height:30px !important; }
+  .hero3 .h3f span { font-size:9.5px !important; }
+  .hero3 .h3f-divider { margin:0 4px !important; }
+
+  /* Buttons: full width */
+  .hero3 .hero3-actions { gap:8px !important; }
+  .hero3 .hero3-actions .btn-gold,
+  .hero3 .hero3-actions .btn-outline-hero { flex:1 !important; text-align:center !important; font-size:13px !important; padding:11px 8px !important; }
+
+  /* Infobar: dọc */
+  .hero3 .hero3-infobar { flex-direction:column !important; }
+  .hero3 .h3ib { border-right:none !important; border-bottom:.5px solid rgba(255,255,255,.1) !important; padding:8px 16px !important; font-size:11.5px !important; }
+}
+
+/* ── DESKTOP: Tăng spacer để slogan nằm dưới logo ── */
+@media(min-width:769px){
+  .hero3-logo-spacer { height: clamp(300px, 48vh, 380px) !important; }
+  section.hero3 { min-height: 560px !important; }
+  .hero3 .hero3-content { min-height: 560px !important; }
+  .hero3 .hero3-inner { padding: 0 56px 52px 68px !important; max-width: 50% !important; width: 50% !important; }
+}
