@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Admin – Green Life Spa</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#1e4532;--gm:#2d5a3d;--gl:#e8f5ee;--gp:#f4faf6;
+  --gold:#c8960c;--red:#e84545;--blue:#3b82f6;--orange:#f59e0b;
+  --txt:#1a1a2e;--muted:#64748b;--border:#e2e8f0;--bg:#f8fafc;
+  --white:#fff;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.06);
+}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
+
+/* ─── LOGIN ─── */
+#loginScreen{
+  position:fixed;inset:0;background:linear-gradient(135deg,#1e4532,#2d5a3d);
+  display:flex;align-items:center;justify-content:center;z-index:9999;
+}
+.login-box{
+  background:#fff;border-radius:16px;padding:40px 36px;width:360px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);text-align:center;
+}
+.login-logo{width:72px;height:72px;border-radius:50%;object-fit:cover;margin:0 auto 16px}
+.login-box h2{font-size:20px;font-weight:700;color:var(--g);margin-bottom:4px}
+.login-box p{font-size:13px;color:var(--muted);margin-bottom:24px}
+.login-box input{
+  width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;
+  font-size:14px;font-family:inherit;outline:none;margin-bottom:12px;
+  transition:border-color .15s;
+}
+.login-box input:focus{border-color:var(--gm)}
+.login-btn{
+  width:100%;padding:12px;background:var(--g);color:#fff;border:none;
+  border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;
+  font-family:inherit;transition:background .15s;
+}
+.login-btn:hover{background:var(--gm)}
+.login-error{color:var(--red);font-size:13px;margin-top:8px;display:none}
+
+/* ─── LAYOUT ─── */
+#adminApp{display:none}
+.admin-layout{display:flex;min-height:100vh}
+
+/* Sidebar */
+.sidebar{
+  width:240px;flex-shrink:0;background:var(--g);
+  display:flex;flex-direction:column;position:sticky;top:0;height:100vh;
+  overflow-y:auto;
+}
+.sb-brand{
+  padding:20px 20px 16px;border-bottom:1px solid rgba(255,255,255,.1);
+}
+.sb-brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;mix-blend-mode:luminosity;opacity:.9}
+.sb-brand-name{color:#fff;font-size:13px;font-weight:700;letter-spacing:.04em;margin-top:8px}
+.sb-brand-sub{color:rgba(255,255,255,.5);font-size:11px}
+
+.sb-nav{flex:1;padding:12px 0}
+.sb-section{color:rgba(255,255,255,.35);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:14px 20px 6px}
+.sb-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 20px;cursor:pointer;
+  color:rgba(255,255,255,.7);font-size:13.5px;font-weight:500;
+  transition:all .15s;border-left:3px solid transparent;
+}
+.sb-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.sb-item.active{background:rgba(255,255,255,.12);color:#fff;border-left-color:#4ade80}
+.sb-item svg{flex-shrink:0;opacity:.8}
+.sb-item.active svg{opacity:1}
+.sb-badge{
+  margin-left:auto;background:var(--red);color:#fff;
+  font-size:10px;font-weight:700;padding:1px 6px;border-radius:10px;
+}
+
+.sb-footer{
+  padding:14px 20px;border-top:1px solid rgba(255,255,255,.1);
+}
+.sb-logout{
+  display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.6);
+  font-size:13px;cursor:pointer;transition:color .15s;background:none;border:none;
+  font-family:inherit;width:100%;
+}
+.sb-logout:hover{color:#fff}
+
+/* Main */
+.main-area{flex:1;overflow-x:hidden}
+.topbar{
+  background:#fff;border-bottom:1px solid var(--border);
+  padding:14px 28px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+.topbar-title{font-size:18px;font-weight:700;color:var(--txt)}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.topbar-time{font-size:12.5px;color:var(--muted)}
+.topbar-user{
+  display:flex;align-items:center;gap:8px;
+  background:var(--gp);border-radius:8px;padding:6px 12px;
+  font-size:13px;font-weight:600;color:var(--gm);
+}
+
+.page-content{padding:28px;display:none}
+.page-content.active{display:block}
+
+/* ─── CARDS / STATS ─── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+.stat-card{
+  background:#fff;border-radius:var(--radius);padding:20px;
+  border:.5px solid var(--border);box-shadow:var(--shadow);
+}
+.stat-label{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:6px}
+.stat-val{font-size:28px;font-weight:700;color:var(--txt);line-height:1}
+.stat-sub{font-size:12px;color:var(--muted);margin-top:4px}
+.stat-icon{float:right;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+
+/* ─── SECTION CARDS ─── */
+.card{background:#fff;border-radius:var(--radius);border:.5px solid var(--border);box-shadow:var(--shadow);margin-bottom:20px}
+.card-header{padding:16px 20px;border-bottom:.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.card-title{font-size:15px;font-weight:700;color:var(--txt)}
+.card-body{padding:20px}
+
+/* ─── TABLE ─── */
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{background:var(--bg);padding:10px 14px;text-align:left;font-weight:600;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border)}
+.tbl td{padding:11px 14px;border-bottom:.5px solid var(--border);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:#fafafa}
+
+/* ─── BADGES ─── */
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;padding:2px 9px;border-radius:20px}
+.badge-green{background:#dcfce7;color:#16a34a}
+.badge-yellow{background:#fef9c3;color:#ca8a04}
+.badge-red{background:#fee2e2;color:#dc2626}
+.badge-blue{background:#dbeafe;color:#2563eb}
+.badge-gray{background:#f1f5f9;color:#64748b}
+
+/* ─── BUTTONS ─── */
+.btn{border:none;border-radius:7px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s}
+.btn-primary{background:var(--gm);color:#fff}
+.btn-primary:hover{background:var(--g)}
+.btn-danger{background:var(--red);color:#fff}
+.btn-danger:hover{opacity:.85}
+.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--txt)}
+.btn-outline:hover{border-color:var(--gm);color:var(--gm)}
+.btn-sm{padding:5px 11px;font-size:12px}
+.btn-gold{background:var(--gold);color:#fff}
+
+/* ─── FORM ─── */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:12.5px;font-weight:600;color:var(--muted)}
+.fg input,.fg select,.fg textarea{
+  border:1.5px solid var(--border);border-radius:7px;
+  padding:9px 12px;font-size:13.5px;font-family:inherit;
+  color:var(--txt);outline:none;transition:border-color .15s;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gm)}
+.fg textarea{resize:vertical;min-height:80px}
+.fg-full{grid-column:1/-1}
+
+/* ─── TOGGLE ─── */
+.toggle-wrap{display:flex;align-items:center;gap:10px;font-size:13.5px}
+.toggle{position:relative;width:40px;height:22px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:#cbd5e1;border-radius:22px;cursor:pointer;transition:.2s}
+.toggle-slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+.toggle input:checked+.toggle-slider{background:var(--gm)}
+.toggle input:checked+.toggle-slider::before{transform:translateX(18px)}
+
+/* ─── PRICE TABLE ADMIN ─── */
+.price-admin-row{
+  display:grid;grid-template-columns:40px 1fr 100px 120px 80px;
+  align-items:center;gap:0;border-bottom:.5px solid var(--border);
+}
+.price-admin-row:last-child{border-bottom:none}
+.pac{padding:10px 12px;font-size:13.5px}
+.pac-num{color:var(--muted);text-align:center;border-right:.5px solid var(--border)}
+.pac-name b{display:block;font-weight:600;color:var(--txt)}
+.pac-name small{font-size:11.5px;color:var(--muted)}
+.pac-time{color:var(--muted);font-size:13px}
+.pac-price{font-weight:700;color:var(--gm)}
+.pac-act{display:flex;gap:6px;justify-content:center}
+
+/* ─── MODAL ─── */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:14px;width:100%;max-width:560px;max-height:88vh;overflow-y:auto;box-shadow:0 16px 48px rgba(0,0,0,.18)}
+.modal-header{padding:18px 22px;border-bottom:.5px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.modal-header h3{font-size:16px;font-weight:700}
+.modal-close{background:none;border:none;font-size:18px;cursor:pointer;color:var(--muted);line-height:1}
+.modal-body{padding:22px}
+.modal-footer{padding:14px 22px;border-top:.5px solid var(--border);display:flex;gap:10px;justify-content:flex-end}
+
+/* ─── MISC ─── */
+.empty-state{text-align:center;padding:40px;color:var(--muted)}
+.empty-state svg{margin:0 auto 12px;display:block;opacity:.4}
+.search-bar{display:flex;align-items:center;gap:8px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:7px 12px}
+.search-bar input{background:none;border:none;outline:none;font-size:13.5px;font-family:inherit;color:var(--txt);flex:1}
+.section-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.divider{height:.5px;background:var(--border);margin:16px 0}
+
+/* AI settings */
+.ai-prompt-box{background:#1e1e2e;border-radius:10px;padding:16px;font-family:monospace;font-size:12.5px;color:#a6e3a1;line-height:1.6;white-space:pre-wrap;max-height:260px;overflow-y:auto;margin-bottom:12px}
+.quick-replies-list{display:flex;flex-direction:column;gap:8px}
+.qr-item{display:flex;align-items:center;gap:8px;background:var(--bg);border:.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:13px}
+.qr-item span{flex:1}
+.color-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* Notification */
+.notif{
+  position:fixed;bottom:24px;right:24px;
+  background:var(--g);color:#fff;padding:12px 20px;border-radius:9px;
+  font-size:13.5px;font-weight:500;z-index:9999;
+  transform:translateY(80px);opacity:0;transition:all .3s;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);
+}
+.notif.show{transform:translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<!-- ════ LOGIN ════ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <img src="assets/greenlife-logo.jpg" alt="Logo" class="login-logo">
+    <h2>Green Life Spa</h2>
+    <p>Trang quản trị nội bộ</p>
+    <input type="text" id="loginUser" placeholder="Tên đăng nhập" autocomplete="off">
+    <input type="password" id="loginPass" placeholder="Mật khẩu"
+      onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Đăng nhập</button>
+    <div class="login-error" id="loginError">Sai tên đăng nhập hoặc mật khẩu</div>
+  </div>
+</div>
+
+<!-- ════ ADMIN APP ════ -->
+<div id="adminApp">
+  <div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sb-brand">
+        <img src="assets/greenlife-logo.jpg" alt="Logo">
+        <div class="sb-brand-name">GREEN LIFE SPA</div>
+        <div class="sb-brand-sub">Trang quản trị</div>
+      </div>
+      <nav class="sb-nav">
+        <div class="sb-section">Tổng quan</div>
+        <div class="sb-item active" onclick="showPage('dashboard')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Tổng quan
+        </div>
+
+        <div class="sb-section">Vận hành</div>
+        <div class="sb-item" onclick="showPage('bookings')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Đặt lịch
+          <span class="sb-badge" id="badgeBookings">0</span>
+        </div>
+
+        <div class="sb-section">Nội dung</div>
+        <div class="sb-item" onclick="showPage('pricing')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          Bảng giá
+        </div>
+        <div class="sb-item" onclick="showPage('promotions')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Ưu đãi
+        </div>
+        <div class="sb-item" onclick="showPage('content')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Nội dung
+        </div>
+
+        <div class="sb-section">Hệ thống</div>
+        <div class="sb-item" onclick="showPage('stats')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Thống kê
+        </div>
+        <div class="sb-item" onclick="showPage('ai')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          AI Agent
+        </div>
+        <div class="sb-item" onclick="showPage('settings')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          Cài đặt
+        </div>
+      </nav>
+      <div class="sb-footer">
+        <button class="sb-logout" onclick="doLogout()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Đăng xuất
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-area">
+      <div class="topbar">
+        <div class="topbar-title" id="pageTitle">Tổng quan</div>
+        <div class="topbar-right">
+          <div class="topbar-time" id="clock"></div>
+          <div class="topbar-user">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Admin
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DASHBOARD ── -->
+      <div class="page-content active" id="pg-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#dcfce7"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <div class="stat-label">Đặt lịch hôm nay</div>
+            <div class="stat-val" id="statToday">0</div>
+            <div class="stat-sub">đơn mới</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#dbeafe"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <div class="stat-label">Tổng đặt lịch</div>
+            <div class="stat-val" id="statTotal">0</div>
+            <div class="stat-sub">tất cả</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#fef3cd"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/></svg></div>
+            <div class="stat-label">Ưu đãi đang chạy</div>
+            <div class="stat-val" id="statPromos">0</div>
+            <div class="stat-sub">chương trình</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#fce7f3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+            <div class="stat-label">Tin nhắn AI hôm nay</div>
+            <div class="stat-val" id="statAI">0</div>
+            <div class="stat-sub">cuộc trò chuyện</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:20px">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Đặt lịch gần đây</div>
+              <button class="btn btn-outline btn-sm" onclick="showPage('bookings')">Xem tất cả</button>
+            </div>
+            <div class="card-body" style="padding:0">
+              <div id="recentBookings" style="padding:16px;color:var(--muted);font-size:13px;text-align:center">Chưa có đặt lịch nào</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Ưu đãi đang hoạt động</div></div>
+            <div class="card-body" id="activePromos" style="font-size:13.5px;color:var(--muted);text-align:center">Chưa có ưu đãi</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BOOKINGS ── -->
+      <div class="page-content" id="pg-bookings">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Quản lý đặt lịch</div>
+            <div class="section-actions">
+              <div class="search-bar">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" placeholder="Tìm tên, SĐT..." oninput="filterBookings(this.value)">
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="openAddBooking()">+ Thêm đặt lịch</button>
+              <button class="btn btn-outline btn-sm" onclick="exportBookings()">↓ Xuất CSV</button>
+            </div>
+          </div>
+          <div class="card-body" style="padding:0;overflow-x:auto">
+            <table class="tbl">
+              <thead><tr>
+                <th>Khách hàng</th><th>SĐT</th><th>Dịch vụ</th>
+                <th>Ngày & Giờ</th><th>Trạng thái</th><th>Thao tác</th>
+              </tr></thead>
+              <tbody id="bookingsTable">
+                <tr><td colspan="6" class="empty-state" style="padding:32px;text-align:center;color:var(--muted)">Chưa có đặt lịch nào</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PRICING ── -->
+      <div class="page-content" id="pg-pricing">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Quản lý bảng giá</div>
+            <button class="btn btn-primary btn-sm" onclick="savePrices()">💾 Lưu thay đổi</button>
+          </div>
+          <div class="card-body" style="padding:0">
+            <div class="price-admin-row" style="background:var(--bg);font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em">
+              <div class="pac pac-num">#</div>
+              <div class="pac">Tên liệu trình</div>
+              <div class="pac">Thời lượng</div>
+              <div class="pac">Giá (VNĐ)</div>
+              <div class="pac">Hiển thị</div>
+            </div>
+            <div id="priceRows"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PROMOTIONS ── -->
+      <div class="page-content" id="pg-promotions">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Quản lý ưu đãi</div>
+            <button class="btn btn-primary btn-sm" onclick="openAddPromo()">+ Thêm ưu đãi</button>
+          </div>
+          <div class="card-body" style="padding:0">
+            <table class="tbl">
+              <thead><tr>
+                <th>Tên ưu đãi</th><th>Nội dung</th>
+                <th>Thời gian</th><th>Trạng thái</th><th>Thao tác</th>
+              </tr></thead>
+              <tbody id="promosTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CONTENT ── -->
+      <div class="page-content" id="pg-content">
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-header"><div class="card-title">Thông tin cơ bản</div></div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="fg"><label>Tên spa</label><input type="text" id="cName" value="Green Life Spa"></div>
+              <div class="fg"><label>Slogan</label><input type="text" id="cSlogan" value="Năng lượng xanh cho cơ thể khỏe mạnh"></div>
+              <div class="fg"><label>Địa chỉ</label><input type="text" id="cAddress" value="246 Độc Lập, Phường Phú Thọ Hòa, TP.HCM"></div>
+              <div class="fg"><label>Điện thoại</label><input type="text" id="cPhone" value="0985.009.674"></div>
+              <div class="fg"><label>Zalo</label><input type="text" id="cZalo" value="0917.948.706"></div>
+              <div class="fg"><label>Fanpage Facebook</label><input type="text" id="cFb" value="https://facebook.com/greenlifespatanphu"></div>
+              <div class="fg"><label>Giờ mở cửa</label><input type="text" id="cOpen" value="8:30"></div>
+              <div class="fg"><label>Nhận khách cuối</label><input type="text" id="cClose" value="19:30"></div>
+              <div class="fg fg-full"><label>Mô tả ngắn về spa</label>
+                <textarea id="cDesc">Green Life Spa là spa dưỡng sinh chuyên về gội đầu thảo dược, xoa bóp – ấn huyệt, chăm sóc cổ vai gáy và các liệu trình thư giãn nhẹ nhàng.</textarea>
+              </div>
+            </div>
+            <div style="margin-top:16px"><button class="btn btn-primary" onclick="saveContent()">💾 Lưu thông tin</button></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Tin tức & Bài viết</div>
+            <button class="btn btn-primary btn-sm" onclick="openAddNews()">+ Thêm tin tức</button>
+          </div>
+          <div class="card-body" style="padding:0">
+            <table class="tbl">
+              <thead><tr><th>Tiêu đề</th><th>Nội dung tóm tắt</th><th>Ngày tạo</th><th>Thao tác</th></tr></thead>
+              <tbody id="newsTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STATS ── -->
+      <div class="page-content" id="pg-stats">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Đặt lịch theo dịch vụ</div></div>
+            <div class="card-body" id="statsByService" style="font-size:13.5px"></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Đặt lịch theo trạng thái</div></div>
+            <div class="card-body" id="statsByStatus" style="font-size:13.5px"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Lịch sử hoạt động</div></div>
+          <div class="card-body" style="padding:0">
+            <table class="tbl">
+              <thead><tr><th>Thời gian</th><th>Hoạt động</th><th>Chi tiết</th></tr></thead>
+              <tbody id="activityLog"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── AI AGENT ── -->
+      <div class="page-content" id="pg-ai">
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-header">
+            <div class="card-title">Cài đặt AI Agent</div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <label class="toggle-wrap">
+                <label class="toggle"><input type="checkbox" id="aiToggle" checked><span class="toggle-slider"></span></label>
+                Bật AI Agent
+              </label>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="fg" style="margin-bottom:16px">
+              <label>URL Proxy (Cloudflare Worker)</label>
+              <input type="text" id="aiProxyUrl" placeholder="https://greenlifespa-web-ai.vinhluong0501.workers.dev">
+            </div>
+            <div class="fg" style="margin-bottom:16px">
+              <label>Model AI</label>
+              <select id="aiModel">
+                <option value="claude-sonnet-4-20250514">Claude Sonnet 4 (Khuyên dùng)</option>
+                <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5 (Nhanh & rẻ hơn)</option>
+              </select>
+            </div>
+            <div class="fg" style="margin-bottom:8px"><label>System Prompt (hướng dẫn cho AI)</label></div>
+            <div class="ai-prompt-box" id="aiPromptPreview"></div>
+            <div class="fg" style="margin-bottom:16px">
+              <textarea id="aiPromptEdit" rows="10" style="font-family:monospace;font-size:12.5px"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="saveAI()">💾 Lưu cài đặt AI</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Quick Replies (nút gợi ý)</div>
+            <button class="btn btn-outline btn-sm" onclick="addQuickReply()">+ Thêm</button>
+          </div>
+          <div class="card-body">
+            <div class="quick-replies-list" id="quickRepliesList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SETTINGS ── -->
+      <div class="page-content" id="pg-settings">
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-header"><div class="card-title">Tài khoản quản trị</div></div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="fg"><label>Tên đăng nhập</label><input type="text" id="setUser" value="admin"></div>
+              <div class="fg"><label>Mật khẩu hiện tại</label><input type="password" placeholder="••••••••"></div>
+              <div class="fg"><label>Mật khẩu mới</label><input type="password" id="setNewPass" placeholder="Để trống nếu không đổi"></div>
+              <div class="fg"><label>Xác nhận mật khẩu mới</label><input type="password" id="setConfPass" placeholder="Nhập lại mật khẩu mới"></div>
+            </div>
+            <div style="margin-top:16px"><button class="btn btn-primary" onclick="saveSettings()">💾 Lưu tài khoản</button></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Dữ liệu</div></div>
+          <div class="card-body" style="display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn btn-outline" onclick="exportAll()">↓ Xuất toàn bộ dữ liệu (JSON)</button>
+            <button class="btn btn-danger" onclick="if(confirm('Xóa toàn bộ dữ liệu?'))clearAll()">🗑️ Xóa tất cả dữ liệu</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ─── MODALS ─── -->
+<!-- Add/Edit Booking -->
+<div class="modal-bg" id="modalBooking" onclick="if(event.target===this)closeModal('modalBooking')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalBookingTitle">Thêm đặt lịch</h3>
+      <button class="modal-close" onclick="closeModal('modalBooking')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="fg"><label>Họ và tên *</label><input type="text" id="bkName" placeholder="Tên khách hàng"></div>
+        <div class="fg"><label>Số điện thoại *</label><input type="tel" id="bkPhone" placeholder="SĐT"></div>
+        <div class="fg fg-full"><label>Dịch vụ</label>
+          <select id="bkService">
+            <option>Green Touch – Gội đầu thảo dược bản địa (79.000 VNĐ)</option>
+            <option>FAST – Chăm sóc nhanh (150.000 VNĐ)</option>
+            <option>Relax – Gội đầu thảo dược chuyên sâu (180.000 VNĐ)</option>
+            <option>Beauty – Tái tạo và phục hồi (240.000 VNĐ)</option>
+            <option>Zen Detox – Thư giãn cơ thể (240.000 VNĐ)</option>
+            <option>Royal – Chăm sóc hoàng gia (300.000 VNĐ)</option>
+            <option>Galaxy – Vai Cổ Gáy (300.000 VNĐ)</option>
+            <option>Galaxy – Lưng, Eo, Thận (300.000 VNĐ)</option>
+            <option>Galaxy – Thông Kinh Lạc (300.000 VNĐ)</option>
+            <option>VIP – Chăm sóc toàn thân (600.000 VNĐ)</option>
+          </select>
+        </div>
+        <div class="fg"><label>Ngày</label><input type="date" id="bkDate"></div>
+        <div class="fg"><label>Giờ</label><input type="time" id="bkTime" min="08:30" max="19:30"></div>
+        <div class="fg fg-full"><label>Ghi chú</label><textarea id="bkNote" placeholder="Yêu cầu đặc biệt..."></textarea></div>
+        <div class="fg"><label>Trạng thái</label>
+          <select id="bkStatus">
+            <option value="pending">Chờ xác nhận</option>
+            <option value="confirmed">Đã xác nhận</option>
+            <option value="done">Hoàn thành</option>
+            <option value="cancelled">Đã hủy</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modalBooking')">Hủy</button>
+      <button class="btn btn-primary" onclick="saveBooking()">Lưu đặt lịch</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Promo -->
+<div class="modal-bg" id="modalPromo" onclick="if(event.target===this)closeModal('modalPromo')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Thêm ưu đãi</h3>
+      <button class="modal-close" onclick="closeModal('modalPromo')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="fg fg-full"><label>Tên ưu đãi *</label><input type="text" id="pmName" placeholder="VD: Tặng xông hơi 50k"></div>
+        <div class="fg fg-full"><label>Nội dung chi tiết</label><textarea id="pmDesc" placeholder="Mô tả điều kiện áp dụng..."></textarea></div>
+        <div class="fg"><label>Ngày bắt đầu</label><input type="date" id="pmFrom"></div>
+        <div class="fg"><label>Ngày kết thúc</label><input type="date" id="pmTo"></div>
+        <div class="fg fg-full">
+          <label class="toggle-wrap">
+            <label class="toggle"><input type="checkbox" id="pmActive" checked><span class="toggle-slider"></span></label>
+            Kích hoạt ngay
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modalPromo')">Hủy</button>
+      <button class="btn btn-primary" onclick="savePromo()">Lưu ưu đãi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add News -->
+<div class="modal-bg" id="modalNews" onclick="if(event.target===this)closeModal('modalNews')">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Thêm tin tức</h3>
+      <button class="modal-close" onclick="closeModal('modalNews')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="fg fg-full"><label>Tiêu đề *</label><input type="text" id="nwTitle" placeholder="Tiêu đề bài viết"></div>
+        <div class="fg fg-full"><label>Nội dung</label><textarea id="nwContent" rows="6" placeholder="Nội dung chi tiết..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('modalNews')">Hủy</button>
+      <button class="btn btn-primary" onclick="saveNews()">Đăng tin</button>
+    </div>
+  </div>
+</div>
+
+<!-- Notification -->
+<div class="notif" id="notif"></div>
+
+<script>
+/* ══════════════════════════════════
+   GREEN LIFE SPA – Admin Panel JS
+   ══════════════════════════════════ */
+
+// ─── AUTH ───
+const ADMIN_CREDS = { user: 'admin', pass: 'greenlife2026' };
+
+function doLogin() {
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value;
+  const stored = getData('adminCreds') || ADMIN_CREDS;
+  if (u === stored.user && p === stored.pass) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminApp').style.display = 'block';
+    initApp();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
+}
+
+function doLogout() {
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('adminApp').style.display = 'none';
+  document.getElementById('loginPass').value = '';
+}
+
+// ─── STORAGE ───
+function getData(key) {
+  try { return JSON.parse(localStorage.getItem('gls_' + key)); } catch { return null; }
+}
+function setData(key, val) {
+  localStorage.setItem('gls_' + key, JSON.stringify(val));
+}
+
+// ─── NAVIGATION ───
+const pageTitles = {
+  dashboard:'Tổng quan', bookings:'Quản lý đặt lịch',
+  pricing:'Bảng giá', promotions:'Ưu đãi', content:'Nội dung',
+  stats:'Thống kê', ai:'AI Agent', settings:'Cài đặt'
+};
+
+function showPage(id) {
+  document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'));
+  document.getElementById('pg-' + id).classList.add('active');
+  document.querySelector(`.sb-item[onclick*="${id}"]`).classList.add('active');
+  document.getElementById('pageTitle').textContent = pageTitles[id];
+  if (id === 'dashboard') renderDashboard();
+  if (id === 'bookings') renderBookings();
+  if (id === 'pricing') renderPricing();
+  if (id === 'promotions') renderPromos();
+  if (id === 'stats') renderStats();
+  if (id === 'ai') renderAI();
+  if (id === 'content') renderNews();
+}
+
+// ─── INIT ───
+function initApp() {
+  startClock();
+  renderDashboard();
+  updateBadge();
+  initAIDefaults();
+}
+
+function startClock() {
+  const el = document.getElementById('clock');
+  const tick = () => {
+    const now = new Date();
+    el.textContent = now.toLocaleDateString('vi-VN') + ' ' +
+      now.toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'});
+  };
+  tick(); setInterval(tick, 1000);
+}
+
+// ─── DASHBOARD ───
+function renderDashboard() {
+  const bookings = getData('bookings') || [];
+  const promos = getData('promos') || [];
+  const today = new Date().toISOString().slice(0,10);
+  const todayBk = bookings.filter(b => b.date === today);
+
+  document.getElementById('statToday').textContent = todayBk.length;
+  document.getElementById('statTotal').textContent = bookings.length;
+  document.getElementById('statPromos').textContent = promos.filter(p => p.active).length;
+  document.getElementById('statAI').textContent = getData('aiMsgCount') || 0;
+
+  const rb = document.getElementById('recentBookings');
+  const recent = [...bookings].reverse().slice(0,5);
+  if (!recent.length) { rb.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted)">Chưa có đặt lịch</div>'; return; }
+  rb.innerHTML = `<table class="tbl">${recent.map(b=>`
+    <tr>
+      <td><b>${b.name}</b><br><small style="color:var(--muted)">${b.phone}</small></td>
+      <td style="font-size:12px">${b.service.split('–')[0].trim()}</td>
+      <td><span class="badge ${statusBadge(b.status)}">${statusLabel(b.status)}</span></td>
+    </tr>`).join('')}</table>`;
+
+  const ap = document.getElementById('activePromos');
+  const active = promos.filter(p => p.active);
+  ap.innerHTML = active.length ? active.map(p=>`
+    <div style="padding:10px 0;border-bottom:.5px solid var(--border)">
+      <div style="font-weight:600;color:var(--txt)">${p.name}</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">${p.from} – ${p.to}</div>
+    </div>`).join('') : '<div style="color:var(--muted)">Chưa có ưu đãi đang chạy</div>';
+}
+
+// ─── BOOKINGS ───
+let editingBookingId = null;
+let bookingsFilter = '';
+
+function renderBookings(filter = '') {
+  bookingsFilter = filter;
+  const bookings = getData('bookings') || [];
+  const tb = document.getElementById('bookingsTable');
+  let data = bookings.filter(b =>
+    !filter || b.name.toLowerCase().includes(filter.toLowerCase()) ||
+    b.phone.includes(filter)
+  );
+  if (!data.length) {
+    tb.innerHTML = '<tr><td colspan="6" style="padding:32px;text-align:center;color:var(--muted)">Không tìm thấy kết quả</td></tr>';
+    return;
+  }
+  tb.innerHTML = [...data].reverse().map((b,i) => `
+    <tr>
+      <td><b>${b.name}</b></td>
+      <td>${b.phone}</td>
+      <td style="font-size:12.5px;max-width:180px">${b.service}</td>
+      <td>${b.date || '–'} ${b.time || ''}</td>
+      <td><span class="badge ${statusBadge(b.status)}">${statusLabel(b.status)}</span></td>
+      <td>
+        <button class="btn btn-outline btn-sm" onclick="editBooking('${b.id}')">Sửa</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteBooking('${b.id}')">Xóa</button>
+      </td>
+    </tr>`).join('');
+}
+
+function filterBookings(v) { renderBookings(v); }
+
+function openAddBooking() {
+  editingBookingId = null;
+  document.getElementById('modalBookingTitle').textContent = 'Thêm đặt lịch';
+  ['bkName','bkPhone','bkDate','bkTime','bkNote'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('bkStatus').value = 'pending';
+  openModal('modalBooking');
+}
+
+function editBooking(id) {
+  const b = (getData('bookings')||[]).find(x => x.id === id);
+  if (!b) return;
+  editingBookingId = id;
+  document.getElementById('modalBookingTitle').textContent = 'Sửa đặt lịch';
+  document.getElementById('bkName').value = b.name;
+  document.getElementById('bkPhone').value = b.phone;
+  document.getElementById('bkService').value = b.service;
+  document.getElementById('bkDate').value = b.date || '';
+  document.getElementById('bkTime').value = b.time || '';
+  document.getElementById('bkNote').value = b.note || '';
+  document.getElementById('bkStatus').value = b.status;
+  openModal('modalBooking');
+}
+
+function saveBooking() {
+  const name = document.getElementById('bkName').value.trim();
+  const phone = document.getElementById('bkPhone').value.trim();
+  if (!name || !phone) { notify('Vui lòng nhập tên và SĐT'); return; }
+  const b = {
+    id: editingBookingId || Date.now().toString(),
+    name, phone,
+    service: document.getElementById('bkService').value,
+    date: document.getElementById('bkDate').value,
+    time: document.getElementById('bkTime').value,
+    note: document.getElementById('bkNote').value,
+    status: document.getElementById('bkStatus').value,
+    createdAt: editingBookingId ? undefined : new Date().toISOString()
+  };
+  let bookings = getData('bookings') || [];
+  if (editingBookingId) {
+    bookings = bookings.map(x => x.id === editingBookingId ? {...x,...b} : x);
+  } else {
+    bookings.push(b);
+    logActivity('Thêm đặt lịch', `${name} – ${b.service.split('–')[0]}`);
+  }
+  setData('bookings', bookings);
+  closeModal('modalBooking');
+  renderBookings(bookingsFilter);
+  updateBadge();
+  notify('Đã lưu đặt lịch ✓');
+}
+
+function deleteBooking(id) {
+  if (!confirm('Xóa đặt lịch này?')) return;
+  setData('bookings', (getData('bookings')||[]).filter(b => b.id !== id));
+  renderBookings(bookingsFilter);
+  updateBadge();
+  notify('Đã xóa');
+}
+
+function updateBadge() {
+  const n = ((getData('bookings')||[]).filter(b=>b.status==='pending')).length;
+  document.getElementById('badgeBookings').textContent = n;
+  document.getElementById('badgeBookings').style.display = n ? 'flex' : 'none';
+}
+
+function statusBadge(s) {
+  return {pending:'badge-yellow',confirmed:'badge-blue',done:'badge-green',cancelled:'badge-gray'}[s]||'badge-gray';
+}
+function statusLabel(s) {
+  return {pending:'Chờ xác nhận',confirmed:'Đã xác nhận',done:'Hoàn thành',cancelled:'Đã hủy'}[s]||s;
+}
+
+function exportBookings() {
+  const bookings = getData('bookings') || [];
+  const rows = [['Tên','SĐT','Dịch vụ','Ngày','Giờ','Trạng thái','Ghi chú'],
+    ...bookings.map(b=>[b.name,b.phone,b.service,b.date,b.time,statusLabel(b.status),b.note||''])];
+  const csv = rows.map(r=>r.map(c=>`"${c}"`).join(',')).join('\n');
+  download('dat-lich.csv', csv, 'text/csv');
+  notify('Đã xuất CSV ✓');
+}
+
+// ─── PRICING ───
+const DEFAULT_PRICES = [
+  {id:'green-touch', name:'Green Touch', sub:'Gội đầu thảo dược bản địa', time:'40 phút', price:79000, show:true},
+  {id:'fast', name:'FAST', sub:'Chăm sóc nhanh theo nhu cầu', time:'30 phút', price:150000, show:true},
+  {id:'relax', name:'Relax', sub:'Gội đầu thảo dược chuyên sâu', time:'60 phút', price:180000, show:true},
+  {id:'beauty', name:'Beauty', sub:'Tái tạo và phục hồi', time:'60 phút', price:240000, show:true},
+  {id:'zen-detox', name:'Zen Detox', sub:'Thải độc và thư giãn cơ thể', time:'60 phút', price:240000, show:true},
+  {id:'royal', name:'Royal', sub:'Liệu trình chăm sóc hoàng gia', time:'90 phút', price:300000, show:true},
+  {id:'galaxy-neck', name:'Galaxy – Vai Cổ Gáy', sub:'Chăm sóc chuyên sâu vùng cổ vai gáy', time:'60 phút', price:300000, show:true},
+  {id:'galaxy-back', name:'Galaxy – Lưng, Eo, Thận', sub:'Thư giãn vùng lưng và thắt eo', time:'60 phút', price:300000, show:true},
+  {id:'galaxy-legs', name:'Galaxy – Thông Kinh Lạc', sub:'Chăm sóc chân và tay', time:'60 phút', price:300000, show:true},
+  {id:'vip', name:'VIP', sub:'Chăm sóc toàn thân chuyên sâu', time:'120 phút', price:600000, show:true},
+];
+
+function renderPricing() {
+  const prices = getData('prices') || DEFAULT_PRICES;
+  const el = document.getElementById('priceRows');
+  el.innerHTML = prices.map((p,i) => `
+    <div class="price-admin-row">
+      <div class="pac pac-num">${i+1}</div>
+      <div class="pac pac-name"><b>${p.name}</b><small>${p.sub}</small></div>
+      <div class="pac pac-time">${p.time}</div>
+      <div class="pac pac-price">
+        <input type="number" value="${p.price}" min="0" step="1000"
+          style="width:110px;border:1.5px solid var(--border);border-radius:6px;padding:5px 8px;font-size:13.5px;font-family:inherit"
+          onchange="updatePrice('${p.id}',this.value)">
+      </div>
+      <div class="pac pac-act">
+        <label class="toggle" title="${p.show?'Đang hiện':'Đang ẩn'}">
+          <input type="checkbox" ${p.show?'checked':''} onchange="toggleShow('${p.id}',this.checked)">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>`).join('');
+}
+
+function updatePrice(id, val) {
+  const prices = getData('prices') || DEFAULT_PRICES;
+  const idx = prices.findIndex(p => p.id === id);
+  if (idx >= 0) prices[idx].price = parseInt(val);
+  setData('prices', prices);
+}
+function toggleShow(id, val) {
+  const prices = getData('prices') || DEFAULT_PRICES;
+  const idx = prices.findIndex(p => p.id === id);
+  if (idx >= 0) prices[idx].show = val;
+  setData('prices', prices);
+}
+function savePrices() {
+  logActivity('Cập nhật bảng giá', 'Đã lưu thay đổi giá dịch vụ');
+  notify('Đã lưu bảng giá ✓');
+}
+
+// ─── PROMOTIONS ───
+function renderPromos() {
+  const promos = getData('promos') || [];
+  const tb = document.getElementById('promosTable');
+  if (!promos.length) {
+    tb.innerHTML = '<tr><td colspan="5" style="padding:28px;text-align:center;color:var(--muted)">Chưa có ưu đãi</td></tr>';
+    return;
+  }
+  tb.innerHTML = [...promos].reverse().map(p => `
+    <tr>
+      <td><b>${p.name}</b></td>
+      <td style="font-size:12.5px;max-width:220px">${p.desc||'–'}</td>
+      <td style="font-size:12.5px">${p.from||'–'} → ${p.to||'–'}</td>
+      <td><span class="badge ${p.active?'badge-green':'badge-gray'}">${p.active?'Đang chạy':'Tắt'}</span></td>
+      <td>
+        <button class="btn btn-outline btn-sm" onclick="togglePromo('${p.id}')">
+          ${p.active?'Tắt':'Bật'}
+        </button>
+        <button class="btn btn-danger btn-sm" onclick="deletePromo('${p.id}')">Xóa</button>
+      </td>
+    </tr>`).join('');
+}
+
+function openAddPromo() {
+  ['pmName','pmDesc','pmFrom','pmTo'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('pmActive').checked = true;
+  openModal('modalPromo');
+}
+function savePromo() {
+  const name = document.getElementById('pmName').value.trim();
+  if (!name) { notify('Vui lòng nhập tên ưu đãi'); return; }
+  const promos = getData('promos') || [];
+  promos.push({
+    id: Date.now().toString(), name,
+    desc: document.getElementById('pmDesc').value,
+    from: document.getElementById('pmFrom').value,
+    to: document.getElementById('pmTo').value,
+    active: document.getElementById('pmActive').checked,
+    createdAt: new Date().toISOString()
+  });
+  setData('promos', promos);
+  closeModal('modalPromo');
+  renderPromos();
+  logActivity('Thêm ưu đãi', name);
+  notify('Đã thêm ưu đãi ✓');
+}
+function togglePromo(id) {
+  const promos = (getData('promos')||[]).map(p => p.id===id ? {...p, active:!p.active} : p);
+  setData('promos', promos);
+  renderPromos();
+}
+function deletePromo(id) {
+  if (!confirm('Xóa ưu đãi này?')) return;
+  setData('promos', (getData('promos')||[]).filter(p => p.id!==id));
+  renderPromos();
+  notify('Đã xóa ưu đãi');
+}
+
+// ─── CONTENT ───
+function saveContent() {
+  setData('siteContent', {
+    name: document.getElementById('cName').value,
+    slogan: document.getElementById('cSlogan').value,
+    address: document.getElementById('cAddress').value,
+    phone: document.getElementById('cPhone').value,
+    zalo: document.getElementById('cZalo').value,
+    fb: document.getElementById('cFb').value,
+    open: document.getElementById('cOpen').value,
+    close: document.getElementById('cClose').value,
+    desc: document.getElementById('cDesc').value,
+  });
+  logActivity('Cập nhật nội dung', 'Thông tin cơ bản');
+  notify('Đã lưu thông tin ✓');
+}
+
+function renderNews() {
+  const news = getData('news') || [];
+  const tb = document.getElementById('newsTable');
+  if (!news.length) {
+    tb.innerHTML = '<tr><td colspan="4" style="padding:24px;text-align:center;color:var(--muted)">Chưa có tin tức</td></tr>';
+    return;
+  }
+  tb.innerHTML = [...news].reverse().map(n=>`
+    <tr>
+      <td><b>${n.title}</b></td>
+      <td style="font-size:12.5px;color:var(--muted);max-width:240px">${n.content.slice(0,60)}...</td>
+      <td style="font-size:12px;color:var(--muted)">${new Date(n.createdAt).toLocaleDateString('vi-VN')}</td>
+      <td><button class="btn btn-danger btn-sm" onclick="deleteNews('${n.id}')">Xóa</button></td>
+    </tr>`).join('');
+}
+function openAddNews() { ['nwTitle','nwContent'].forEach(id=>document.getElementById(id).value=''); openModal('modalNews'); }
+function saveNews() {
+  const title = document.getElementById('nwTitle').value.trim();
+  if (!title) { notify('Nhập tiêu đề'); return; }
+  const news = getData('news') || [];
+  news.push({ id:Date.now().toString(), title, content:document.getElementById('nwContent').value, createdAt:new Date().toISOString() });
+  setData('news', news);
+  closeModal('modalNews');
+  renderNews();
+  notify('Đã đăng tin ✓');
+}
+function deleteNews(id) {
+  setData('news', (getData('news')||[]).filter(n=>n.id!==id));
+  renderNews();
+}
+
+// ─── STATS ───
+function renderStats() {
+  const bookings = getData('bookings') || [];
+  const byService = {};
+  bookings.forEach(b => {
+    const s = b.service.split('–')[0].trim();
+    byService[s] = (byService[s]||0) + 1;
+  });
+  const svc = document.getElementById('statsByService');
+  const sorted = Object.entries(byService).sort((a,b)=>b[1]-a[1]);
+  svc.innerHTML = sorted.length ? sorted.map(([s,c])=>`
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:.5px solid var(--border)">
+      <span style="font-size:13px">${s}</span>
+      <span style="font-weight:700;color:var(--gm)">${c}</span>
+    </div>`).join('') : '<div style="color:var(--muted)">Chưa có dữ liệu</div>';
+
+  const byStatus = {pending:0,confirmed:0,done:0,cancelled:0};
+  bookings.forEach(b => byStatus[b.status] = (byStatus[b.status]||0)+1);
+  document.getElementById('statsByStatus').innerHTML = Object.entries(byStatus).map(([s,c])=>`
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:.5px solid var(--border)">
+      <span class="badge ${statusBadge(s)}">${statusLabel(s)}</span>
+      <b>${c}</b>
+    </div>`).join('');
+
+  const logs = getData('activityLog') || [];
+  document.getElementById('activityLog').innerHTML = logs.length ?
+    [...logs].reverse().slice(0,20).map(l=>`
+      <tr>
+        <td style="font-size:12px;color:var(--muted);white-space:nowrap">${new Date(l.time).toLocaleString('vi-VN')}</td>
+        <td style="font-weight:600">${l.action}</td>
+        <td style="font-size:13px;color:var(--muted)">${l.detail}</td>
+      </tr>`).join('') :
+    '<tr><td colspan="3" style="padding:24px;text-align:center;color:var(--muted)">Chưa có hoạt động</td></tr>';
+}
+
+function logActivity(action, detail) {
+  const logs = getData('activityLog') || [];
+  logs.push({ time: new Date().toISOString(), action, detail });
+  if (logs.length > 100) logs.shift();
+  setData('activityLog', logs);
+}
+
+// ─── AI AGENT ───
+const DEFAULT_SYSTEM = `Bạn là trợ lý tư vấn của Green Life Spa tại 246 Độc Lập, Phú Thọ Hòa, TP.HCM.
+Xưng "em", gọi khách "mình", dùng "dạ" đầu câu.
+Tư vấn nhẹ nhàng, không ép khách, không nói "chữa khỏi" hay "cam kết hết đau".`;
+
+const DEFAULT_QR = ['Bảng giá dịch vụ?','Mỏi cổ vai gáy nên làm gì?','Có khuyến mãi gì không?','Tôi muốn đặt lịch'];
+
+function initAIDefaults() {
+  if (!getData('aiPrompt')) setData('aiPrompt', DEFAULT_SYSTEM);
+  if (!getData('quickReplies')) setData('quickReplies', DEFAULT_QR);
+}
+
+function renderAI() {
+  const prompt = getData('aiPrompt') || DEFAULT_SYSTEM;
+  const url = getData('aiProxyUrl') || '';
+  document.getElementById('aiPromptPreview').textContent = prompt;
+  document.getElementById('aiPromptEdit').value = prompt;
+  document.getElementById('aiProxyUrl').value = url;
+
+  const qrs = getData('quickReplies') || DEFAULT_QR;
+  document.getElementById('quickRepliesList').innerHTML = qrs.map((q,i)=>`
+    <div class="qr-item">
+      <span>${q}</span>
+      <button class="btn btn-danger btn-sm" onclick="deleteQR(${i})">✕</button>
+    </div>`).join('');
+}
+
+function saveAI() {
+  const prompt = document.getElementById('aiPromptEdit').value;
+  const url = document.getElementById('aiProxyUrl').value.trim();
+  setData('aiPrompt', prompt);
+  setData('aiProxyUrl', url);
+  document.getElementById('aiPromptPreview').textContent = prompt;
+  logActivity('Cập nhật AI Agent', 'System prompt & cài đặt');
+  notify('Đã lưu cài đặt AI ✓');
+}
+
+function addQuickReply() {
+  const t = prompt('Nhập nội dung quick reply:');
+  if (!t) return;
+  const qrs = getData('quickReplies') || DEFAULT_QR;
+  qrs.push(t.trim());
+  setData('quickReplies', qrs);
+  renderAI();
+}
+function deleteQR(i) {
+  const qrs = getData('quickReplies') || DEFAULT_QR;
+  qrs.splice(i,1);
+  setData('quickReplies', qrs);
+  renderAI();
+}
+
+// ─── SETTINGS ───
+function saveSettings() {
+  const np = document.getElementById('setNewPass').value;
+  const cp = document.getElementById('setConfPass').value;
+  if (np && np !== cp) { notify('Mật khẩu không khớp'); return; }
+  const creds = { user: document.getElementById('setUser').value, pass: np || (getData('adminCreds')||ADMIN_CREDS).pass };
+  setData('adminCreds', creds);
+  notify('Đã lưu cài đặt ✓');
+}
+
+function exportAll() {
+  const all = {};
+  ['bookings','promos','prices','news','siteContent','activityLog','aiPrompt','quickReplies'].forEach(k => {
+    all[k] = getData(k);
+  });
+  download('greenlife-admin-backup.json', JSON.stringify(all, null, 2), 'application/json');
+  notify('Đã xuất dữ liệu ✓');
+}
+
+function clearAll() {
+  ['bookings','promos','prices','news','siteContent','activityLog'].forEach(k => localStorage.removeItem('gls_' + k));
+  notify('Đã xóa dữ liệu');
+  renderDashboard();
+}
+
+// ─── MODAL / UTIL ───
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+function notify(msg) {
+  const n = document.getElementById('notif');
+  n.textContent = msg;
+  n.classList.add('show');
+  setTimeout(() => n.classList.remove('show'), 2500);
+}
+
+function download(filename, content, type) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], {type}));
+  a.download = filename;
+  a.click();
+}
+
+// Khởi động
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('loginUser').focus();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-bg.open').forEach(m => m.classList.remove('open'));
+});
+</script>
+</body>
+</html>
