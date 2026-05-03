@@ -602,3 +602,13 @@ section.hero3{position:relative;overflow:hidden;background:#f0e8d5;min-height:50
   section.hero3 { min-height: 600px !important; }
   .hero3 .hero3-content { min-height: 600px !important; }
 }
+
+/* ── FIX LOGO: object-position top để không cắt mất đỉnh logo ── */
+.hero3 .hero3-img {
+  object-position: left top !important;
+}
+@media(min-width:769px){
+  .hero3-logo-spacer { height: clamp(310px, 46vh, 390px) !important; }
+  section.hero3 { min-height: 580px !important; }
+  .hero3 .hero3-content { min-height: 580px !important; }
+}
