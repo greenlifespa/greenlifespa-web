@@ -363,7 +363,7 @@ GỢI Ý THEO TRIỆU CHỨNG:
 - Nặng bụng → Zen Detox
 - Chăm sóc toàn thân → VIP
 
-GIỌNG VĂN: xưng "em", gọi "mình", dùng "dạ" đầu câu, nhẹ nhàng, thân thiện. KHÔNG dùng: chữa khỏi, điều trị dứt điểm, cam kết hết đau. Tối đa 120 từ mỗi câu trả lời.`;
+GIỌNG VĂN: xưng "em", gọi "mình", dùng "dạ" đầu câu, nhẹ nhàng, thân thiện. KHÔNG dùng: chữa khỏi, điều trị dứt điểm, cam kết hết đau. Tối đa 150 từ mỗi câu trả lời. Khi hỏi bảng giá, chỉ liệt kê tóm tắt 3-4 gói phù hợp nhất, không liệt kê tất cả cùng lúc.`;
 
 function toggleChat() {
   chatOpen = !chatOpen;
@@ -399,7 +399,7 @@ async function sendChat() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 400,
+        max_tokens: 800,
         system: SYSTEM_PROMPT,
         messages: chatHistory
       })
