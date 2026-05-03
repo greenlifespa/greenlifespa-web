@@ -366,3 +366,170 @@ section.hero3{position:relative;overflow:hidden;background:#f0e8d5;min-height:50
 .t-galaxy-back{background:linear-gradient(135deg,#d8c4e8,#a878c8)}
 .t-galaxy-legs{background:linear-gradient(135deg,#c4e0d4,#70b898)}
 .t-vip{background:linear-gradient(135deg,#e8d8c0,#c8a878)}
+
+/* ── FIX: Slogan không đè lên logo ── */
+
+/* Desktop: spacer lớn hơn */
+.hero3-logo-spacer {
+  height: clamp(240px, 40vh, 310px);
+}
+
+/* Mobile */
+@media(max-width:700px){
+  section.hero3 { min-height: 460px; }
+  .hero3 .hero3-content { min-height: 460px; }
+  .hero3-logo-spacer { height: clamp(210px, 48vw, 250px); }
+  .hero3 .hero3-cursive { font-size: clamp(19px,5vw,24px); margin-bottom:10px; }
+  .hero3 .hero3-inner { max-width:80%; width:80%; padding:0 16px 26px 20px; }
+  .hero3 .hero3-feats { padding:8px 10px; margin-bottom:12px; }
+  .hero3 .h3f { min-width:72px; }
+  .hero3 .h3f-icon { width:30px; height:30px; }
+  .hero3 .h3f span { font-size:9.5px; }
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE – Mobile vs Desktop
+   ══════════════════════════════════════════════ */
+
+/* ─── DESKTOP (>768px): Giữ nguyên ảnh nền full ─── */
+@media(min-width:769px){
+  section.hero3 { min-height:520px; }
+  .hero3 .hero3-content { min-height:520px; align-items:flex-end; }
+  .hero3 .hero3-inner { padding:0 56px 52px 68px; max-width:50%; width:50%; }
+  .hero3-logo-spacer { height:clamp(250px,42vh,320px); }
+  .hero3 .hero3-cursive { font-size:clamp(26px,3.2vw,34px); margin-bottom:20px; }
+  .hero3 .h3f { min-width:100px; }
+  .hero3 .h3f span { font-size:11.5px; }
+  .hero3 .h3f-icon { width:40px; height:40px; }
+}
+
+/* ─── MOBILE (<768px): Ảnh trên, text dưới ─── */
+@media(max-width:768px){
+
+  /* Hero: bỏ overlay, chia 2 phần rõ ràng */
+  section.hero3 {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    background: #faf6ee;
+  }
+  .hero3 .hero3-bg {
+    position: relative;
+    height: 240px;
+    flex-shrink: 0;
+  }
+  .hero3 .hero3-img {
+    position: absolute;
+    inset: 0;
+    object-position: center 20%;
+  }
+  .hero3 .hero3-overlay { display:none; }
+  .hero3 .hero3-content {
+    position: relative;
+    z-index: 2;
+    min-height: auto;
+    align-items: flex-start;
+    background: #faf6ee;
+    padding: 0;
+  }
+  .hero3 .hero3-inner {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 20px 24px;
+  }
+  .hero3-logo-spacer { display: none; }
+
+  /* Slogan mobile: vừa đủ, không đè ảnh */
+  .hero3 .hero3-cursive {
+    font-size: 22px;
+    color: #1e1208;
+    text-shadow: none;
+    margin-bottom: 14px;
+  }
+
+  /* Badges: full width, dễ đọc */
+  .hero3 .hero3-feats {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 14px;
+    background: rgba(255,252,238,.9);
+    border: .5px solid rgba(45,90,61,.15);
+    gap: 0;
+  }
+  .hero3 .h3f { min-width: 0; flex:1; gap:5px; padding:0 3px; }
+  .hero3 .h3f-icon { width:32px; height:32px; }
+  .hero3 .h3f span { font-size:10px; }
+  .hero3 .h3f-divider { margin:0 5px; }
+
+  .hero3 .hero3-actions { gap:10px; }
+  .hero3 .hero3-actions .btn-gold { flex:1; text-align:center; padding:11px 16px; }
+  .hero3 .hero3-actions .btn-outline-hero { flex:1; text-align:center; padding:10px 14px; }
+
+  /* Infobar mobile */
+  .hero3 .hero3-infobar { flex-direction:column; }
+  .hero3 .h3ib { border-right:none; border-bottom:.5px solid rgba(255,255,255,.1); padding:8px 16px; font-size:12px; }
+  .hero3 .h3ib:last-child { border-bottom:none; }
+
+  /* Sections mobile */
+  .container { padding:0 16px; }
+  .sec-home { padding:32px 0; }
+
+  /* News: 1 cột */
+  .news-row { grid-template-columns:1fr; gap:12px; }
+  .news-gallery3 { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .ng3-big { height:130px; grid-column:1/-1; }
+  .ng3-sm { height:90px; }
+
+  /* About: 1 cột */
+  .about-2col { grid-template-columns:1fr; gap:24px; }
+  .ab2-imgs { height:220px; }
+  .ab2-main { width:75%; height:100%; }
+  .ab2-accent { width:45%; height:50%; }
+  .ab2-feats { grid-template-columns:1fr; }
+
+  /* Featured: 2 cột */
+  .feat-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .feat-img { height:110px; }
+  .feat-name { font-size:11.5px; }
+  .feat-price { font-size:12px; }
+
+  /* Pages */
+  .page-banner { padding:24px 16px 20px; }
+  .page-banner h1 { font-size:22px; }
+  .page-body { padding:24px 16px; }
+
+  /* Giới thiệu */
+  .about-hero-row { grid-template-columns:1fr; gap:20px; }
+  .about-hero-imgs { height:200px; }
+  .value-grid { grid-template-columns:1fr 1fr; gap:12px; }
+  .vc-img { height:110px; }
+
+  /* Bảng giá */
+  .pt-row { grid-template-columns:36px 1fr 72px 90px; }
+  .credit-cards { grid-template-columns:1fr; gap:12px; }
+
+  /* Liên hệ */
+  .contact-grid { grid-template-columns:1fr; gap:20px; }
+  .form-row-2 { grid-template-columns:1fr; }
+
+  /* Menu */
+  .menu-info-row { grid-template-columns:1fr; gap:12px; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns:1fr; gap:20px; padding:0 16px 24px; }
+
+  /* Chat widget */
+  .chat-widget { width:calc(100vw - 16px); right:8px; bottom:76px; }
+  .chat-fab { bottom:20px; right:16px; width:48px; height:48px; }
+}
+
+/* ─── TABLET (768px–1024px) ─── */
+@media(min-width:769px) and (max-width:1024px){
+  .hero3 .hero3-inner { max-width:58%; width:58%; }
+  .news-row { grid-template-columns:repeat(2,1fr); }
+  .feat-grid { grid-template-columns:repeat(2,1fr); }
+  .value-grid { grid-template-columns:repeat(2,1fr); }
+  .credit-cards { grid-template-columns:repeat(2,1fr); }
+}
