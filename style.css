@@ -1595,3 +1595,85 @@ section.hero3 {
   margin-bottom: .08em !important;   /* căn đáy chữ */
   display: inline !important;
 }
+
+/* ── Logo hero – hiển thị to, xóa nền trắng ── */
+.hero3-logo-main {
+  display: block !important;
+  width: 220px !important;
+  height: auto !important;
+  mix-blend-mode: multiply !important;
+  filter: contrast(1.05) !important;
+  margin-bottom: 2px !important;
+}
+.hero3 .hero3-brand {
+  display: block !important;
+  gap: 0 !important;
+  margin-bottom: 2px !important;
+}
+/* Ẩn wordmark cũ nếu còn */
+.hero3 .hero3-wordmark,
+.hero3 .hwm-green,
+.hero3 .hwm-dark,
+.hero3 .hero3-logo-blend { display: none !important; }
+
+/* ── SVG cây thay chữ L ── */
+.hero3 .hero3-brand { display:block !important; margin-bottom:4px !important; }
+.hero3 .hero3-wordmark { display:flex !important; flex-direction:column !important; line-height:1.1 !important; font-family:'Playfair Display',Georgia,serif !important; }
+.hero3 .hwm-green { display:block !important; font-size:clamp(32px,5vw,56px) !important; font-weight:800 !important; color:#2d5a3d !important; letter-spacing:.05em !important; }
+.hero3 .hwm-dark {
+  display:flex !important;
+  align-items:flex-end !important;
+  font-size:clamp(28px,4.2vw,48px) !important;
+  font-weight:700 !important;
+  color:#1a2e1e !important;
+  letter-spacing:.06em !important;
+  line-height:1 !important;
+}
+/* SVG cây: cao bằng chữ, căn đáy */
+.hwm-tree {
+  display:inline-block !important;
+  height:.95em !important;
+  width:auto !important;
+  flex-shrink:0 !important;
+  margin-right:1px !important;
+  margin-bottom:.05em !important;
+  vertical-align:bottom !important;
+}
+/* Ẩn các class cũ */
+.hero3 .hero3-logo-blend,
+.hero3 .hero3-logo-main,
+.hero3 .hwm-leaf { display:none !important; }
+
+/* ── Wordmark PNG ── */
+.hero3-wordmark-img {
+  display: block !important;
+  width: 240px !important;
+  height: auto !important;
+  margin-bottom: 4px !important;
+}
+/* Ẩn tất cả class chữ cũ */
+.hero3 .hero3-wordmark,
+.hero3 .hwm-green,
+.hero3 .hwm-dark,
+.hero3 .hero3-logo-blend,
+.hero3 .hero3-logo-main,
+.hero3 .hwm-tree { display:none !important; }
+
+/* ════════════════════════════════
+   HERO – Căn chỉnh vị trí, không sát viền
+   ════════════════════════════════ */
+.hero3 .hero3-content {
+  min-height: 420px !important;
+  padding: 0 !important;
+}
+.hero3 .hero3-inner {
+  padding: 56px 48px 56px 72px !important;
+  max-width: 52% !important;
+  width: 52% !important;
+}
+@media(max-width:860px){
+  .hero3 .hero3-inner { max-width:80% !important; width:80% !important; padding:44px 32px 44px 40px !important; }
+}
+@media(max-width:600px){
+  .hero3 .hero3-inner { max-width:100% !important; width:100% !important; padding:36px 24px 40px 28px !important; }
+}
