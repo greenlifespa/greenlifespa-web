@@ -1700,3 +1700,45 @@ section.hero3 {
   background: transparent !important;
   background-color: transparent !important;
 }
+
+/* ════════════════════════════════════════
+   HERO OVERLAY – vùng wordmark trong suốt
+   Chỉ phủ nhẹ phần dưới để đọc slogan
+   ════════════════════════════════════════ */
+.hero3 .hero3-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(255,250,242,0)    0%,     /* Trên: hoàn toàn trong suốt – wordmark nổi trên ảnh */
+    rgba(255,250,242,0)    35%,    /* Giữa trên: vẫn trong */
+    rgba(255,250,242,.72)  60%,    /* Giữa dưới: mờ nhẹ cho slogan */
+    rgba(252,245,232,.90)  80%,    /* Dưới: mờ hơn cho badges/buttons */
+    rgba(248,240,225,.95)  100%
+  ),
+  linear-gradient(
+    100deg,
+    rgba(255,250,242,0)    0%,
+    rgba(255,250,242,.55)  50%,
+    transparent            72%
+  ) !important;
+}
+
+/* Wordmark: không nền, không blend mode lạ */
+.hero3-wordmark-img {
+  background: none !important;
+  background-color: transparent !important;
+  mix-blend-mode: normal !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 340px !important;
+  max-width: 95% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Slogan + feats: thêm nền mờ nhẹ để dễ đọc trên ảnh */
+.hero3 .hero3-cursive {
+  text-shadow: 0 1px 8px rgba(255,248,235,.8), 0 0 20px rgba(255,248,235,.6) !important;
+}
+.hero3 .hero3-feats {
+  background: rgba(255,252,245,.65) !important;
+}
