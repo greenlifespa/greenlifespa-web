@@ -350,7 +350,7 @@ section.hero3{background:#faf6ee;overflow:hidden}
 /* ── Slogan: căn giữa theo logo ── */
 @media(min-width:769px){
   .hero3-cursive { 
-    margin-left: 130px;
+    margin-left: 160px;
   }
   .hero3-feats { margin-left: 130px; }
   .hero3-actions { margin-left: 130px; }
