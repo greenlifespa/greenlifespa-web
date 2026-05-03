@@ -1742,3 +1742,41 @@ section.hero3 {
 .hero3 .hero3-feats {
   background: rgba(255,252,245,.65) !important;
 }
+
+/* ════════════════════════════════════════════
+   HERO OVERLAY – FINAL FIX
+   Top 45%: trong suốt hoàn toàn (wordmark nổi trên ảnh thật)
+   Bottom: mờ nhẹ để slogan & badges đọc được
+   ════════════════════════════════════════════ */
+.hero3 .hero3-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent              0%,
+    transparent              45%,
+    rgba(252,244,225,.45)    65%,
+    rgba(250,240,215,.70)    82%,
+    rgba(248,236,210,.82)   100%
+  ) !important;
+}
+
+/* Wordmark: không bị ảnh hưởng bởi bất kỳ nền nào */
+.hero3-wordmark-img {
+  width: 360px !important;
+  max-width: 90% !important;
+  height: auto !important;
+  display: block !important;
+  background: none !important;
+  background-color: transparent !important;
+  mix-blend-mode: normal !important;
+  border: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* Slogan: text-shadow để đọc được dù không có nền sau */
+.hero3 .hero3-cursive {
+  color: #2a1a08 !important;
+  text-shadow:
+    0 0 12px rgba(255,245,225,.9),
+    0 1px 4px rgba(255,245,225,.8) !important;
+}
