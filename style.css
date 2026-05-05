@@ -376,17 +376,17 @@ section.hero3{background:#faf6ee;overflow:hidden}
 .hero3-logo-wm {
   display: block;
   width: 100%;
+  max-width: 260px;
   height: auto;
-  max-width: none;
   object-fit: contain;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   mix-blend-mode: multiply;
 }
 @media(min-width:769px){
-  .hero3-logo-wm { margin-bottom: 14px; }
+  .hero3-logo-wm { max-width: 300px; margin-bottom: 16px; }
 }
 @media(max-width:480px){
-  .hero3-logo-wm { width: 85%; }
+  .hero3-logo-wm { max-width: 180px; }
 }
 
 /* ── Chatbot: fix mobile ── */
