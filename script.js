@@ -347,7 +347,13 @@ function toggleChat() {
   if (chatOpen) {
     const badge = document.getElementById('chatBadge');
     if (badge) badge.style.display = 'none';
-    setTimeout(() => document.getElementById('cwInput').focus(), 300);
+    // Delay dài hơn trên mobile để animation xong mới focus
+    // (tránh keyboard mở sớm làm layout nhảy)
+    const delay = window.innerWidth <= 600 ? 450 : 280;
+    setTimeout(() => {
+      const inp = document.getElementById('cwInput');
+      if (inp) inp.focus({ preventScroll: true });
+    }, delay);
   }
 }
 
