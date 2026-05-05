@@ -372,3 +372,54 @@ section.hero3{background:#faf6ee;overflow:hidden}
 #page-pricing .page-body{background:linear-gradient(180deg,#f4faf6 0%,#fff 200px)}
 #page-contact .page-body{background:radial-gradient(ellipse at 20% 50%,rgba(45,90,61,.04) 0%,transparent 45%),linear-gradient(180deg,#f4faf6 0%,#fff 150px)}
 #page-about .about-hero-row{background:#fff;border-radius:14px;padding:28px;box-shadow:0 2px 14px rgba(30,69,50,.06);border:.5px solid #e8f2ea}
+/* ── Hero logo wordmark ── */
+.hero3-logo-wm {
+  display: block;
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 14px rgba(255,255,255,.85));
+}
+@media(min-width:769px){
+  .hero3-logo-wm { height: 70px; margin-bottom: 14px; }
+}
+
+/* ── Chatbot: fix mobile ── */
+/* Ngăn iOS Safari zoom khi focus textarea */
+.cw-input-row textarea { touch-action: manipulation; }
+
+/* Smooth scroll trong messages */
+.cw-msgs { -webkit-overflow-scrolling: touch; }
+
+@media(max-width:600px){
+  /* FAB tránh home indicator iPhone */
+  .chat-fab {
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    right: 16px;
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Widget: dùng dvh để tự co khi bàn phím mở */
+  .chat-widget {
+    width: calc(100vw - 20px);
+    left: 10px;
+    right: 10px;
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    height: min(480px, calc(100dvh - 108px));
+    max-height: calc(100dvh - 108px);
+    border-radius: 16px;
+  }
+
+  /* QUAN TRỌNG: font ≥16px ngăn iOS tự zoom khi gõ */
+  .cw-input-row textarea { font-size: 16px; }
+
+  /* Toast tránh home indicator */
+  .toast {
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    white-space: normal;
+    text-align: center;
+    max-width: calc(100vw - 40px);
+  }
+}
