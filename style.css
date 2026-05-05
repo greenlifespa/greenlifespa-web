@@ -375,14 +375,14 @@ section.hero3{background:#faf6ee;overflow:hidden}
 /* ── Hero logo wordmark ── */
 .hero3-logo-wm {
   display: block;
-  height: 54px;
+  height: 64px;
   width: auto;
+  max-width: 260px;
   object-fit: contain;
   margin-bottom: 10px;
-  filter: drop-shadow(0 2px 14px rgba(255,255,255,.85));
 }
 @media(min-width:769px){
-  .hero3-logo-wm { height: 70px; margin-bottom: 14px; }
+  .hero3-logo-wm { height: 76px; max-width: 300px; margin-bottom: 14px; }
 }
 
 /* ── Chatbot: fix mobile ── */
