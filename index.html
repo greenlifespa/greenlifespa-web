@@ -1,271 +1,465 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Green Life Spa | Năng lượng xanh cho cơ thể khỏe mạnh</title>
-  <meta name="description" content="Green Life Spa - gội đầu thảo dược, xoa bóp - ấn huyệt, chăm sóc cổ vai gáy, thư giãn toàn thân." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Green Life Spa | Năng lượng xanh cho cơ thể khỏe mạnh</title>
+<meta name="description" content="Green Life Spa – spa dưỡng sinh chuyên gội đầu thảo dược, xoa bóp, ấn huyệt, chăm sóc cổ vai gáy. 246 Độc Lập, Phú Thọ Hòa, TP.HCM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2"/>
 </head>
 <body>
 
-  <!-- ===== HEADER / NAV ===== -->
-  <header class="site-header">
-    <div class="nav container">
-      <a class="brand" href="#trang-chu">
-        <img class="brand-logo" src="assets/greenlife-logo.jpg" alt="Logo Green Life Spa" />
-        <span class="brand-name">GREEN LIFE SPA</span>
-      </a>
+<!-- HEADER -->
+<header id="siteHeader">
+  <div class="header-inner">
+    <a class="logo" href="#" onclick="navigate('home');return false;">
+      <img src="assets/greenlife-logo.jpg" alt="Green Life Spa" class="logo-img">
+    </a>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav" id="mainNav">
+      <a class="nav-link active" data-page="home"     href="#" onclick="navigate('home');return false;">Trang chủ</a>
+      <a class="nav-link"       data-page="about"    href="#" onclick="navigate('about');return false;">Giới thiệu</a>
+      <a class="nav-link"       data-page="services" href="#" onclick="navigate('services');return false;">Liệu trình</a>
+      <a class="nav-link"       data-page="pricing"  href="#" onclick="navigate('pricing');return false;">Bảng giá</a>
+      <a class="nav-link"       data-page="contact"  href="#" onclick="navigate('contact');return false;">Liên hệ</a>
+      <a class="btn-book" href="#" onclick="navigate('contact');return false;">Đặt lịch</a>
+    </nav>
+  </div>
+</header>
 
-      <button class="nav-toggle" aria-label="Mở menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+<!-- ══ PAGE: TRANG CHỦ ══ -->
+<div class="page active" id="page-home">
 
-      <nav class="nav-menu" id="nav-menu">
-        <a href="#trang-chu" class="active">Trang chủ</a>
-        <a href="#gioi-thieu">Giới thiệu</a>
-        <a href="#lieu-trinh">Liệu trình</a>
-        <a href="#bang-gia">Bảng giá</a>
-        <a href="#lien-he">Liên hệ</a>
-        <a href="#dat-lich" class="btn btn-primary nav-cta">Đặt lịch</a>
-      </nav>
+  <!-- ── HERO: dùng ảnh composite làm nền, slogan & badges bên dưới logo ── -->
+  <section class="hero3">
+    <div class="hero3-bg">
+      <img src="assets/spa-hero-final.png" alt="Green Life Spa" class="hero3-img">
+      <div class="hero3-overlay"></div>
     </div>
-  </header>
+    <div class="hero3-content">
+      <div class="hero3-inner">
 
-  <main>
-    <!-- ===== HERO ===== -->
-    <section id="trang-chu" class="hero">
-      <div class="hero-inner container">
-        <p class="hero-slogan">Năng lượng xanh cho cơ thể khỏe mạnh</p>
+        <!-- Spacer: đẩy nội dung xuống dưới logo trong ảnh (tự ẩn trên mobile) -->
+        <div class="hero3-logo-spacer"></div>
 
-        <div class="hero-features">
-          <div class="feature">
-            <span class="feature-ic">🌿</span>
-            <p><b>Thảo dược thiên nhiên</b>an toàn &amp; lành tính</p>
-          </div>
-          <div class="feature">
-            <span class="feature-ic">🤲</span>
-            <p><b>Liệu trình chuyên sâu</b>chuẩn chuyên gia</p>
-          </div>
-          <div class="feature">
-            <span class="feature-ic">💧</span>
-            <p><b>Thư giãn toàn diện</b>cho thân – tâm – trí</p>
-          </div>
-        </div>
+        <!-- Slogan chữ thảo -->
+        <img
+  src="assets/greenlife-wordmark.png"
+  alt="Green Life Spa"
+  class="hero3-logo-wm"
+/>
+        <p class="hero3-cursive">Năng lượng xanh cho cơ thể khỏe mạnh</p>
 
-        <div class="hero-cta">
-          <a href="#dat-lich" class="btn btn-gold">Đặt lịch ngay</a>
-          <a href="#lieu-trinh" class="btn btn-ghost">Xem liệu trình</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== GIỚI THIỆU ===== -->
-    <section id="gioi-thieu" class="section">
-      <div class="container section-head">
-        <span class="eyebrow">Giới thiệu</span>
-        <h2>Chăm sóc sức khỏe từ thảo dược thiên nhiên</h2>
-        <p>Green Life Spa là không gian thư giãn xanh, kết hợp thảo dược bản địa cùng kỹ thuật xoa bóp – ấn huyệt để giúp bạn giải tỏa căng thẳng, phục hồi năng lượng và chăm sóc cơ thể một cách lành tính.</p>
-      </div>
-
-      <div class="container card-grid">
-        <article class="card highlight">
-          <h3>Thảo dược thiên nhiên</h3>
-          <ul>
-            <li>Nguyên liệu lành tính, an toàn cho da đầu</li>
-            <li>Hương thảo mộc thư giãn, dễ chịu</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Chuyên gia tận tâm</h3>
-          <ul>
-            <li>Kỹ thuật ấn huyệt đúng phương pháp</li>
-            <li>Tư vấn liệu trình phù hợp từng người</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Không gian thư giãn</h3>
-          <ul>
-            <li>Yên tĩnh, sạch sẽ, riêng tư</li>
-            <li>Giường gội thông minh, hiện đại</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===== LIỆU TRÌNH / DỊCH VỤ ===== -->
-    <section id="lieu-trinh" class="section tint">
-      <div class="container section-head">
-        <span class="eyebrow">Liệu trình</span>
-        <h2>Dịch vụ &amp; gói chăm sóc</h2>
-        <p>Các thông tin chính giúp bạn xem nhanh dịch vụ và ưu đãi của Green Life Spa.</p>
-      </div>
-
-      <div class="container card-grid">
-        <article class="card highlight">
-          <h3>Dịch vụ chính</h3>
-          <ul>
-            <li>Gội đầu thảo dược</li>
-            <li>Xoa bóp – ấn huyệt</li>
-            <li>Chăm sóc cổ vai gáy</li>
-            <li>Thư giãn toàn thân</li>
-            <li>Giường gội thông minh</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Gói trả trước</h3>
-          <ul>
-            <li>Nạp từ 2.000.000đ: ưu đãi 5%</li>
-            <li>Nạp từ 3.000.000đ: ưu đãi 8%</li>
-            <li>Nạp từ 5.000.000đ: ưu đãi 10%</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Thông tin cần biết</h3>
-          <ul>
-            <li>Mở cửa: 8:30 mỗi ngày</li>
-            <li>Nhận khách cuối: 19:30</li>
-            <li>Thanh toán: tiền mặt hoặc chuyển khoản</li>
-            <li>Nên đặt lịch trước để được phục vụ chu đáo</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===== BẢNG GIÁ ===== -->
-    <section id="bang-gia" class="section">
-      <div class="container section-head">
-        <span class="eyebrow">Bảng giá</span>
-        <h2>Bảng giá Green Life Spa</h2>
-        <p>Mức giá tham khảo cho từng liệu trình. Vui lòng liên hệ để được tư vấn chi tiết.</p>
-      </div>
-
-      <div class="container">
-        <div class="price-table">
-          <div class="price-row">
-            <span class="num">1</span>
-            <div class="info"><b>Liệu trình chỉ định FAST</b><small>Chăm sóc nhanh, gọn</small></div>
-            <span class="price">150.000đ</span>
+        <!-- 3 đặc điểm -->
+        <div class="hero3-feats">
+          <div class="h3f">
+            <div class="h3f-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2d5a3d" stroke-width="1.5"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M8 11c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/><path d="M12 15v3"/></svg>
+            </div>
+            <span>Thảo dược thiên nhiên<br>an toàn &amp; lành tính</span>
           </div>
-          <div class="price-row">
-            <span class="num">2</span>
-            <div class="info"><b>GREEN TOUCH – Thảo Dược Bản Địa</b><small>Chăm sóc tóc nhẹ nhàng</small></div>
-            <span class="price">79.000đ</span>
+          <div class="h3f-divider"></div>
+          <div class="h3f">
+            <div class="h3f-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2d5a3d" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <span>Liệu trình chuyên sâu<br>chuẩn chuyên gia</span>
           </div>
-          <div class="price-row">
-            <span class="num">3</span>
-            <div class="info"><b>THƯ GIÃN – RELAX</b><small>Đánh thức năng lượng bên trong</small></div>
-            <span class="price">180.000đ</span>
-          </div>
-          <div class="price-row">
-            <span class="num">4</span>
-            <div class="info"><b>BEAUTY</b><small>Tái tạo và phục hồi</small></div>
-            <span class="price">240.000đ</span>
-          </div>
-          <div class="price-row">
-            <span class="num">5</span>
-            <div class="info"><b>ZEN DETOX</b><small>Thải độc và thư giãn sâu</small></div>
-            <span class="price">240.000đ</span>
-          </div>
-          <div class="price-row">
-            <span class="num">6</span>
-            <div class="info"><b>ROYAL</b><small>Liệu trình chăm sóc hoàng gia</small></div>
-            <span class="price">300.000đ</span>
-          </div>
-          <div class="price-row">
-            <span class="num">7</span>
-            <div class="info"><b>GALAXY</b><small>Tinh tế chạm đến từng huyệt đạo</small></div>
-            <span class="price">300.000đ</span>
-          </div>
-          <div class="price-row is-vip">
-            <span class="num">8</span>
-            <div class="info"><b>V.I.P</b><small>Hỗ trợ điều trị chuyên sâu</small></div>
-            <span class="price">600.000đ</span>
+          <div class="h3f-divider"></div>
+          <div class="h3f">
+            <div class="h3f-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2d5a3d" stroke-width="1.5"><path d="M12 3c-1.2 5.4-5 7-5 11a5 5 0 0010 0c0-4-3.8-5.6-5-11z"/></svg>
+            </div>
+            <span>Thư giãn toàn diện<br>cho thân – tâm – trí</span>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ===== LIÊN HỆ / ĐẶT LỊCH ===== -->
-    <section id="lien-he" class="section tint">
-      <div class="container section-head">
-        <span class="eyebrow">Liên hệ</span>
-        <h2>Đặt lịch tại Green Life Spa</h2>
-        <p>Để lại thông tin, spa sẽ liên hệ xác nhận lịch hẹn cho bạn.</p>
-      </div>
+        <div class="hero3-actions">
+          <button class="btn-gold" onclick="navigate('contact')">Đặt lịch ngay</button>
+          <button class="btn-outline-hero" onclick="navigate('services')">Xem liệu trình</button>
+        </div>
 
-      <div class="container contact-grid">
-        <article class="card info-card">
-          <h3>Thông tin spa</h3>
-          <ul>
-            <li><b>Slogan:</b> Năng lượng xanh cho cơ thể khỏe mạnh</li>
-            <li><b>Giờ mở cửa:</b> 8:30</li>
-            <li><b>Nhận khách cuối:</b> 19:30</li>
-            <li><b>Thanh toán:</b> Tiền mặt hoặc chuyển khoản</li>
-            <li><b>Địa chỉ / Hotline:</b> (điền thông tin chính thức tại đây)</li>
-          </ul>
+      </div>
+    </div>
+    <div class="hero3-infobar">
+      <div class="h3ib">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        Slogan: Năng lượng xanh cho cơ thể khỏe mạnh
+      </div>
+      <div class="h3ib">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Đặt lịch trước để Green Life Spa phục vụ chu đáo hơn
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TIN TỨC ── -->
+  <section class="sec-home">
+    <div class="container">
+      <h2 class="home-heading">TIN TỨC <span>🌿</span></h2>
+      <div class="news-row">
+
+        <article class="news-item" onclick="openModal('uu-dai')">
+          <div class="ni-img"><img src="assets/spa-herbal-setup.png" alt="Ưu đãi thẻ nạp" loading="lazy"></div>
+          <div class="ni-body">
+            <h4>Ưu đãi thẻ nạp Green Life Spa</h4>
+            <ul>
+              <li>Nạp 2.000.000đ tặng 5%</li>
+              <li>Nạp 3.000.000đ tặng 8%</li>
+              <li>Nạp 5.000.000đ tặng 10%</li>
+            </ul>
+            <span class="ni-more">Xem thêm »</span>
+          </div>
         </article>
 
-        <form id="dat-lich" class="card form">
-          <h3>Giữ lịch trước</h3>
+        <article class="news-item" onclick="openModal('gio-mo-cua')">
+          <div class="ni-img"><img src="assets/spa-relaxing.png" alt="Giờ hoạt động" loading="lazy"></div>
+          <div class="ni-body">
+            <h4>Giờ hoạt động mỗi ngày</h4>
+            <ul>
+              <li>Mở cửa từ 8:30</li>
+              <li>Nhận khách cuối 19:30</li>
+              <li>Nên đặt lịch trước để được phục vụ tốt hơn</li>
+            </ul>
+            <span class="ni-more">Xem thêm »</span>
+          </div>
+        </article>
 
-          <label for="hoten">Họ và tên</label>
-          <input id="hoten" name="hoten" placeholder="Tên của bạn" required />
+        <article class="news-item" onclick="openModal('thanh-toan')">
+          <div class="ni-img"><img src="assets/spa-products.png" alt="Thanh toán" loading="lazy"></div>
+          <div class="ni-body">
+            <h4>Thanh toán tiện lợi</h4>
+            <p>Nhận tiền mặt, chuyển khoản ngân hàng và quét mã Momo.</p>
+            <span class="ni-more">Xem thêm »</span>
+          </div>
+        </article>
 
-          <label for="sdt">Số điện thoại</label>
-          <input id="sdt" name="sdt" type="tel" placeholder="Nhập số điện thoại" required />
+        <div class="news-gallery3">
+          <div class="ng3-big"><img src="assets/spa-massage.png" alt="Liệu trình massage" loading="lazy"></div>
+          <div class="ng3-sm"><img src="assets/spa-facial.png" alt="Chăm sóc da mặt" loading="lazy"></div>
+          <div class="ng3-sm"><img src="assets/spa-setup.png" alt="Không gian spa" loading="lazy"></div>
+        </div>
 
-          <label for="dichvu">Dịch vụ quan tâm</label>
-          <select id="dichvu" name="dichvu">
-            <option>GREEN TOUCH – Thảo Dược Bản Địa – 79.000đ</option>
-            <option>Liệu trình chỉ định FAST – 150.000đ</option>
-            <option>THƯ GIÃN – RELAX – 180.000đ</option>
-            <option>BEAUTY – 240.000đ</option>
-            <option>ZEN DETOX – 240.000đ</option>
-            <option>ROYAL – 300.000đ</option>
-            <option>GALAXY – 300.000đ</option>
-            <option>V.I.P – 600.000đ</option>
-            <option>Cần spa tư vấn thêm</option>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VỀ GREEN LIFE SPA ── -->
+  <section class="sec-home sec-about-bg">
+    <div class="container">
+      <div class="about-2col">
+        <!-- Trái: chữ + features -->
+        <div class="ab2-text">
+          <h2 class="home-heading">VỀ GREEN LIFE SPA <span>🌿</span></h2>
+          <p class="ab2-desc">Green Life Spa là spa dưỡng sinh chuyên về gội đầu thảo dược, xoa bóp – ấn huyệt, chăm sóc cổ vai gáy và các liệu trình thư giãn nhẹ nhàng. Chúng tôi mang đến trải nghiệm an toàn, hiệu quả với thảo dược thiên nhiên, không gian sạch sẽ và phong cách chuyên nghiệp.</p>
+          <div class="ab2-feats">
+            <div class="ab2f">
+              <div class="ab2f-img"><img src="assets/spa-herbs.png" alt="Thảo dược" loading="lazy"></div>
+              <div class="ab2f-txt"><b>Gội đầu thảo dược</b><small>Làm sạch sâu, nuôi dưỡng tóc và da đầu khỏe mạnh</small></div>
+            </div>
+            <div class="ab2f">
+              <div class="ab2f-img"><img src="assets/spa-back-massage.png" alt="Xoa bóp" loading="lazy"></div>
+              <div class="ab2f-txt"><b>Xoa bóp – ấn huyệt</b><small>Giảm căng mỏi, lưu thông khí huyết, thư giãn toàn thân</small></div>
+            </div>
+            <div class="ab2f">
+              <div class="ab2f-img"><img src="assets/spa-hero.png" alt="Cổ vai gáy" loading="lazy"></div>
+              <div class="ab2f-txt"><b>Cổ vai gáy thư giãn</b><small>Giảm căng mỏi, giải tỏa áp lực, phục hồi năng lượng</small></div>
+            </div>
+            <div class="ab2f">
+              <div class="ab2f-img"><img src="assets/spa-energy.png" alt="Phục hồi năng lượng" loading="lazy"></div>
+              <div class="ab2f-txt"><b>Phục hồi năng lượng</b><small>Thư giãn sâu, lấy lại sức sống sau ngày dài mệt mỏi</small></div>
+            </div>
+          </div>
+          <button class="btn-outline" onclick="navigate('about')">Tìm hiểu thêm →</button>
+        </div>
+        <!-- Phải: ảnh chồng nhau -->
+        <div class="ab2-imgs">
+          <img class="ab2-main" src="assets/spa-massage.png" alt="Liệu trình massage">
+          <img class="ab2-accent" src="assets/spa-products.png" alt="Sản phẩm thảo dược">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LIỆU TRÌNH NỔI BẬT ── -->
+  <section class="sec-home">
+    <div class="container">
+      <h2 class="home-heading">LIỆU TRÌNH NỔI BẬT <span>🌿</span></h2>
+      <div class="feat-grid" id="featuredGrid"></div>
+      <div class="home-cta">
+        <button class="btn-gold" onclick="navigate('services')">Xem tất cả liệu trình →</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ══ PAGE: GIỚI THIỆU ══ -->
+<div class="page" id="page-about">
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="#" onclick="navigate('home');return false;">Trang chủ</a> / Giới thiệu</div>
+      <h1>Về Green Life Spa</h1>
+      <p>Spa dưỡng sinh – thư giãn tự nhiên – chuyên nghiệp</p>
+    </div>
+  </div>
+  <div class="container page-body">
+
+    <!-- Intro 2 cột: chữ + ảnh không gian -->
+    <div class="about-hero-row">
+      <div class="about-hero-text">
+        <h2>Chúng tôi là ai?</h2>
+        <p>Green Life Spa là spa dưỡng sinh tại <strong>246 Độc Lập, Phường Phú Thọ Hòa, TP.HCM</strong> – chuyên về gội đầu thảo dược, xoa bóp, ấn huyệt và chăm sóc các vùng cơ thể thường bị căng mỏi như cổ vai gáy, lưng, eo, tay chân.</p>
+        <p>Phong cách thương hiệu: nhẹ nhàng, thư giãn, sạch sẽ, gần gũi thiên nhiên và chuyên nghiệp. Chúng tôi tạo cảm giác chăm sóc sức khỏe an toàn, dễ chịu – không phô trương.</p>
+        <p>Mỗi liệu trình đều được thực hiện bằng tay, kết hợp thảo dược thiên nhiên và kỹ thuật ấn huyệt truyền thống, giúp cơ thể thư giãn sâu và phục hồi năng lượng sau một ngày dài.</p>
+      </div>
+      <div class="about-hero-imgs">
+        <img class="ahi-main" src="assets/spa-massage.png" alt="Không gian thư giãn Green Life Spa">
+        <img class="ahi-sub"  src="assets/spa-herbal-setup.png" alt="Liệu trình thảo dược">
+      </div>
+    </div>
+
+    <!-- 4 giá trị cốt lõi – ảnh spa thật, không poster -->
+    <div class="about-section-title">Điểm nổi bật của chúng tôi</div>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="vc-img"><img src="assets/spa-herbs.png" alt="Thảo dược thiên nhiên"></div>
+        <div class="vc-body"><h4>Thiên nhiên &amp; an toàn</h4><p>Sử dụng nguyên liệu thảo dược thiên nhiên, không hóa chất, an toàn cho mọi loại da và sức khỏe.</p></div>
+      </div>
+      <div class="value-card">
+        <div class="vc-img"><img src="assets/spa-back-massage.png" alt="Tay nghề chuyên nghiệp"></div>
+        <div class="vc-body"><h4>Tay nghề chuyên nghiệp</h4><p>Kỹ thuật viên được đào tạo bài bản về huyệt đạo và các vùng cơ thể thường bị căng mỏi.</p></div>
+      </div>
+      <div class="value-card">
+        <div class="vc-img"><img src="assets/spa-setup.png" alt="Không gian thư thái"></div>
+        <div class="vc-body"><h4>Không gian thư thái</h4><p>Không gian yên tĩnh, hài hòa, sạch sẽ – phù hợp để nghỉ ngơi và phục hồi năng lượng.</p></div>
+      </div>
+      <div class="value-card">
+        <div class="vc-img"><img src="assets/spa-relaxing.png" alt="Tận tâm phục vụ"></div>
+        <div class="vc-body"><h4>Tận tâm phục vụ</h4><p>Luôn lắng nghe và tư vấn phù hợp với tình trạng sức khỏe của từng khách hàng.</p></div>
+      </div>
+    </div>
+
+    <!-- Thông tin liên hệ -->
+    <div class="contact-bar-full">
+      <div>📍 246 Độc Lập, Phường Phú Thọ Hòa, TP.HCM</div>
+      <div>📞 <a href="tel:0985009674">0985.009.674</a></div>
+      <div>💬 Zalo: <a href="https://zalo.me/0917948706">0917.948.706</a></div>
+      <div>🕗 8:30 – 19:30 hằng ngày</div>
+    </div>
+    <div class="sec-cta">
+      <button class="btn-green" onclick="navigate('contact')">Đặt lịch ngay →</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══ PAGE: LIỆU TRÌNH (gộp cả Menu) ══ -->
+<div class="page" id="page-services">
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="#" onclick="navigate('home');return false;">Trang chủ</a> / Liệu trình</div>
+      <h1>Tất cả liệu trình</h1>
+      <p>10 liệu trình chăm sóc sức khỏe nhẹ nhàng, tự nhiên và chuyên nghiệp</p>
+    </div>
+  </div>
+  <div class="container page-body">
+    <div class="services-full" id="servicesFull"></div>
+
+    <!-- Thông tin bổ sung (trước là Menu) -->
+    <div class="menu-info-row" style="margin-top:40px">
+      <div class="mi-card">
+        <h4>🎁 Gói tín dụng ưu đãi</h4>
+        <ul>
+          <li>Nạp từ 2.000.000đ → <b>ưu đãi 5%</b></li>
+          <li>Nạp từ 3.000.000đ → <b>ưu đãi 8%</b></li>
+          <li>Nạp từ 5.000.000đ → <b>ưu đãi 10%</b></li>
+        </ul>
+      </div>
+      <div class="mi-card">
+        <h4>💳 Thanh toán</h4>
+        <ul>
+          <li>Tiền mặt</li>
+          <li>Chuyển khoản ngân hàng</li>
+          <li>Momo</li>
+        </ul>
+      </div>
+      <div class="mi-card">
+        <h4>🕗 Giờ hoạt động</h4>
+        <ul>
+          <li>Mở cửa: <b>8:30</b> hằng ngày</li>
+          <li>Nhận khách cuối: <b>19:30</b></li>
+          <li>Nên đặt lịch trước</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sec-cta">
+      <button class="btn-green" onclick="navigate('contact')">Đặt lịch ngay →</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ PAGE: BẢNG GIÁ ══ -->
+<div class="page" id="page-pricing">
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="#" onclick="navigate('home');return false;">Trang chủ</a> / Bảng giá</div>
+      <h1>Bảng giá dịch vụ</h1>
+      <p>Minh bạch – Rõ ràng – Không phát sinh chi phí ẩn</p>
+    </div>
+  </div>
+  <div class="container page-body">
+    <div class="price-wrap" id="priceWrap"></div>
+    <div class="price-note">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      Giá trên chưa bao gồm dịch vụ bổ sung (chườm thảo dược, ngải cứu, hồng quang cứu). Kỹ thuật viên sẽ tư vấn trước mỗi buổi chăm sóc.
+    </div>
+    <div class="credit-section">
+      <h3>Gói tín dụng ưu đãi</h3>
+      <div class="credit-cards">
+        <div class="credit-card"><div class="cc-amount">2.000.000 VNĐ</div><div class="cc-bonus">Tặng thêm 5%</div><button class="btn-outline-sm" onclick="navigate('contact')">Đăng ký</button></div>
+        <div class="credit-card cc-featured"><div class="cc-badge">Phổ biến</div><div class="cc-amount">3.000.000 VNĐ</div><div class="cc-bonus">Tặng thêm 8%</div><button class="btn-green-sm" onclick="navigate('contact')">Đăng ký</button></div>
+        <div class="credit-card"><div class="cc-amount">5.000.000 VNĐ</div><div class="cc-bonus">Tặng thêm 10%</div><button class="btn-outline-sm" onclick="navigate('contact')">Đăng ký</button></div>
+      </div>
+    </div>
+    <div class="sec-cta"><button class="btn-green" onclick="navigate('contact')">Đặt lịch ngay →</button></div>
+  </div>
+</div>
+
+
+
+
+<!-- ══ PAGE: LIÊN HỆ ══ -->
+<div class="page" id="page-contact">
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="#" onclick="navigate('home');return false;">Trang chủ</a> / Liên hệ</div>
+      <h1>Liên hệ &amp; Đặt lịch</h1>
+      <p>Đặt lịch trước để Green Life Spa chuẩn bị tốt nhất cho bạn</p>
+    </div>
+  </div>
+  <div class="container page-body">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Thông tin liên hệ</h3>
+        <div class="ci-list">
+          <div class="ci-item"><span>📍</span><div><b>Địa chỉ</b><br>246 Độc Lập, Phường Phú Thọ Hòa, TP. Hồ Chí Minh</div></div>
+          <div class="ci-item"><span>📞</span><div><b>Điện thoại</b><br><a href="tel:0985009674">0985.009.674</a></div></div>
+          <div class="ci-item"><span>💬</span><div><b>Zalo</b><br><a href="https://zalo.me/0917948706">0917.948.706</a></div></div>
+          <div class="ci-item"><span>📘</span><div><b>Fanpage</b><br><a href="https://facebook.com" target="_blank" rel="noopener">Green Life Spa</a></div></div>
+          <div class="ci-item"><span>🕗</span><div><b>Giờ mở cửa</b><br>8:30 – nhận khách cuối 19:30 hằng ngày</div></div>
+        </div>
+        <div class="map-box">
+          <div class="map-pin">📍</div>
+          <p>246 Độc Lập, Phú Thọ Hòa, TP.HCM</p>
+          <a href="https://maps.google.com/?q=246+Doc+Lap+Phu+Tho+Hoa+HCM" target="_blank" rel="noopener" class="btn-outline-sm">Xem trên Google Maps →</a>
+        </div>
+      </div>
+      <form class="booking-form" onsubmit="handleSubmit(event)">
+        <h3>Giữ lịch trước</h3>
+        <div class="form-row-2">
+          <div class="fg"><label>Họ và tên *</label><input type="text" placeholder="Tên của bạn" required></div>
+          <div class="fg"><label>Số điện thoại *</label><input type="tel" placeholder="Nhập số điện thoại" required></div>
+        </div>
+        <div class="fg"><label>Dịch vụ quan tâm</label>
+          <select>
+            <option value="">-- Chọn dịch vụ --</option>
+            <option>Green Touch – Gội đầu thảo dược bản địa (79.000 VNĐ)</option>
+            <option>FAST – Chăm sóc nhanh theo nhu cầu (150.000 VNĐ)</option>
+            <option>Relax – Gội đầu thảo dược chuyên sâu (180.000 VNĐ)</option>
+            <option>Beauty – Tái tạo và phục hồi (240.000 VNĐ)</option>
+            <option>Zen Detox – Thư giãn cơ thể (240.000 VNĐ)</option>
+            <option>Royal – Chăm sóc hoàng gia (300.000 VNĐ)</option>
+            <option>Galaxy – Vai Cổ Gáy (300.000 VNĐ)</option>
+            <option>Galaxy – Lưng, Eo, Thận (300.000 VNĐ)</option>
+            <option>Galaxy – Thông Kinh Lạc Chân &amp; Tay (300.000 VNĐ)</option>
+            <option>VIP – Chăm sóc toàn thân chuyên sâu (600.000 VNĐ)</option>
+            <option>Cần tư vấn thêm</option>
           </select>
-
-          <label for="giờ">Khung giờ mong muốn</label>
-          <input id="giờ" name="khunggio" placeholder="Ví dụ: 15:00 hôm nay" />
-
-          <label for="ghichu">Ghi chú</label>
-          <textarea id="ghichu" name="ghichu" rows="4" placeholder="Ví dụ: đau cổ vai gáy, muốn gội đầu thảo dược..."></textarea>
-
-          <button class="btn btn-gold" type="submit">Gửi yêu cầu đặt lịch</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <h4>GREEN LIFE SPA</h4>
-        <p>Năng lượng xanh cho cơ thể khỏe mạnh. Gội đầu thảo dược, xoa bóp – ấn huyệt, chăm sóc cổ vai gáy.</p>
-      </div>
-      <div>
-        <h4>Giờ mở cửa</h4>
-        <p>Hằng ngày: 8:30 – 19:30<br />(Nhận khách cuối lúc 19:30)</p>
-      </div>
-      <div>
-        <h4>Liên hệ</h4>
-        <p>Hotline: (điền số tại đây)<br />Địa chỉ: (điền địa chỉ tại đây)</p>
-      </div>
+        </div>
+        <div class="form-row-2">
+          <div class="fg"><label>Ngày muốn đặt</label><input type="date"></div>
+          <div class="fg"><label>Khung giờ mong muốn</label><input type="text" placeholder="Ví dụ: 15:00"></div>
+        </div>
+        <div class="fg"><label>Ghi chú</label><textarea rows="3" placeholder="Ví dụ: đau cổ vai gáy, muốn gội đầu thảo dược..."></textarea></div>
+        <button type="submit" class="btn-green full">Gửi yêu cầu đặt lịch</button>
+        <p class="form-note">Spa sẽ liên hệ xác nhận sớm nhất. Hotline: <a href="tel:0985009674">0985.009.674</a></p>
+      </form>
     </div>
-    <div class="container footer-bottom">© 2026 Green Life Spa.</div>
-  </footer>
+  </div>
+</div>
 
-  <a class="chat-fab" href="#dat-lich" aria-label="Đặt lịch">💬</a>
 
-  <div class="toast" id="toast">Đây là form mẫu. Khi đưa website lên thật, cần kết nối form với Zalo, Facebook hoặc email.</div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><div class="footer-brand">GREEN LIFE SPA</div><p>Năng lượng xanh cho cơ thể khỏe mạnh</p><p>246 Độc Lập, Phú Thọ Hòa, TP.HCM</p></div>
+    <div><h5>Liên kết nhanh</h5>
+      <a href="#" onclick="navigate('home');return false;">Trang chủ</a>
+      <a href="#" onclick="navigate('about');return false;">Giới thiệu</a>
+      <a href="#" onclick="navigate('services');return false;">Liệu trình</a>
+      <a href="#" onclick="navigate('pricing');return false;">Bảng giá</a>
+      <a href="#" onclick="navigate('contact');return false;">Đặt lịch</a>
+    </div>
+    <div><h5>Liên hệ</h5>
+      <p>📞 <a href="tel:0985009674">0985.009.674</a></p>
+      <p>💬 Zalo: <a href="https://zalo.me/0917948706">0917.948.706</a></p>
+      <p>🕗 8:30 – 19:30 hằng ngày</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Green Life Spa. Bảo lưu mọi quyền.</div>
+</footer>
 
-  <script src="script.js"></script>
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- AI CHAT FAB -->
+<div class="chat-fab" id="chatFab" onclick="toggleChat()">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <span class="chat-badge" id="chatBadge">1</span>
+</div>
+<div class="chat-widget" id="chatWidget">
+  <div class="cw-header">
+    <div class="cw-logo">GL</div>
+    <div class="cw-info"><div class="cw-name">Green Life Spa</div><div class="cw-status"><span class="online-dot"></span>Trợ lý tư vấn</div></div>
+    <button class="cw-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="cw-msgs" id="cwMsgs">
+    <div class="cw-msg bot"><div class="cw-av">GL</div><div class="cw-bubble">Dạ chào mình! Em là trợ lý tư vấn của <strong>Green Life Spa</strong>.<br><br>Mình cần hỏi về dịch vụ, bảng giá hay muốn đặt lịch ạ? 🌿</div></div>
+  </div>
+  <div class="cw-quick" id="cwQuick">
+    <button onclick="quickAsk('Bảng giá dịch vụ?')">Bảng giá</button>
+    <button onclick="quickAsk('Mỏi cổ vai gáy nên làm gì?')">Cổ vai gáy</button>
+    <button onclick="quickAsk('Có khuyến mãi gì không?')">Khuyến mãi</button>
+    <button onclick="quickAsk('Tôi muốn đặt lịch')">Đặt lịch</button>
+  </div>
+  <div class="cw-input-row">
+    <textarea id="cwInput" placeholder="Nhắn gì đó..." rows="1"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat();}"
+      oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,88)+'px'"></textarea>
+    <button class="cw-send" onclick="sendChat()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
