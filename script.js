@@ -150,17 +150,44 @@ function navigate(page) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   // Close mobile menu
-  document.getElementById('mainNav').classList.remove('open');
+  setMenu(false);
 
   // Render dynamic content per page
-  if (page === 'home' && !document.getElementById('featuredGrid').hasChildNodes()) renderFeatured();
-  if (page === 'services' && !document.getElementById('servicesFull').hasChildNodes()) renderServicesFull();
-  if (page === 'pricing'  && !document.getElementById('priceWrap').hasChildNodes()) renderPriceTable();
+  const grid  = document.getElementById('featuredGrid');
+  const full  = document.getElementById('servicesFull');
+  const price = document.getElementById('priceWrap');
+  if (page === 'home'     && grid  && !grid.hasChildNodes())  renderFeatured();
+  if (page === 'services' && full  && !full.hasChildNodes())  renderServicesFull();
+  if (page === 'pricing'  && price && !price.hasChildNodes()) renderPriceTable();
+}
+
+function setMenu(open) {
+  const nav = document.getElementById('mainNav');
+  const btn = document.getElementById('hamburger');
+  if (!nav) return;
+  nav.classList.toggle('open', open);
+  if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 
 function toggleMobileMenu() {
-  document.getElementById('mainNav').classList.toggle('open');
+  const nav = document.getElementById('mainNav');
+  setMenu(nav ? !nav.classList.contains('open') : false);
 }
+
+/* Đóng menu khi bấm ra ngoài header */
+document.addEventListener('click', e => {
+  const header = document.getElementById('siteHeader');
+  const nav = document.getElementById('mainNav');
+  if (nav && nav.classList.contains('open') && header && !header.contains(e.target)) setMenu(false);
+});
+
+/* Đóng menu khi phóng to màn hình / xoay ngang qua ngưỡng desktop */
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 820) setMenu(false);
+});
+
+/* Đóng menu bằng phím Esc */
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
 /* ── RENDER: Featured grid (home) ── */
 function renderFeatured() {
@@ -196,7 +223,7 @@ function renderServicesFull() {
       </div>
       <div class="sf-body">
         <h3>${s.full}</h3>
-        <div class="sf-time">⏱ ${s.time}${s.tag ? `&ensp;<span style="background:var(--g-light);color:var(--g-mid);font-size:11px;font-weight:600;padding:1px 8px;border-radius:9px">${s.tag}</span>` : ''}</div>
+        <div class="sf-time">⏱ ${s.time}${s.tag ? `&ensp;<span class="pt-tag">${s.tag}</span>` : ''}</div>
         <p>${s.desc}</p>
         <span class="sf-btn">Xem chi tiết →</span>
       </div>
@@ -227,6 +254,7 @@ function renderMenu() {
   SERVICES.forEach(s => { if (groups[s.group]) groups[s.group].items.push(s); });
 
   const el = document.getElementById('menuSections');
+  if (!el) return; // trang Menu đã gộp vào Liệu trình
   el.innerHTML = Object.values(groups).map(g => `
     <div class="menu-section">
       <h3>${g.label}</h3>
