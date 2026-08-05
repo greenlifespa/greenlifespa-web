@@ -120,7 +120,7 @@ const NEWS_DATA = {
     title:'Giờ hoạt động mỗi ngày',
     icon:'🕗',
     content:`<p>Green Life Spa mở cửa đón khách hằng ngày trong khung giờ:</p>
-    <ul><li><b>Mở cửa:</b> 8:30 sáng</li><li><b>Nhận khách cuối:</b> 19:30 tối</li></ul>
+    <ul><li><b>Mở cửa:</b> 9:30 sáng</li><li><b>Nhận khách cuối:</b> 20:00 tối</li></ul>
     <p>Spa hoạt động 7 ngày một tuần, kể cả cuối tuần và ngày lễ.</p>
     <p><b>Lưu ý:</b> Nên đặt lịch trước để spa sắp xếp kỹ thuật viên và khung giờ phù hợp, tránh phải chờ lâu.</p>
     <p>Đặt lịch qua hotline <a href="tel:0985009674">0985.009.674</a> hoặc Zalo <a href="https://zalo.me/0917948706">0917.948.706</a>.</p>`
@@ -355,7 +355,7 @@ let chatOpen = false;
 let chatHistory = [];
 
 const SYSTEM_PROMPT = `Bạn là trợ lý tư vấn của Green Life Spa – spa dưỡng sinh tại 246 Độc Lập, Phú Thọ Hòa, TP.HCM.
-Hotline: 0985.009.674 | Zalo: 0917.948.706 | Mở cửa: 8:30–19:30 hằng ngày.
+Hotline: 0985.009.674 | Zalo: 0917.948.706 | Mở cửa: 9:30–20:00 hằng ngày.
 
 DỊCH VỤ: Green Touch 79k/40p | FAST 150k/30p | Relax 180k/60p | Beauty 240k/60p | Zen Detox 240k/60p | Royal 300k/90p | Galaxy Vai Cổ Gáy 300k/60p | Galaxy Lưng Eo Thận 300k/60p | Galaxy Thông Kinh Lạc 300k/60p | VIP 600k/120p.
 Gói tín dụng: nạp 2tr+5% / 3tr+8% / 5tr+10%. Ưu đãi đến 05/05/2026: tặng xông hơi 50k mọi gói.
