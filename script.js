@@ -352,7 +352,6 @@ function slideNext() {}
 const AI_PROXY_URL = 'https://greenlifespa-web-ai.vinhluong0501.workers.dev';
 
 let chatOpen = false;
-let chatHistory = [];
 
 const SYSTEM_PROMPT = `Bạn là trợ lý tư vấn của Green Life Spa – spa dưỡng sinh tại 246 Độc Lập, Phú Thọ Hòa, TP.HCM.
 Hotline: 0985.009.674 | Zalo: 0917.948.706 | Mở cửa: 9:30–20:00 hằng ngày.
@@ -368,6 +367,8 @@ CÁCH TRẢ LỜI:
 - Hỏi bảng giá: liệt kê 3-4 gói tiêu biểu kèm giá, kết bằng câu mời tư vấn thêm
 - Hỏi triệu chứng: gợi ý 1 gói phù hợp + giá + hỏi muốn đặt lịch không
 - KHÔNG nói: chữa khỏi, cam kết hết đau, điều trị dứt điểm`;
+
+let chatHistory = [{ role: 'system', content: SYSTEM_PROMPT }];
 
 function toggleChat() {
   chatOpen = !chatOpen;
@@ -408,9 +409,8 @@ async function sendChat() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
+        model: 'gemini-3.5-flash-lite',
         max_tokens: 350,
-        system: SYSTEM_PROMPT,
         messages: chatHistory
       })
     });
@@ -422,11 +422,15 @@ async function sendChat() {
       appendMsg('bot', `Lỗi API: ${data.error.type} – ${data.error.message}`);
       return;
     }
-    const reply = data.content?.[0]?.text || 'Dạ em chưa hiểu, mình nhắn lại giúp em nhé ạ.';
+    const reply = data.choices?.[0]?.message.content || 'Dạ em chưa hiểu, mình nhắn lại giúp em nhé ạ.';
+    console.log(data);
     hideTyping();
     appendMsg('bot', reply);
     chatHistory.push({ role: 'assistant', content: reply });
-    if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
+    if (chatHistory.length > 20) {
+      const [systemMsg, ...turns] = chatHistory;
+      chatHistory = [systemMsg, ...turns.slice(-20)];
+    }
   } catch(err) {
     console.error('Fetch error:', err);
     hideTyping();
