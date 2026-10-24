@@ -391,6 +391,50 @@ function quickAsk(text) {
   sendChat();
 }
 
+const CHAT_BUSY_MSG = 'Dạ hệ thống tư vấn đang bận một chút ạ. Mình nhắn lại sau ít giây giúp em, hoặc gọi hotline 0985.009.674 / Zalo 0917.948.706 để được hỗ trợ ngay nhé.';
+
+function chatWait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/*
+ * Gọi AI qua Worker proxy, tự thử lại tối đa 3 lần khi lỗi tạm thời.
+ * Gemini báo lỗi dạng mảng [{ error: {...} }] hoặc đối tượng { error: {...} }; cả hai đều được coi là lỗi.
+ * Không trả về câu "em chưa hiểu" giả: nếu hết lần thử thì ném lỗi để sendChat báo bận.
+ */
+async function callChatAI(messages) {
+  let lastErr = null;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    if (attempt) await chatWait(attempt * 900);
+    try {
+      const res = await fetch(AI_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'gemini-3.5-flash-lite',
+          max_tokens: 350,
+          messages: messages
+        })
+      });
+      let data = null;
+      try { data = await res.json(); } catch (e) { data = null; }
+      const d = Array.isArray(data) ? data[0] : data;
+      const apiErr = d && d.error;
+      const choice = d && d.choices && d.choices[0];
+      const reply = choice && choice.message && choice.message.content;
+      if (res.ok && !apiErr && typeof reply === 'string' && reply.trim()) return reply;
+      lastErr = { http: res.status, error: apiErr || null, finish: choice ? choice.finish_reason : null };
+      console.warn('AI chat lỗi (lần ' + (attempt + 1) + '/3):', lastErr);
+    } catch (err) {
+      lastErr = { network: String((err && err.message) || err) };
+      console.warn('AI chat lỗi mạng (lần ' + (attempt + 1) + '/3):', lastErr);
+    }
+  }
+  const failure = new Error('chat_failed');
+  failure.detail = lastErr;
+  throw failure;
+}
+
 async function sendChat() {
   const inp = document.getElementById('cwInput');
   const text = inp.value.trim();
@@ -405,36 +449,23 @@ async function sendChat() {
 
   showTyping();
   try {
-    const res = await fetch(AI_PROXY_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'gemini-3.5-flash-lite',
-        max_tokens: 350,
-        messages: chatHistory
-      })
-    });
-    const data = await res.json();
-    // Kiểm tra lỗi từ Anthropic API
-    if (data.error) {
-      console.error('Anthropic API error:', data.error);
-      hideTyping();
-      appendMsg('bot', `Lỗi API: ${data.error.type} – ${data.error.message}`);
-      return;
-    }
-    const reply = data.choices?.[0]?.message.content || 'Dạ em chưa hiểu, mình nhắn lại giúp em nhé ạ.';
-    console.log(data);
+    const reply = await callChatAI(chatHistory);
     hideTyping();
     appendMsg('bot', reply);
     chatHistory.push({ role: 'assistant', content: reply });
     if (chatHistory.length > 20) {
       const [systemMsg, ...turns] = chatHistory;
-      chatHistory = [systemMsg, ...turns.slice(-20)];
+      const recent = turns.slice(-20);
+      while (recent.length && recent[0].role !== 'user') recent.shift();
+      chatHistory = [systemMsg, ...recent];
     }
-  } catch(err) {
-    console.error('Fetch error:', err);
+  } catch (err) {
+    console.error('AI chat thất bại:', err && err.detail);
     hideTyping();
-    appendMsg('bot', 'Dạ em đang gặp sự cố kết nối. Lỗi: ' + err.message);
+    appendMsg('bot', CHAT_BUSY_MSG);
+    // Bỏ tin vừa gửi khỏi lịch sử (không lưu câu báo lỗi) để các lượt sau không bị lệch vai user/assistant.
+    const last = chatHistory[chatHistory.length - 1];
+    if (last && last.role === 'user') chatHistory.pop();
   }
 }
 
