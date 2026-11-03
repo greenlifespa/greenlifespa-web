@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=3"/>
+<link rel="stylesheet" href="booking.css?v=1"/>
 </head>
 <body>
 
@@ -366,36 +367,27 @@
           <a href="https://maps.google.com/?q=246+Doc+Lap+Phu+Tho+Hoa+HCM" target="_blank" rel="noopener" class="btn-outline-sm">Xem trên Google Maps →</a>
         </div>
       </div>
-      <form class="booking-form" onsubmit="handleSubmit(event)">
-        <h3>Giữ lịch trước</h3>
-        <div class="form-row-2">
-          <div class="fg"><label>Họ và tên *</label><input type="text" placeholder="Tên của bạn" required></div>
-          <div class="fg"><label>Số điện thoại *</label><input type="tel" placeholder="Nhập số điện thoại" required></div>
-        </div>
-        <div class="fg"><label>Dịch vụ quan tâm</label>
-          <select>
-            <option value="">-- Chọn dịch vụ --</option>
-            <option>Green Touch – Gội đầu thảo dược bản địa (79.000 VNĐ)</option>
-            <option>FAST – Chăm sóc nhanh theo nhu cầu (150.000 VNĐ)</option>
-            <option>Relax – Gội đầu thảo dược chuyên sâu (180.000 VNĐ)</option>
-            <option>Beauty – Tái tạo và phục hồi (240.000 VNĐ)</option>
-            <option>Zen Detox – Thư giãn cơ thể (240.000 VNĐ)</option>
-            <option>Royal – Chăm sóc hoàng gia (300.000 VNĐ)</option>
-            <option>Galaxy – Vai Cổ Gáy (300.000 VNĐ)</option>
-            <option>Galaxy – Lưng, Eo, Thận (300.000 VNĐ)</option>
-            <option>Galaxy – Thông Kinh Lạc Chân &amp; Tay (300.000 VNĐ)</option>
-            <option>VIP – Chăm sóc toàn thân chuyên sâu (600.000 VNĐ)</option>
-            <option>Cần tư vấn thêm</option>
-          </select>
-        </div>
-        <div class="form-row-2">
-          <div class="fg"><label>Ngày muốn đặt</label><input type="date"></div>
-          <div class="fg"><label>Khung giờ mong muốn</label><input type="text" placeholder="Ví dụ: 15:00"></div>
-        </div>
-        <div class="fg"><label>Ghi chú</label><textarea rows="3" placeholder="Ví dụ: đau cổ vai gáy, muốn gội đầu thảo dược..."></textarea></div>
-        <button type="submit" class="btn-green full">Gửi yêu cầu đặt lịch</button>
-        <p class="form-note">Spa sẽ liên hệ xác nhận sớm nhất. Hotline: <a href="tel:0985009674">0985.009.674</a></p>
-      </form>
+      <div class="booking-form wb" id="wbRoot">
+        <h3>Đặt lịch</h3>
+        <p class="wb-loading" id="wbLoading">Đang tải dịch vụ…</p>
+        <form id="wbForm" novalidate style="display:none">
+          <div class="form-row-2">
+            <div class="fg"><label for="wbName">Họ và tên *</label><input type="text" id="wbName" autocomplete="name" placeholder="Tên của bạn" maxlength="100"></div>
+            <div class="fg"><label for="wbPhone">Số điện thoại *</label><input type="tel" id="wbPhone" autocomplete="tel" inputmode="tel" placeholder="Nhập số điện thoại" maxlength="20"></div>
+          </div>
+          <div id="wbPkgs"></div>
+          <button type="button" class="btn-outline-sm wb-addpkg" id="wbAddPkg">+ Thêm gói dịch vụ</button>
+          <div class="fg"><label for="wbDate">Ngày *</label><input type="date" id="wbDate"></div>
+          <div class="fg"><label>Giờ *</label><div class="wb-slots" id="wbSlots"><span class="wb-hint">Chọn ngày để xem giờ trống.</span></div></div>
+          <div class="wb-sum" id="wbSum"></div>
+          <input type="text" id="wbHp" name="website" class="wb-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div id="wbTs"></div>
+          <div class="wb-err" id="wbErr" role="alert"></div>
+          <button type="submit" class="btn-green full" id="wbSubmit">Đặt lịch</button>
+          <p class="form-note">Lịch được ghi nhận ngay vào hệ thống của spa, thanh toán tiền mặt tại spa. Cần hỗ trợ: <a href="tel:0985009674">0985.009.674</a></p>
+        </form>
+        <div class="wb-done" id="wbDone" style="display:none" aria-live="polite"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -451,7 +443,9 @@
     <button onclick="quickAsk('Mỏi cổ vai gáy nên làm gì?')">Cổ vai gáy</button>
     <button onclick="quickAsk('Có khuyến mãi gì không?')">Khuyến mãi</button>
     <button onclick="quickAsk('Tôi muốn đặt lịch')">Đặt lịch</button>
+    <button onclick="startCancelFlow()">Hủy lịch</button>
   </div>
+  <div id="cwTs" class="cw-ts"></div>
   <div class="cw-input-row">
     <textarea id="cwInput" placeholder="Nhắn gì đó..." rows="1"
       onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat();}"
@@ -462,6 +456,7 @@
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
+<script src="booking.js?v=3"></script>
 </body>
 </html>

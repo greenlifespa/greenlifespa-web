@@ -1,0 +1,49 @@
+/* Đặt lịch trực tuyến – Green Life Spa */
+.wb-loading{font-size:13.5px;color:var(--mu)}
+.wb-pkg{border:.5px solid var(--bd);border-radius:var(--r);padding:12px 12px 2px;margin-bottom:12px;background:var(--gp)}
+.wb-pkg-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13.5px;color:var(--tm)}
+.wb-x{background:none;border:none;color:#b42318;font-size:12.5px;cursor:pointer;font-family:inherit;padding:6px 4px}
+.wb-adds{margin:0 0 10px;display:flex;flex-direction:column;gap:6px}
+.wb-adds-t{font-size:12.5px;color:var(--tm);font-weight:500}
+.wb-chk{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;cursor:pointer;line-height:1.4}
+.wb-chk input{width:18px;height:18px;margin-top:1px;flex:none}
+.wb-addpkg{margin-bottom:14px}
+.wb-sum{font-size:13.5px;color:var(--tm);background:var(--gl);border-radius:8px;padding:10px 12px;margin:4px 0 12px}
+.wb-sum:empty{display:none}
+.wb-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:8px}
+.wb-slot{border:.5px solid var(--bd);background:#fff;border-radius:8px;padding:10px 0;font-size:14px;font-family:inherit;color:var(--txt);cursor:pointer;min-height:44px}
+.wb-slot:hover:not(:disabled){border-color:var(--gm)}
+.wb-slot.on{background:var(--gm);border-color:var(--gm);color:#fff;font-weight:600}
+.wb-slot:disabled{color:#a3b5a8;background:#f2f5f3;text-decoration:line-through;cursor:not-allowed}
+.wb-hint{grid-column:1/-1;font-size:13px;color:var(--mu)}
+.wb-bad{color:#b42318}
+.wb-link{background:none;border:none;color:var(--gm);text-decoration:underline;cursor:pointer;font:inherit}
+.wb-err{display:none;background:#fef3f2;border:.5px solid #fda29b;color:#b42318;border-radius:8px;padding:10px 12px;font-size:13.5px;margin-bottom:12px}
+.wb-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none}
+.wb-done{text-align:center;padding:6px 0 4px}
+.wb-done-ic{font-size:40px;line-height:1.2}
+.wb-done h4{font-size:16px;margin:6px 0 14px;color:var(--g)}
+.wb-done-card{text-align:left;border:.5px solid var(--bd);border-radius:var(--r);background:var(--gp);padding:6px 14px;margin-bottom:14px}
+.wb-done-card div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:.5px solid var(--bd);font-size:13.5px}
+.wb-done-card div:last-child{border-bottom:none}
+.wb-done-card span{color:var(--mu);flex:none}
+.wb-done-card b{text-align:right;font-weight:600}
+.wb-done-note{font-size:13px;color:var(--tm);margin-bottom:14px}
+.wb-done-note a{color:var(--gm);font-weight:600;text-decoration:none}
+@media(max-width:480px){.wb-slots{grid-template-columns:repeat(4,1fr)}}
+
+/* Thẻ dịch vụ không ảnh (vd. Xông Hơi) */
+.svc-icon-tile{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-height:100%;background:linear-gradient(135deg,var(--gl),var(--gp));font-size:42px;line-height:1}
+
+/* Nút hành động trong khung chat (luồng hủy lịch) */
+.cw-actions{display:flex;flex-wrap:wrap;gap:8px;padding:4px 12px 10px 52px;align-items:stretch}
+.cw-act{border:.5px solid var(--gm);background:#fff;color:var(--g);border-radius:999px;padding:8px 14px;min-height:38px;font:inherit;cursor:pointer;line-height:1.3;text-align:center}
+.cw-act:disabled{opacity:.45;cursor:default}
+.cw-ts{height:0;overflow:hidden;margin:0;padding:0}
+.pt-addon-head{padding:14px 12px 6px;font-size:13.5px;font-weight:600;color:var(--tm)}
+.pt-addon{cursor:default!important}
+.pt-addon .pt-name small{display:none}
+@media(max-width:480px){
+  .cw-actions{padding-left:12px}
+  .cw-act{flex:1 1 100%}
+}
