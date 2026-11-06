@@ -325,6 +325,21 @@
     document.head.appendChild(s);
   }
 
+  /* ── điền sẵn tên + SĐT từ link bot gửi (tk1) ──
+   * Link có dạng ?ten=<tên>&sdt=<số điện thoại>. Chỉ điền khi có tham số;
+   * không có tham số thì không làm gì (khách vào web bình thường không đổi).
+   * Giá trị chỉ gán vào ô nhập (không đưa vào HTML) nên không sợ chèn mã. */
+  function prefillFromLink() {
+    var q = new URLSearchParams(window.location.search || '');
+    var name = (q.get('ten') || '').replace(/\s+/g, ' ').trim();
+    var phone = (q.get('sdt') || '').trim();
+    if (!name && !phone) return;
+    var nEl = $('wbName'), pEl = $('wbPhone');
+    if (name && nEl) nEl.value = name;
+    if (phone && pEl) pEl.value = phone;
+    if (typeof window.navigate === 'function') window.navigate('contact');
+  }
+
   /* ── khởi tạo ── */
   async function init() {
     $('wbLoading').style.display = '';
@@ -351,5 +366,6 @@
   root.addEventListener('change', onChange);
   root.addEventListener('click', onClick);
   initTurnstile();
+  prefillFromLink();
   init();
 })();
